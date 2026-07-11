@@ -126,7 +126,11 @@ h6 {
 }
 
 .gradient-text {
+<<<<<<< HEAD
   @apply bg-linear-to-r from-indigo-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent;
+=======
+  @apply bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent;
+>>>>>>> 11d8adadfcbb10208ca3c1e53e4516cca8e5d0ae
 }
 
 .section {
