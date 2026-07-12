@@ -35,48 +35,27 @@ function ThemeToggle({ className }: ThemeToggleProps) {
       aria-pressed={isDark}
       onClick={toggleTheme}
       className={cn(
-        "group relative",
-        "inline-flex h-12 w-12 items-center justify-center",
-        "overflow-hidden",
-        "rounded-2xl",
+  "group relative inline-flex h-11 w-11 items-center justify-center",
+  "rounded-2xl overflow-hidden",
 
-        "border border-white/20",
-        "bg-white/70",
-        "backdrop-blur-2xl",
+  "border border-slate-200/70",
+  "bg-white/70 backdrop-blur-xl",
 
-        "ring-1 ring-white/10",
+  "shadow-lg transition-all duration-300",
 
-        "shadow-lg shadow-slate-300/20",
+  "hover:-translate-y-0.5",
+  "hover:border-violet-400/40",
+  "hover:shadow-violet-500/20",
 
-        "transition-all duration-300 ease-out",
+  "dark:border-slate-700",
+  "dark:bg-slate-900/70",
 
-        "hover:-translate-y-1",
-        "hover:scale-105",
+  "focus:outline-none",
+  "focus:ring-2",
+  "focus:ring-violet-500/40",
 
-        "hover:border-indigo-400/40",
-
-        "hover:bg-gradient-to-br",
-        "hover:from-indigo-600",
-        "hover:via-violet-600",
-        "hover:to-fuchsia-600",
-
-        "hover:shadow-2xl",
-        "hover:shadow-violet-500/30",
-
-        "focus:outline-none",
-        "focus:ring-2",
-        "focus:ring-indigo-500/60",
-        "focus:ring-offset-2",
-        "focus:ring-offset-white",
-
-        "dark:border-white/10",
-        "dark:bg-slate-900/60",
-        "dark:ring-white/5",
-        "dark:shadow-black/30",
-        "dark:focus:ring-offset-slate-950",
-
-        className
-      )}
+  className
+)}
     >
       {/* Premium Shine */}
       <span
