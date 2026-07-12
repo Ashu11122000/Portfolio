@@ -1,9 +1,4 @@
-import {
-  ArrowRight,
-  Award,
-  BadgeCheck,
-  Sparkles,
-} from "lucide-react";
+import { ArrowRight, Award, BadgeCheck, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import { featuredCertifications } from "../../data/certifications";
@@ -127,7 +122,7 @@ function FeaturedCertifications() {
                 from-violet-600
                 via-fuchsia-600
                 to-cyan-500
-                text-white
+                text-slate-900 dark:text-white
               "
             >
               <BadgeCheck size={18} />
@@ -141,14 +136,10 @@ function FeaturedCertifications() {
                 text-sm
                 font-semibold
                 tracking-wide
-                text-gray-200
+                text-red-400
               "
             >
-              <Sparkles
-                size={15}
-                className="text-yellow-400"
-              />
-
+              <Sparkles size={15} className="text-red-400" />
               Continuous Learning • Industry Recognized Credentials
             </span>
           </div>
@@ -156,7 +147,7 @@ function FeaturedCertifications() {
 
         {/* Section Header */}
 
-                <SectionTitle
+        <SectionTitle
           title="Professional Certifications"
           subtitle="I continuously invest in learning modern technologies, software architecture, backend engineering, cloud platforms, DevOps, and mobile development. Every certification reflects practical skills that strengthen the quality, scalability, and maintainability of the software I build."
         />
@@ -200,11 +191,11 @@ function FeaturedCertifications() {
                 hover:shadow-[0_20px_50px_rgba(139,92,246,0.15)]
               "
             >
-              <p className="text-3xl font-black text-white">
+              <p className="text-3xl font-black text-black">
                 {featuredCertifications.length}+
               </p>
 
-              <p className="mt-2 text-sm text-gray-400">
+              <p className="mt-2 text-sm text-gray-800">
                 Featured Certifications
               </p>
             </div>
@@ -226,13 +217,9 @@ function FeaturedCertifications() {
                 hover:shadow-[0_20px_50px_rgba(6,182,212,0.15)]
               "
             >
-              <p className="text-3xl font-black text-white">
-                100%
-              </p>
+              <p className="text-3xl font-black text-black">100%</p>
 
-              <p className="mt-2 text-sm text-gray-400">
-                Verified Credentials
-              </p>
+              <p className="mt-2 text-sm text-gray-800">Verified Credentials</p>
             </div>
 
             {/* Card */}
@@ -252,13 +239,9 @@ function FeaturedCertifications() {
                 hover:shadow-[0_20px_50px_rgba(217,70,239,0.15)]
               "
             >
-              <p className="text-3xl font-black text-white">
-                24/7
-              </p>
+              <p className="text-3xl font-black text-black">24/7</p>
 
-              <p className="mt-2 text-sm text-gray-400">
-                Continuous Learning
-              </p>
+              <p className="mt-2 text-sm text-gray-800">Continuous Learning</p>
             </div>
           </div>
 
@@ -288,9 +271,7 @@ function FeaturedCertifications() {
                     group-hover:rotate-12
                   "
                 />
-
                 View All Certifications
-
                 <ArrowRight
                   size={18}
                   className="
@@ -319,7 +300,7 @@ function FeaturedCertifications() {
           "
         />
 
-                {/* Featured Certification Grid */}
+        {/* Featured Certification Grid */}
 
         <div
           className="
@@ -327,9 +308,7 @@ function FeaturedCertifications() {
             z-10
           "
         >
-          <CertificationGrid
-            certifications={featuredCertifications}
-          />
+          <CertificationGrid certifications={featuredCertifications} />
         </div>
 
         {/* Bottom CTA */}
@@ -395,7 +374,7 @@ function FeaturedCertifications() {
                   from-violet-600
                   via-fuchsia-600
                   to-cyan-500
-                  text-white
+                  text-black
                   shadow-[0_20px_45px_rgba(139,92,246,0.35)]
                 "
               >
@@ -409,7 +388,7 @@ function FeaturedCertifications() {
                   className="
                     text-2xl
                     font-bold
-                    text-white
+                    text-slate-900 dark:text-white
                   "
                 >
                   Learning Never Stops
@@ -423,8 +402,8 @@ function FeaturedCertifications() {
                   "
                 >
                   I regularly expand my expertise through professional
-                  certifications in frontend engineering, backend systems,
-                  cloud technologies, DevOps, databases, and modern software
+                  certifications in frontend engineering, backend systems, cloud
+                  technologies, DevOps, databases, and modern software
                   architecture to stay aligned with industry best practices.
                 </p>
               </div>

@@ -135,7 +135,7 @@ const SearchBar: FC<SearchBarProps> = ({
             pl-14
             pr-14
             text-base
-            text-white
+            text-slate-900 dark:text-white
             outline-none
             placeholder:text-slate-500
           "
@@ -160,7 +160,7 @@ const SearchBar: FC<SearchBarProps> = ({
               justify-center
               rounded-full
               bg-white/5
-              text-slate-400
+              text-slate-600 dark:text-slate-400
               transition-all
               duration-300
               hover:rotate-90

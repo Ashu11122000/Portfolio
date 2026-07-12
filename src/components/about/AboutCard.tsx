@@ -53,12 +53,7 @@ interface AboutCardProps {
   className?: string;
 }
 
-function AboutCard({
-  children,
-  title,
-  icon,
-  className,
-}: AboutCardProps) {
+function AboutCard({ children, title, icon, className }: AboutCardProps) {
   return (
     <GlassCard
       className={cn(
@@ -68,7 +63,7 @@ function AboutCard({
         "hover:scale-[1.015]",
         "hover:shadow-2xl",
         "hover:shadow-violet-500/20",
-        className
+        className,
       )}
     >
       {/* Premium Ambient Glow */}
@@ -142,7 +137,7 @@ function AboutCard({
                 via-violet-600
                 to-fuchsia-600
 
-                text-white
+                text-slate-900 dark:text-slate-900 dark:text-slate-900 dark:text-slate-900 dark:text-slate-900 dark:text-slate-900 dark:text-white
 
                 shadow-xl
                 shadow-violet-500/25
@@ -165,7 +160,7 @@ function AboutCard({
                 font-bold
                 tracking-tight
                 text-slate-900
-                dark:text-white
+               text-slate-900 dark:text-slate-900 dark:text-white
               "
             >
               {title}
@@ -174,9 +169,7 @@ function AboutCard({
         </header>
       )}
 
-      <div className="relative z-10">
-        {children}
-      </div>
+      <div className="relative z-10">{children}</div>
     </GlassCard>
   );
 }

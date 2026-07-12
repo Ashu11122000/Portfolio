@@ -70,7 +70,7 @@ function HeroCodeCard() {
           <span className="h-3 w-3 rounded-full bg-green-400" />
         </div>
 
-        <span className="text-xs font-medium tracking-wide text-white/60">
+        <span className="text-xs font-medium tracking-wide text-slate-900 dark:text-white/60">
           developer.ts
         </span>
 
@@ -95,16 +95,12 @@ function HeroCodeCard() {
 
         <CodeLine number={2}>
           <span className="text-red-400">name</span>:{" "}
-          <span className="text-green-300">
-            "{heroData.codeCard.name}"
-          </span>,
+          <span className="text-green-300">"{heroData.codeCard.name}"</span>,
         </CodeLine>
 
         <CodeLine number={3}>
           <span className="text-red-400">role</span>:{" "}
-          <span className="text-green-300">
-            "{heroData.codeCard.role}"
-          </span>,
+          <span className="text-green-300">"{heroData.codeCard.role}"</span>,
         </CodeLine>
 
         <CodeLine number={4}>
@@ -117,27 +113,20 @@ function HeroCodeCard() {
           </CodeLine>
         ))}
 
-        <CodeLine number={heroData.codeCard.skills.length + 5}>
-          ],
-        </CodeLine>
+        <CodeLine number={heroData.codeCard.skills.length + 5}>],</CodeLine>
 
         <CodeLine number={heroData.codeCard.skills.length + 6}>
           <span className="text-red-400">passion</span>:{" "}
-          <span className="text-yellow-300">
-            "{heroData.codeCard.passion}"
-          </span>,
+          <span className="text-yellow-300">"{heroData.codeCard.passion}"</span>
+          ,
         </CodeLine>
 
         <CodeLine number={heroData.codeCard.skills.length + 7}>
           <span className="text-red-400">goal</span>:{" "}
-          <span className="text-violet-300">
-            "{heroData.codeCard.goal}"
-          </span>
+          <span className="text-violet-300">"{heroData.codeCard.goal}"</span>
         </CodeLine>
 
-        <CodeLine number={heroData.codeCard.skills.length + 8}>
-          {"}"}
-        </CodeLine>
+        <CodeLine number={heroData.codeCard.skills.length + 8}>{"}"}</CodeLine>
       </div>
     </GlassCard>
   );
@@ -149,11 +138,7 @@ type CodeLineProps = {
   children: React.ReactNode;
 };
 
-function CodeLine({
-  number,
-  indent = false,
-  children,
-}: CodeLineProps) {
+function CodeLine({ number, indent = false, children }: CodeLineProps) {
   return (
     <div className="flex">
       <span
@@ -162,7 +147,7 @@ function CodeLine({
           w-6
           select-none
           text-right
-          text-white/25
+          text-slate-900 dark:text-white/25
         "
       >
         {number}

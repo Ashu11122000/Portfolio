@@ -47,20 +47,15 @@ function AboutPreview() {
 
             <h2 className="max-w-xl text-4xl font-bold leading-tight tracking-tight md:text-5xl lg:text-6xl">
               Passionate about building{" "}
-              <GradientText>
-                modern web applications.
-              </GradientText>
+              <GradientText>modern web applications.</GradientText>
             </h2>
 
-            <p className="max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-400">
+            <p className="max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-600 dark:text-slate-400">
               {personalInfo.bio}
             </p>
 
             <Link to="/about">
-              <Button
-                size="lg"
-                rightIcon={<ArrowRight size={18} />}
-              >
+              <Button size="lg" rightIcon={<ArrowRight size={18} />}>
                 Learn More
               </Button>
             </Link>
@@ -110,11 +105,11 @@ function AboutPreview() {
 
             <div className="relative z-10 space-y-8">
               <div>
-                <h3 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+                <h3 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-900 dark:text-white">
                   {personalInfo.name}
                 </h3>
 
-                <p className="mt-2 text-slate-600 dark:text-slate-400">
+                <p className="mt-2 text-slate-600 dark:text-slate-600 dark:text-slate-400">
                   {personalInfo.role}
                 </p>
               </div>
@@ -125,7 +120,7 @@ function AboutPreview() {
                     Experience
                   </p>
 
-                  <p className="mt-2 text-lg font-semibold text-slate-900 dark:text-white">
+                  <p className="mt-2 text-lg font-semibold text-slate-900 dark:text-slate-900 dark:text-white">
                     {personalInfo.experience}
                   </p>
                 </div>
@@ -135,7 +130,7 @@ function AboutPreview() {
                     Location
                   </p>
 
-                  <p className="mt-2 text-lg font-semibold text-slate-900 dark:text-white">
+                  <p className="mt-2 text-lg font-semibold text-slate-900 dark:text-slate-900 dark:text-white">
                     {personalInfo.location}
                   </p>
                 </div>
@@ -155,7 +150,7 @@ function AboutPreview() {
                     Languages
                   </p>
 
-                  <p className="mt-2 text-lg font-semibold text-slate-900 dark:text-white">
+                  <p className="mt-2 text-lg font-semibold text-slate-900 dark:text-slate-900 dark:text-white">
                     {personalInfo.languages.join(", ")}
                   </p>
                 </div>

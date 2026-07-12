@@ -1,11 +1,6 @@
 import type { ReactNode } from "react";
 
-import {
-  Mail,
-  MapPin,
-  Phone,
-  User,
-} from "lucide-react";
+import { Mail, MapPin, Phone, User } from "lucide-react";
 
 import AboutCard from "./AboutCard";
 
@@ -29,15 +24,11 @@ function PersonalInfo() {
         subtitle="A quick introduction about myself, my background, and how you can connect with me."
       />
 
-      <AboutCard
-        title="Personal Information"
-        icon={<User size={24} />}
-      >
+      <AboutCard title="Personal Information" icon={<User size={24} />}>
         <div className="space-y-10">
-
           {/* Bio */}
 
-          <p className="text-[16px] leading-8 tracking-wide text-slate-600 dark:text-slate-300">
+          <p className="text-[16px] leading-8 tracking-wide text-slate-600 dark:text-slate-700 dark:text-slate-300">
             {personalInfo.bio}
           </p>
 
@@ -92,7 +83,7 @@ function PersonalInfo() {
               Current Status
             </h4>
 
-            <p className="relative leading-7 text-slate-600 dark:text-slate-300">
+            <p className="relative leading-7 text-slate-600 dark:text-slate-700 dark:text-slate-300">
               {personalInfo.availability}
             </p>
           </div>
@@ -100,7 +91,7 @@ function PersonalInfo() {
           {/* Social Links */}
 
           <div>
-            <h4 className="mb-5 text-xl font-semibold text-slate-900 dark:text-white">
+            <h4 className="mb-5 text-xl font-semibold text-slate-900 dark:text-slate-900 dark:text-white">
               Connect With Me
             </h4>
 
@@ -164,8 +155,8 @@ function PersonalInfo() {
                         transition-all
                         duration-300
                         group-hover:scale-110
-                        group-hover:text-white
-                        dark:text-slate-300
+                        text-slate-900 dark:text-slate-900 dark:text-white
+                        dark:text-slate-700 dark:text-slate-300
                       "
                     />
                   </a>
@@ -173,7 +164,6 @@ function PersonalInfo() {
               })}
             </div>
           </div>
-
         </div>
       </AboutCard>
     </section>
@@ -192,11 +182,7 @@ interface InfoItemProps {
   value: string;
 }
 
-function InfoItem({
-  icon,
-  label,
-  value,
-}: InfoItemProps) {
+function InfoItem({ icon, label, value }: InfoItemProps) {
   return (
     <div
       className="
@@ -243,11 +229,11 @@ function InfoItem({
       </div>
 
       <div className="space-y-1">
-        <p className="text-xs uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">
+        <p className="text-xs uppercase tracking-[0.18em] text-slate-500 dark:text-slate-600 dark:text-slate-400">
           {label}
         </p>
 
-        <p className="font-semibold leading-6 text-slate-900 dark:text-white">
+        <p className="font-semibold leading-6 text-slate-900 dark:text-slate-900 dark:text-white">
           {value}
         </p>
       </div>

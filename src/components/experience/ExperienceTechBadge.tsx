@@ -77,17 +77,14 @@ const ExperienceTechBadge: FC<ExperienceTechBadgeProps> = ({
           from-indigo-500
           via-violet-500
           to-cyan-500
-          text-white
+          text-slate-900 dark:text-white
           transition-transform
           duration-300
           group-hover:rotate-6
           group-hover:scale-110
         "
       >
-        <Code2
-          size={14}
-          strokeWidth={2.2}
-        />
+        <Code2 size={14} strokeWidth={2.2} />
       </div>
 
       <span

@@ -45,11 +45,7 @@ function CertificationModal({
   const handleViewCertificate = () => {
     if (!certification.credentialUrl) return;
 
-    window.open(
-      certification.credentialUrl,
-      "_blank",
-      "noopener,noreferrer"
-    );
+    window.open(certification.credentialUrl, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -142,7 +138,7 @@ function CertificationModal({
         </div>
 
         <div className="relative z-10 p-8 lg:p-10">
-                    {/* Decorative Glow */}
+          {/* Decorative Glow */}
 
           <div
             className="
@@ -184,7 +180,7 @@ function CertificationModal({
               hover:rotate-90
               hover:border-white/20
               hover:bg-white/10
-              hover:text-white
+              hover:text-slate-900 text-slate-900 dark:text-slate-900 dark:text-white
             "
           >
             <X size={20} />
@@ -209,7 +205,7 @@ function CertificationModal({
                 from-violet-600
                 via-fuchsia-600
                 to-cyan-500
-                text-white
+                text-slate-900 dark:text-slate-900 dark:text-white
                 shadow-[0_20px_60px_rgba(139,92,246,0.45)]
               "
             >
@@ -258,7 +254,7 @@ function CertificationModal({
                   font-black
                   leading-tight
                   tracking-tight
-                  text-white
+                  text-slate-900 dark:text-slate-900 dark:text-white
                   lg:text-4xl
                 "
               >
@@ -289,7 +285,7 @@ function CertificationModal({
                     </span>
                   </div>
 
-                  <p className="mt-2 font-semibold text-white">
+                  <p className="mt-2 font-semibold text-slate-900 dark:text-slate-900 dark:text-white">
                     {certification.issuer}
                   </p>
                 </div>
@@ -310,7 +306,7 @@ function CertificationModal({
                     </span>
                   </div>
 
-                  <p className="mt-2 font-semibold text-white">
+                  <p className="mt-2 font-semibold text-slate-900 dark:text-slate-900 dark:text-white">
                     {certification.issueDate}
                   </p>
                 </div>
@@ -331,7 +327,7 @@ function CertificationModal({
                     </span>
                   </div>
 
-                  <p className="mt-2 font-semibold text-white">
+                  <p className="mt-2 font-semibold text-slate-900 dark:text-slate-900 dark:text-white">
                     {certification.category}
                   </p>
                 </div>
@@ -380,7 +376,7 @@ function CertificationModal({
                       Instructor
                     </p>
 
-                    <h3 className="font-semibold text-white">
+                    <h3 className="font-semibold text-slate-900 dark:text-slate-900 dark:text-white">
                       {certification.instructor}
                     </h3>
                   </div>
@@ -396,7 +392,7 @@ function CertificationModal({
               className="
                 text-xl
                 font-bold
-                text-white
+                text-slate-900 dark:text-slate-900 dark:text-white
               "
             >
               About this Certification
@@ -430,7 +426,7 @@ function CertificationModal({
               className="
                 text-xl
                 font-bold
-                text-white
+                text-slate-900 dark:text-slate-900 dark:text-white
               "
             >
               Skills Covered
@@ -474,113 +470,106 @@ function CertificationModal({
             </div>
           </section>
 
-                    {/* Divider */}
+          {/* Credential ID */}
+
+          {certification.credentialId && (
+            <section className="mt-10">
+              <div
+                className="
+                  rounded-3xl
+                  border
+                  border-white/10
+                  bg-gradient-to-r
+                  from-slate-900/60
+                  via-slate-900/40
+                  to-slate-900/60
+                  p-6
+                  backdrop-blur-xl
+                "
+              >
+                <div className="flex flex-col gap-2">
+                  <span
+                    className="
+                      text-xs
+                      font-semibold
+                      uppercase
+                      tracking-[0.18em]
+                      text-slate-600 dark:text-slate-400
+                    "
+                  >
+                    Credential ID
+                  </span>
+
+                  <code
+                    className="
+                      break-all
+                      rounded-xl
+                      border
+                      border-white/10
+                      bg-black/20
+                      px-4
+                      py-3
+                      font-mono
+                      text-sm
+                      text-cyan-300
+                    "
+                  >
+                    {certification.credentialId}
+                  </code>
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* Footer Actions */}
 
           <div
             className="
-              mt-10
-              h-px
-              w-full
-              bg-gradient-to-r
-              from-transparent
-              via-white/10
-              to-transparent
-            "
-          />
-
-          {/* Footer */}
-
-          <footer
-            className="
-              mt-8
+              mt-12
               flex
               flex-col-reverse
               gap-4
+              border-t
+              border-white/10
+              pt-8
               sm:flex-row
-              sm:items-center
-              sm:justify-between
+              sm:justify-end
             "
           >
-            {/* Left Side */}
-
-            <div>
-              <p
-                className="
-                  text-sm
-                  text-gray-400
-                "
-              >
-                Verified professional certification
-              </p>
-
-              <p
-                className="
-                  mt-1
-                  text-xs
-                  tracking-wide
-                  text-gray-500
-                "
-              >
-                Issued by {certification.issuer}
-              </p>
-            </div>
-
-            {/* Right Side */}
-
-            <div
+            <Button
+              variant="outline"
+              onClick={onClose}
               className="
-                flex
-                flex-wrap
-                justify-end
-                gap-4
+                min-w-[160px]
+                rounded-2xl
               "
             >
-              <Button
-                variant="secondary"
-                onClick={onClose}
-                className="
-                  min-w-[140px]
-                  border
-                  border-white/10
-                  bg-white/5
-                  backdrop-blur-xl
-                  transition-all
-                  duration-300
-                  hover:-translate-y-1
-                  hover:border-white/20
-                  hover:bg-white/10
-                "
-              >
-                Close
-              </Button>
+              Close
+            </Button>
 
+            {certification.credentialUrl && (
               <Button
                 onClick={handleViewCertificate}
-                disabled={!certification.credentialUrl}
                 className="
                   min-w-[220px]
+                  rounded-2xl
                   bg-gradient-to-r
                   from-violet-600
                   via-fuchsia-600
                   to-cyan-500
-                  text-white
-                  shadow-[0_20px_50px_rgba(139,92,246,0.35)]
+                  text-slate-900 dark:text-slate-900 dark:text-white
+                  shadow-[0_15px_40px_rgba(139,92,246,0.35)]
                   transition-all
                   duration-300
-                  hover:-translate-y-1
                   hover:scale-[1.02]
-                  hover:shadow-[0_25px_60px_rgba(139,92,246,0.50)]
+                  hover:shadow-[0_20px_50px_rgba(139,92,246,0.45)]
                 "
               >
-                <ExternalLink
-                  size={18}
-                  className="mr-2"
-                />
-
+                <ExternalLink size={18} className="mr-2" />
                 View Certificate
               </Button>
-            </div>
-          </footer>
+            )}
+          </div>
         </div>
       </GlassCard>
     </div>

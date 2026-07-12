@@ -33,18 +33,14 @@ const socialLinks: SocialLink[] = [
   },
 ];
 
-function SocialIcons({
-  className,
-  iconSize = 18,
-}: SocialIconsProps) {
+function SocialIcons({ className, iconSize = 18 }: SocialIconsProps) {
   return (
     <div className={cn("flex items-center gap-4", className)}>
       {socialLinks.map((social) => {
         const Icon = social.icon;
 
         const isExternal =
-          social.href.startsWith("http") ||
-          social.href.startsWith("mailto:");
+          social.href.startsWith("http") || social.href.startsWith("mailto:");
 
         return (
           <a
@@ -81,7 +77,7 @@ function SocialIcons({
               "hover:via-violet-600",
               "hover:to-fuchsia-600",
 
-              "hover:text-white",
+              "hover:text-slate-900 dark:text-white",
 
               "hover:shadow-2xl",
               "hover:shadow-violet-500/30",
@@ -94,11 +90,11 @@ function SocialIcons({
 
               "dark:border-white/10",
               "dark:bg-slate-900/60",
-              "dark:text-slate-300",
+              "dark:text-slate-700 dark:text-slate-300",
               "dark:shadow-black/30",
               "dark:ring-white/5",
               "dark:hover:shadow-violet-500/25",
-              "dark:focus:ring-offset-slate-950"
+              "dark:focus:ring-offset-slate-950",
             )}
           >
             {/* Premium Shine */}

@@ -49,11 +49,11 @@ function EducationCard() {
               <div className="space-y-6">
                 {/* Institution */}
                 <div>
-                  <h4 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+                  <h4 className="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-900 dark:text-white">
                     {item.institution}
                   </h4>
 
-                  <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
+                  <p className="mt-2 text-sm text-slate-500 dark:text-slate-600 dark:text-slate-400">
                     {item.level}
                   </p>
                 </div>
@@ -76,11 +76,11 @@ function EducationCard() {
                 {/* Footer */}
                 <div className="flex flex-wrap items-center justify-between gap-5 border-t border-slate-200/70 pt-6 dark:border-slate-700/60">
                   <div>
-                    <p className="text-xs uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
+                    <p className="text-xs uppercase tracking-[0.2em] text-slate-500 dark:text-slate-600 dark:text-slate-400">
                       Academic Result
                     </p>
 
-                    <p className="mt-1 text-lg font-semibold text-slate-900 dark:text-white">
+                    <p className="mt-1 text-lg font-semibold text-slate-900 dark:text-slate-900 dark:text-white">
                       {item.score}
                     </p>
                   </div>
@@ -180,11 +180,11 @@ function InfoRow({ icon, label, value }: InfoRowProps) {
       </div>
 
       <div>
-        <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
+        <p className="text-[11px] font-medium uppercase tracking-[0.22em] text-slate-500 dark:text-slate-600 dark:text-slate-400">
           {label}
         </p>
 
-        <p className="mt-1 font-semibold text-slate-900 dark:text-white">
+        <p className="mt-1 font-semibold text-slate-900 dark:text-slate-900 dark:text-white">
           {value}
         </p>
       </div>

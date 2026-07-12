@@ -18,11 +18,7 @@
 
 import type { FC } from "react";
 
-import {
-  ExternalLink,
-  FolderGit2,
-  Star,
-} from "lucide-react";
+import { ExternalLink, FolderGit2, Star } from "lucide-react";
 
 import { FaGithub } from "react-icons/fa";
 
@@ -55,7 +51,7 @@ const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
         rounded-3xl
         border
         border-white/10
-        bg-white/[0.03]
+        bg-white/3
         p-7
         transition-all
         duration-500
@@ -95,7 +91,7 @@ const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
                 justify-center
                 rounded-2xl
                 bg-gradient-to-br
-                from-cyan-500/20
+                from-cyan-800/20
                 to-violet-500/20
                 ring-1
                 ring-white/10
@@ -104,21 +100,21 @@ const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
                 group-hover:scale-110
               "
             >
-              <FolderGit2
-                size={26}
-                className="text-cyan-300"
-              />
+              <FolderGit2 size={26} className="text-cyan-300" />
             </div>
 
             <div>
               <h3
                 className="
-                  text-2xl
-                  font-bold
-                  transition-colors
-                  duration-300
-                  group-hover:text-cyan-300
-                "
+  text-2xl
+  font-bold
+  text-slate-900
+  dark:text-slate-900 dark:text-white
+  transition-colors
+  duration-300
+  group-hover:text-cyan-600
+  dark:group-hover:text-cyan-300
+"
               >
                 {project.name}
               </h3>
@@ -135,7 +131,7 @@ const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
                   py-1
                   text-xs
                   font-medium
-                  text-slate-400
+                  text-slate-600 dark:text-slate-400
                 "
               >
                 {project.category}
@@ -157,7 +153,7 @@ const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
                 py-1.5
                 text-xs
                 font-semibold
-                text-yellow-300
+                text-red-800
                 ring-1
                 ring-yellow-500/20
               "
@@ -175,7 +171,7 @@ const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
             mb-6
             flex-1
             leading-8
-            text-slate-400
+            text-slate-800
           "
         >
           {project.description}
@@ -185,8 +181,8 @@ const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
 
         <div className="mb-6">
           <span
-            className={`inline-flex rounded-full px-3 py-1.5 text-xs font-semibold ${getStatusClasses(
-              project.status
+            className={`inline-flex rounded-full px-3 py-1.5 text-xs text-red-400 font-semibold ${getStatusClasses(
+              project.status,
             )}`}
           >
             {project.status}
@@ -197,10 +193,7 @@ const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
 
         <div className="mb-8 flex flex-wrap gap-2">
           {project.technologies.map((technology) => (
-            <TechBadge
-              key={technology.id}
-              technology={technology}
-            />
+            <TechBadge key={technology.id} technology={technology} />
           ))}
         </div>
 
@@ -215,10 +208,7 @@ const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
             aria-label={`View ${project.name} source code`}
           >
             <Button className="w-full">
-              <FaGithub
-                size={18}
-                className="mr-2"
-              />
+              <FaGithub size={18} className="mr-2" />
               Source Code
             </Button>
           </a>
@@ -230,10 +220,7 @@ const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
               rel="noopener noreferrer"
               aria-label={`Open ${project.name}`}
             >
-              <Button
-                variant="outline"
-                className="px-4"
-              >
+              <Button variant="outline" className="px-4">
                 <ExternalLink size={18} />
               </Button>
             </a>

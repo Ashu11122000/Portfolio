@@ -64,37 +64,29 @@ function Experience() {
             "
           >
             <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
-              <h3 className="text-3xl font-bold text-cyan-400">
-                10
-              </h3>
-              <p className="mt-2 text-sm text-slate-400">
+              <h3 className="text-3xl font-bold text-cyan-400">10</h3>
+              <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
                 Months Experience
               </p>
             </div>
 
             <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
-              <h3 className="text-3xl font-bold text-cyan-400">
-                2
-              </h3>
-              <p className="mt-2 text-sm text-slate-400">
+              <h3 className="text-3xl font-bold text-cyan-400">2</h3>
+              <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
                 Internships
               </p>
             </div>
 
             <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
-              <h3 className="text-3xl font-bold text-cyan-400">
-                10+
-              </h3>
-              <p className="mt-2 text-sm text-slate-400">
+              <h3 className="text-3xl font-bold text-cyan-400">10+</h3>
+              <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
                 Projects Delivered
               </p>
             </div>
 
             <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
-              <h3 className="text-3xl font-bold text-cyan-400">
-                25+
-              </h3>
-              <p className="mt-2 text-sm text-slate-400">
+              <h3 className="text-3xl font-bold text-cyan-400">25+</h3>
+              <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
                 Technologies
               </p>
             </div>

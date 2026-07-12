@@ -29,7 +29,7 @@ export const buttonVariants = cva(
           "from-indigo-600",
           "via-violet-600",
           "to-fuchsia-600",
-          "text-white",
+          "text-slate-900 dark:text-white",
           "border border-white/10",
           "shadow-lg",
           "shadow-indigo-500/25",
@@ -59,7 +59,7 @@ export const buttonVariants = cva(
           "hover:bg-white/90",
           "hover:shadow-xl",
           "dark:bg-slate-900/60",
-          "dark:text-white",
+          "dark:text-slate-900 dark:text-white",
           "dark:border-white/10",
           "dark:hover:bg-slate-800/70",
           "dark:shadow-black/20",
@@ -94,7 +94,7 @@ export const buttonVariants = cva(
           "bg-gradient-to-r",
           "from-red-600",
           "to-rose-600",
-          "text-white",
+          "text-slate-900 dark:text-white",
           "border border-red-400/20",
           "shadow-lg",
           "shadow-red-500/25",
@@ -128,5 +128,5 @@ export const buttonVariants = cva(
       size: "md",
       fullWidth: false,
     },
-  }
+  },
 );

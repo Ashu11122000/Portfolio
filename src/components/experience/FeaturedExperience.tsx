@@ -185,7 +185,7 @@ function FeaturedExperience() {
                     bg-gradient-to-br
                     from-violet-600
                     to-cyan-500
-                    text-white
+                    text-slate-900 dark:text-white
                   "
                 >
                   <Sparkles size={14} />
@@ -210,25 +210,19 @@ function FeaturedExperience() {
                         font-black
                         leading-tight
                         text-slate-900
-                        dark:text-white
+                        dark:text-slate-900 dark:text-white
                         lg:text-4xl
                       "
                     >
                       {latestExperience.position}
                     </h3>
 
-                    <Badge
-                      variant="primary"
-                      size="sm"
-                    >
+                    <Badge variant="primary" size="sm">
                       {latestExperience.employmentType}
                     </Badge>
 
                     {latestExperience.currentlyWorking && (
-                      <Badge
-                        variant="success"
-                        size="sm"
-                      >
+                      <Badge variant="success" size="sm">
                         Current
                       </Badge>
                     )}
@@ -291,7 +285,7 @@ function FeaturedExperience() {
                         font-medium
                         leading-6
                         text-slate-700
-                        dark:text-slate-300
+                        dark:text-slate-700 dark:text-slate-300
                       "
                     >
                       {latestExperience.startDate}
@@ -335,7 +329,7 @@ function FeaturedExperience() {
                         text-sm
                         font-medium
                         text-slate-700
-                        dark:text-slate-300
+                        dark:text-slate-700 dark:text-slate-300
                       "
                     >
                       {latestExperience.location}
@@ -375,7 +369,7 @@ function FeaturedExperience() {
                         text-sm
                         font-medium
                         text-slate-700
-                        dark:text-slate-300
+                        dark:text-slate-700 dark:text-slate-300
                       "
                     >
                       {latestExperience.employmentType}
@@ -386,7 +380,7 @@ function FeaturedExperience() {
                 <div className="my-10 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
                 {/* Description */}
-                                {/* ====================================================== */}
+                {/* ====================================================== */}
 
                 {/* Description */}
 
@@ -420,7 +414,7 @@ function FeaturedExperience() {
                           uppercase
                           tracking-[0.18em]
                           text-slate-500
-                          dark:text-slate-400
+                          dark:text-slate-600 dark:text-slate-400
                         "
                       >
                         Professional Summary
@@ -432,7 +426,7 @@ function FeaturedExperience() {
                           text-xl
                           font-bold
                           text-slate-900
-                          dark:text-white
+                          dark:text-slate-900 dark:text-white
                         "
                       >
                         Latest Responsibilities
@@ -455,7 +449,7 @@ function FeaturedExperience() {
                         max-w-5xl
                         leading-8
                         text-slate-600
-                        dark:text-slate-300
+                        dark:text-slate-700 dark:text-slate-300
                       "
                     >
                       {latestExperience.description}
@@ -500,7 +494,7 @@ function FeaturedExperience() {
                           uppercase
                           tracking-[0.18em]
                           text-slate-500
-                          dark:text-slate-400
+                          dark:text-slate-600 dark:text-slate-400
                         "
                       >
                         Technical Expertise
@@ -512,18 +506,14 @@ function FeaturedExperience() {
                           text-xl
                           font-bold
                           text-slate-900
-                          dark:text-white
+                          dark:text-slate-900 dark:text-white
                         "
                       >
                         Core Technologies
                       </h4>
                     </div>
 
-                    <Badge
-                      variant="primary"
-                      size="sm"
-                      className="px-4 py-2"
-                    >
+                    <Badge variant="primary" size="sm" className="px-4 py-2">
                       {latestExperience.technologies.length} Technologies
                     </Badge>
                   </div>
@@ -576,7 +566,7 @@ function FeaturedExperience() {
                         text-center
                         text-sm
                         text-slate-500
-                        dark:text-slate-400
+                        dark:text-slate-600 dark:text-slate-400
                       "
                     >
                       +{latestExperience.technologies.length - 6} more
@@ -600,7 +590,7 @@ function FeaturedExperience() {
 
                 {/* CTA */}
 
-                                {/* ====================================================== */}
+                {/* ====================================================== */}
 
                 {/* CTA */}
 
@@ -663,7 +653,7 @@ function FeaturedExperience() {
                           font-bold
                           leading-tight
                           text-slate-900
-                          dark:text-white
+                          dark:text-slate-900 dark:text-white
                           lg:text-3xl
                         "
                       >
@@ -676,7 +666,7 @@ function FeaturedExperience() {
                           max-w-2xl
                           leading-8
                           text-slate-600
-                          dark:text-slate-300
+                          dark:text-slate-700 dark:text-slate-300
                         "
                       >
                         Discover my previous roles, major accomplishments,
@@ -688,10 +678,7 @@ function FeaturedExperience() {
 
                     {/* Right */}
 
-                    <Link
-                      to="/experience"
-                      className="shrink-0"
-                    >
+                    <Link to="/experience" className="shrink-0">
                       <Button
                         size="lg"
                         className="
@@ -707,7 +694,6 @@ function FeaturedExperience() {
                         "
                       >
                         View Full Experience
-
                         <ArrowRight
                           size={18}
                           className="
@@ -762,8 +748,8 @@ function FeaturedExperience() {
                 "
               />
             </div>
-            </Card>
-          </div>
+          </Card>
+        </div>
       </Container>
     </section>
   );

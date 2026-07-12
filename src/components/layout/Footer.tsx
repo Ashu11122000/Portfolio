@@ -57,10 +57,7 @@ function Footer() {
             {/* Brand */}
 
             <div>
-              <Link
-                to="/"
-                className="group inline-flex items-center gap-4"
-              >
+              <Link to="/" className="group inline-flex items-center gap-4">
                 <div
                   className="
                     flex h-14 w-14 items-center justify-center
@@ -71,7 +68,7 @@ function Footer() {
                     to-fuchsia-600
                     text-lg
                     font-bold
-                    text-white
+                    text-slate-900 dark:text-white
                     shadow-xl
                     shadow-violet-500/20
                     transition-all
@@ -84,17 +81,17 @@ function Footer() {
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-slate-900 dark:text-white">
                     {SITE_CONFIG.name}
                   </h3>
 
-                  <p className="text-sm text-slate-500 dark:text-slate-400">
+                  <p className="text-sm text-slate-500 dark:text-slate-600 dark:text-slate-400">
                     Full Stack Developer
                   </p>
                 </div>
               </Link>
 
-              <p className="mt-7 max-w-sm leading-8 text-slate-600 dark:text-slate-400">
+              <p className="mt-7 max-w-sm leading-8 text-slate-600 dark:text-slate-600 dark:text-slate-400">
                 Passionate about crafting elegant, high-performance web
                 experiences with modern technologies, intuitive interfaces, and
                 exceptional attention to detail.
@@ -104,7 +101,7 @@ function Footer() {
             {/* Quick Links */}
 
             <div>
-              <h4 className="mb-6 text-lg font-semibold text-slate-900 dark:text-white">
+              <h4 className="mb-6 text-lg font-semibold text-slate-900 dark:text-slate-900 dark:text-white">
                 Quick Links
               </h4>
 
@@ -120,7 +117,7 @@ function Footer() {
                         duration-300
                         hover:translate-x-1
                         hover:text-indigo-600
-                        dark:text-slate-400
+                        dark:text-slate-600 dark:text-slate-400
                         dark:hover:text-indigo-300
                       "
                     >
@@ -134,11 +131,11 @@ function Footer() {
             {/* Connect */}
 
             <div>
-              <h4 className="mb-6 text-lg font-semibold text-slate-900 dark:text-white">
+              <h4 className="mb-6 text-lg font-semibold text-slate-900 dark:text-slate-900 dark:text-white">
                 Let's Connect
               </h4>
 
-              <p className="mb-7 text-slate-600 dark:text-slate-400">
+              <p className="mb-7 text-slate-600 dark:text-slate-600 dark:text-slate-400">
                 Feel free to connect with me for collaborations, opportunities,
                 or simply to say hello.
               </p>
@@ -161,7 +158,7 @@ function Footer() {
               Bottom Section
           =========================== */}
 
-          <div className="mt-16 flex flex-col items-center justify-between gap-5 border-t border-slate-200/70 pt-8 text-sm text-slate-500 dark:border-slate-800 md:flex-row dark:text-slate-400">
+          <div className="mt-16 flex flex-col items-center justify-between gap-5 border-t border-slate-200/70 pt-8 text-sm text-slate-500 dark:border-slate-800 md:flex-row dark:text-slate-600 dark:text-slate-400">
             <p>
               © {currentYear} {SITE_CONFIG.name}. All rights reserved.
             </p>

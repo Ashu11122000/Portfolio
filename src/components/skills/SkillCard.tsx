@@ -29,9 +29,7 @@ import type { SkillCardProps } from "../../types/skill";
  * ==========================================================
  */
 
-const SkillCard = ({
-  category,
-}: SkillCardProps) => {
+const SkillCard = ({ category }: SkillCardProps) => {
   const Icon = category.icon;
 
   return (
@@ -52,7 +50,7 @@ const SkillCard = ({
         "transition-all duration-700",
         "hover:-translate-y-3",
         "hover:shadow-[0_25px_80px_rgba(139,92,246,0.18)]",
-        "hover:border-violet-400/40"
+        "hover:border-violet-400/40",
       )}
     >
       {/* ========================================= */}
@@ -65,7 +63,7 @@ const SkillCard = ({
           "opacity-0 transition-all duration-700",
           "group-hover:opacity-30",
           "bg-gradient-to-br",
-          category.color
+          category.color,
         )}
       />
 
@@ -73,7 +71,7 @@ const SkillCard = ({
         className={cn(
           "absolute -bottom-20 -left-16 h-52 w-52 rounded-full",
           "bg-violet-500/10 blur-3xl",
-          "opacity-60"
+          "opacity-60",
         )}
       />
 
@@ -85,7 +83,7 @@ const SkillCard = ({
           "opacity-0 transition-opacity duration-700",
           "group-hover:opacity-100",
           "bg-gradient-to-br from-violet-500/10 via-fuchsia-500/5 to-cyan-500/10",
-          "pointer-events-none"
+          "pointer-events-none",
         )}
       />
 
@@ -94,17 +92,14 @@ const SkillCard = ({
       {/* ========================================= */}
 
       <div className="relative z-10 flex h-full flex-col">
-
         {/* =============================== */}
         {/* Header */}
         {/* =============================== */}
 
         <div className="mb-8 flex items-start justify-between">
-
           {/* Left */}
 
           <div className="relative">
-
             {/* Glow */}
 
             <div
@@ -115,7 +110,7 @@ const SkillCard = ({
                 "group-hover:scale-150",
                 "group-hover:opacity-70",
                 "bg-gradient-to-br",
-                category.color
+                category.color,
               )}
             />
 
@@ -130,12 +125,12 @@ const SkillCard = ({
                 "shadow-xl",
                 "transition-all duration-500",
                 "group-hover:rotate-6",
-                "group-hover:scale-110"
+                "group-hover:scale-110",
               )}
             >
               <Icon
                 size={30}
-                className="text-white drop-shadow-md"
+                className="text-slate-900 dark:text-white drop-shadow-md"
               />
             </div>
           </div>
@@ -143,13 +138,12 @@ const SkillCard = ({
           {/* Right */}
 
           <div className="text-right">
-
             <p
               className={cn(
                 "text-[11px]",
                 "font-semibold uppercase tracking-[0.35em]",
                 "text-slate-500",
-                "dark:text-slate-400"
+                "dark:text-slate-600 dark:text-slate-400",
               )}
             >
               Skill Category
@@ -160,35 +154,32 @@ const SkillCard = ({
                 "mt-2 text-2xl font-extrabold",
                 "tracking-tight",
                 "text-slate-900",
-                "dark:text-white"
+                "dark:text-slate-900 dark:text-white",
               )}
             >
               {category.title}
             </h3>
 
-            <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
+            <p className="mt-2 text-sm text-slate-500 dark:text-slate-600 dark:text-slate-400">
               {category.skills.length} Technologies
             </p>
           </div>
-
         </div>
 
-                {/* ========================================= */}
+        {/* ========================================= */}
         {/* Technologies */}
         {/* ========================================= */}
 
         <div className="mb-8">
-
           {/* Section Header */}
 
           <div className="mb-5 flex items-center justify-between">
-
             <div>
-              <h4 className="text-sm font-semibold uppercase tracking-wide text-slate-700 dark:text-slate-300">
+              <h4 className="text-sm font-semibold uppercase tracking-wide text-slate-700 dark:text-slate-700 dark:text-slate-300">
                 Technologies
               </h4>
 
-              <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+              <p className="mt-1 text-xs text-slate-500 dark:text-slate-600 dark:text-slate-400">
                 Core tools & frameworks I work with
               </p>
             </div>
@@ -204,18 +195,16 @@ const SkillCard = ({
                 "text-violet-700",
                 "shadow-sm",
                 "dark:border-violet-400/20",
-                "dark:text-violet-300"
+                "dark:text-violet-300",
               )}
             >
               {category.skills.length}
             </div>
-
           </div>
 
           {/* Skill Pills */}
 
           <div className="flex flex-wrap gap-3">
-
             {category.skills.map((skill) => (
               <div
                 key={skill.id}
@@ -244,10 +233,9 @@ const SkillCard = ({
                   "hover:border-violet-400/40",
 
                   "hover:shadow-lg",
-                  "hover:shadow-violet-500/10"
+                  "hover:shadow-violet-500/10",
                 )}
               >
-
                 {/* Hover Shine */}
 
                 <div
@@ -266,7 +254,7 @@ const SkillCard = ({
 
                     "group-hover/item:translate-x-full",
 
-                    "dark:via-white/10"
+                    "dark:via-white/10",
                   )}
                 />
 
@@ -284,13 +272,10 @@ const SkillCard = ({
 
                     "transition-all duration-300",
 
-                    "group-hover/item:bg-violet-500/20"
+                    "group-hover/item:bg-violet-500/20",
                   )}
                 >
-                  <CheckCircle2
-                    size={14}
-                    className="text-violet-500"
-                  />
+                  <CheckCircle2 size={14} className="text-violet-500" />
                 </div>
 
                 {/* Skill Name */}
@@ -307,25 +292,21 @@ const SkillCard = ({
                     "transition-colors duration-300",
 
                     "group-hover/item:text-violet-700",
-                    "dark:group-hover/item:text-violet-300"
+                    "dark:group-hover/item:text-violet-300",
                   )}
                 >
                   {skill.name}
                 </span>
-
               </div>
             ))}
-
           </div>
-
         </div>
 
-                {/* ========================================= */}
+        {/* ========================================= */}
         {/* Footer */}
         {/* ========================================= */}
 
         <div className="mt-auto">
-
           {/* Divider */}
 
           <div className="mb-6 h-px w-full bg-gradient-to-r from-transparent via-slate-300/70 to-transparent dark:via-slate-700/70" />
@@ -333,13 +314,12 @@ const SkillCard = ({
           {/* Proficiency Header */}
 
           <div className="mb-5 flex items-center justify-between">
-
             <div>
-              <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">
+              <p className="text-sm font-semibold text-slate-700 dark:text-slate-700 dark:text-slate-300">
                 Overall Proficiency
               </p>
 
-              <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+              <p className="mt-1 text-xs text-slate-500 dark:text-slate-600 dark:text-slate-400">
                 Experience across this technology stack
               </p>
             </div>
@@ -350,37 +330,30 @@ const SkillCard = ({
                 "bg-gradient-to-r",
                 category.color,
                 "px-4 py-2",
-                "shadow-lg"
+                "shadow-lg",
               )}
             >
-              <span className="text-lg font-bold tracking-tight text-white">
+              <span className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
                 {category.percentage}%
               </span>
             </div>
-
           </div>
 
           {/* Progress Bar */}
 
           <div className="space-y-3">
-
-            <SkillProgress
-              value={category.percentage}
-            />
+            <SkillProgress value={category.percentage} />
 
             {/* Scale Labels */}
 
-            <div className="flex items-center justify-between text-[11px] font-medium uppercase tracking-wider text-slate-400 dark:text-slate-500">
+            <div className="flex items-center justify-between text-[11px] font-medium uppercase tracking-wider text-slate-600 dark:text-slate-400 dark:text-slate-500">
               <span>Beginner</span>
               <span>Intermediate</span>
               <span>Advanced</span>
               <span>Expert</span>
             </div>
-
           </div>
-
         </div>
-
       </div>
 
       {/* ========================================= */}
@@ -399,10 +372,9 @@ const SkillCard = ({
 
           "transition-transform duration-700",
 
-          "group-hover:scale-x-100"
+          "group-hover:scale-x-100",
         )}
       />
-
     </Card>
   );
 };

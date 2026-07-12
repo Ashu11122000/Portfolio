@@ -39,7 +39,7 @@ function TechStack() {
               <div className="mb-6 flex items-center gap-4">
                 <div className="h-px flex-1 bg-gradient-to-r from-cyan-500/60 to-transparent" />
 
-                <h3 className="text-xl font-bold text-white">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white">
                   {category.title}
                 </h3>
 
@@ -111,11 +111,21 @@ function TechStack() {
                           // skill.icon may not be declared on the Skill type — cast to any
                           // and render if present, otherwise render a simple fallback.
                           (() => {
-                            type SkillWithIcon = { icon?: React.ComponentType<{ size?: number; className?: string }> };
+                            type SkillWithIcon = {
+                              icon?: React.ComponentType<{
+                                size?: number;
+                                className?: string;
+                              }>;
+                            };
                             const Icon = (skill as SkillWithIcon).icon;
-                            if (Icon) return <Icon size={34} className="text-cyan-300" />;
+                            if (Icon)
+                              return (
+                                <Icon size={34} className="text-cyan-300" />
+                              );
                             return (
-                              <div className="text-cyan-300 text-2xl font-bold">{skill.name?.charAt(0)}</div>
+                              <div className="text-cyan-300 text-2xl font-bold">
+                                {skill.name?.charAt(0)}
+                              </div>
                             );
                           })()
                         }
@@ -123,7 +133,7 @@ function TechStack() {
 
                       {/* Name */}
 
-                      <h4 className="text-lg font-semibold text-white">
+                      <h4 className="text-lg font-semibold text-slate-900 dark:text-white">
                         {skill.name}
                       </h4>
 

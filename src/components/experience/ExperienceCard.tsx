@@ -36,9 +36,7 @@ interface ExperienceCardProps {
   experience: Experience;
 }
 
-function ExperienceCard({
-  experience,
-}: ExperienceCardProps) {
+function ExperienceCard({ experience }: ExperienceCardProps) {
   return (
     <Card
       hover
@@ -49,7 +47,8 @@ function ExperienceCard({
         overflow-hidden
         rounded-[32px]
         border
-        border-white/10
+        border-slate-200/70
+      dark:border-slate-200/70
         p-8
         lg:p-10
         transition-all
@@ -117,7 +116,8 @@ function ExperienceCard({
             justify-center
             rounded-3xl
             border
-            border-white/10
+            border-slate-200/70
+          dark:border-white/10
             bg-gradient-to-br
             from-indigo-500/10
             via-violet-500/10
@@ -159,7 +159,7 @@ function ExperienceCard({
               bg-gradient-to-br
               from-violet-600
               to-cyan-500
-              text-white
+              text-slate-900 dark:text-white
               shadow-lg
             "
           >
@@ -192,18 +192,12 @@ function ExperienceCard({
                 {experience.company}
               </GradientText>
 
-              <Badge
-                variant="secondary"
-                size="sm"
-              >
+              <Badge variant="secondary" size="sm">
                 {experience.employmentType}
               </Badge>
 
               {experience.currentlyWorking && (
-                <Badge
-                  variant="success"
-                  size="sm"
-                >
+                <Badge variant="success" size="sm">
                   Current
                 </Badge>
               )}
@@ -215,7 +209,7 @@ function ExperienceCard({
                 font-semibold
                 leading-snug
                 text-slate-900
-                dark:text-white
+              text-white
                 lg:text-2xl
               "
             >
@@ -239,7 +233,8 @@ function ExperienceCard({
               className="
                 rounded-2xl
                 border
-                border-white/10
+                border-slate-200/70
+              dark:border-white/10
                 bg-white/[0.04]
                 p-5
                 backdrop-blur-xl
@@ -267,7 +262,7 @@ function ExperienceCard({
                   font-medium
                   leading-6
                   text-slate-700
-                  dark:text-slate-300
+                  dark:text-slate-700 dark:text-slate-300
                 "
               >
                 {experience.startDate}
@@ -282,7 +277,8 @@ function ExperienceCard({
               className="
                 rounded-2xl
                 border
-                border-white/10
+                border-slate-200/70
+              dark:border-white/10
                 bg-white/[0.04]
                 p-5
                 backdrop-blur-xl
@@ -309,7 +305,7 @@ function ExperienceCard({
                   text-sm
                   font-medium
                   text-slate-700
-                  dark:text-slate-300
+                  dark:text-slate-700 dark:text-slate-300
                 "
               >
                 {experience.location}
@@ -322,7 +318,8 @@ function ExperienceCard({
               className="
                 rounded-2xl
                 border
-                border-white/10
+                border-slate-200/70
+dark:border-white/10
                 bg-white/[0.04]
                 p-5
                 backdrop-blur-xl
@@ -349,7 +346,7 @@ function ExperienceCard({
                   text-sm
                   font-medium
                   text-slate-700
-                  dark:text-slate-300
+                  dark:text-slate-700 dark:text-slate-300
                 "
               >
                 {experience.employmentType}
@@ -361,7 +358,7 @@ function ExperienceCard({
 
           {/* Description */}
 
-                    {/* ========================= */}
+          {/* ========================= */}
 
           {/* Description */}
 
@@ -395,7 +392,7 @@ function ExperienceCard({
                     uppercase
                     tracking-[0.18em]
                     text-slate-500
-                    dark:text-slate-400
+                    dark:text-slate-600 dark:text-slate-400
                   "
                 >
                   Role Overview
@@ -407,7 +404,7 @@ function ExperienceCard({
                     text-xl
                     font-bold
                     text-slate-900
-                    dark:text-white
+                    dark:text-slate-900 dark:text-white
                   "
                 >
                   About This Role
@@ -419,7 +416,8 @@ function ExperienceCard({
               className="
                 rounded-3xl
                 border
-                border-white/10
+                border-slate-200/70
+dark:border-white/10
                 bg-white/[0.04]
                 p-7
                 backdrop-blur-xl
@@ -431,7 +429,7 @@ function ExperienceCard({
                   text-[15px]
                   leading-8
                   text-slate-600
-                  dark:text-slate-300
+                  dark:text-slate-700 dark:text-slate-300
                   lg:text-base
                 "
               >
@@ -473,7 +471,7 @@ function ExperienceCard({
                     uppercase
                     tracking-[0.18em]
                     text-slate-500
-                    dark:text-slate-400
+                    dark:text-slate-600 dark:text-slate-400
                   "
                 >
                   Highlights
@@ -485,7 +483,7 @@ function ExperienceCard({
                     text-xl
                     font-bold
                     text-slate-900
-                    dark:text-white
+                    dark:text-slate-900 dark:text-white
                   "
                 >
                   Key Achievements
@@ -497,7 +495,8 @@ function ExperienceCard({
               className="
                 rounded-3xl
                 border
-                border-white/10
+                border-slate-200/70
+dark:border-white/10
                 bg-white/[0.04]
                 p-7
                 backdrop-blur-xl
@@ -534,7 +533,7 @@ function ExperienceCard({
                       className="
                         leading-8
                         text-slate-600
-                        dark:text-slate-300
+                        dark:text-slate-700 dark:text-slate-300
                       "
                     >
                       {achievement.title}
@@ -571,7 +570,7 @@ function ExperienceCard({
                     uppercase
                     tracking-[0.18em]
                     text-slate-500
-                    dark:text-slate-400
+                    dark:text-slate-600 dark:text-slate-400
                   "
                 >
                   Technical Stack
@@ -583,18 +582,14 @@ function ExperienceCard({
                     text-xl
                     font-bold
                     text-slate-900
-                    dark:text-white
+                    dark:text-slate-900 dark:text-white
                   "
                 >
                   Technologies Used
                 </h4>
               </div>
 
-              <Badge
-                variant="primary"
-                size="sm"
-                className="px-4 py-2"
-              >
+              <Badge variant="primary" size="sm" className="px-4 py-2">
                 {experience.technologies.length} Technologies
               </Badge>
             </div>
@@ -603,7 +598,8 @@ function ExperienceCard({
               className="
                 rounded-3xl
                 border
-                border-white/10
+                border-slate-200/70
+dark:border-white/10
                 bg-white/[0.04]
                 p-7
                 backdrop-blur-xl
@@ -640,7 +636,7 @@ function ExperienceCard({
             </div>
           </section>
 
-                    {/* ========================= */}
+          {/* ========================= */}
 
           {/* Company Website */}
 
@@ -659,7 +655,7 @@ function ExperienceCard({
                       uppercase
                       tracking-[0.18em]
                       text-slate-500
-                      dark:text-slate-400
+                      dark:text-slate-600 dark:text-slate-400
                     "
                   >
                     Organization
@@ -671,7 +667,7 @@ function ExperienceCard({
                       text-xl
                       font-bold
                       text-slate-900
-                      dark:text-white
+                      dark:text-slate-900 dark:text-white
                     "
                   >
                     Company Website
@@ -685,7 +681,8 @@ function ExperienceCard({
                     gap-6
                     rounded-3xl
                     border
-                    border-white/10
+                    border-slate-200/70
+dark:border-white/10
                     bg-white/[0.04]
                     p-7
                     backdrop-blur-xl
@@ -699,7 +696,7 @@ function ExperienceCard({
                       className="
                         text-sm
                         text-slate-500
-                        dark:text-slate-400
+                        dark:text-slate-600 dark:text-slate-400
                       "
                     >
                       Visit the official website
@@ -747,16 +744,13 @@ function ExperienceCard({
                       className="
                         text-sm
                         text-slate-500
-                        dark:text-slate-400
+                        dark:text-slate-600 dark:text-slate-400
                       "
                     >
                       Professional Experience
                     </span>
 
-                    <Badge
-                      variant="primary"
-                      size="sm"
-                    >
+                    <Badge variant="primary" size="sm">
                       {experience.currentlyWorking
                         ? "Currently Working"
                         : "Completed"}

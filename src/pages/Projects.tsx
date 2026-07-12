@@ -34,35 +34,23 @@ import projects from "../data/projects";
 function Projects() {
   const [search, setSearch] = useState("");
 
-  const [filter, setFilter] =
-    useState<ProjectFilter>("All");
+  const [filter, setFilter] = useState<ProjectFilter>("All");
 
   const filteredProjects = useMemo(() => {
     const keyword = search.trim().toLowerCase();
 
     return projects.filter((project) => {
-      const matchesCategory =
-        filter === "All" ||
-        project.category === filter;
+      const matchesCategory = filter === "All" || project.category === filter;
 
       const matchesSearch =
         keyword.length === 0 ||
-        project.name
-          .toLowerCase()
-          .includes(keyword) ||
-        project.description
-          .toLowerCase()
-          .includes(keyword) ||
+        project.name.toLowerCase().includes(keyword) ||
+        project.description.toLowerCase().includes(keyword) ||
         project.technologies.some((technology) =>
-          technology.name
-            .toLowerCase()
-            .includes(keyword)
+          technology.name.toLowerCase().includes(keyword),
         );
 
-      return (
-        matchesCategory &&
-        matchesSearch
-      );
+      return matchesCategory && matchesSearch;
     });
   }, [filter, search]);
 
@@ -99,19 +87,13 @@ function Projects() {
         {/* Search */}
 
         <div className="mx-auto mt-16 max-w-3xl">
-          <SearchBar
-            value={search}
-            onChange={setSearch}
-          />
+          <SearchBar value={search} onChange={setSearch} />
         </div>
 
         {/* Filter */}
 
         <div className="mt-10">
-          <FilterBar
-            activeFilter={filter}
-            onFilterChange={setFilter}
-          />
+          <FilterBar activeFilter={filter} onFilterChange={setFilter} />
         </div>
 
         {/* Result Counter */}
@@ -129,25 +111,21 @@ function Projects() {
               text-sm
               font-medium
               tracking-wide
-              text-slate-400
+              text-slate-600 dark:text-slate-400
             "
           >
             Showing{" "}
             <span className="font-semibold text-cyan-400">
               {filteredProjects.length}
             </span>{" "}
-            {filteredProjects.length === 1
-              ? "project"
-              : "projects"}
+            {filteredProjects.length === 1 ? "project" : "projects"}
           </p>
         </div>
 
         {/* Projects */}
 
         <div className="mt-10">
-          <ProjectGrid
-            projects={filteredProjects}
-          />
+          <ProjectGrid projects={filteredProjects} />
         </div>
       </Container>
     </main>

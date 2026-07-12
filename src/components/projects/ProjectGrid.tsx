@@ -82,27 +82,21 @@ const ProjectGrid: FC<ProjectGridProps> = ({ projects }) => {
               ring-white/10
             "
           >
-            <FolderOpen
-              size={44}
-              className="text-cyan-300"
-            />
+            <FolderOpen size={44} className="text-cyan-300" />
           </div>
 
-          <h3 className="text-3xl font-bold">
-            No Projects Found
-          </h3>
+          <h3 className="text-3xl font-bold">No Projects Found</h3>
 
           <p
             className="
               mt-4
               max-w-lg
               leading-8
-              text-slate-400
+              text-slate-600 dark:text-slate-400
             "
           >
-            No projects match your current filter or search.
-            Try selecting another category to explore more
-            projects.
+            No projects match your current filter or search. Try selecting
+            another category to explore more projects.
           </p>
         </div>
       </GlassCard>
@@ -120,10 +114,7 @@ const ProjectGrid: FC<ProjectGridProps> = ({ projects }) => {
       "
     >
       {projects.map((project) => (
-        <ProjectCard
-          key={project.id}
-          project={project}
-        />
+        <ProjectCard key={project.id} project={project} />
       ))}
     </div>
   );

@@ -12,16 +12,14 @@ export default function SectionTitle({
   center = false,
 }: SectionTitleProps) {
   return (
-    <div
-      className={`mb-12 ${center ? "text-center" : "text-left"}`}
-    >
+    <div className={`mb-12 ${center ? "text-center" : "text-left"}`}>
       <h2
         className="
           text-3xl
           font-bold
           tracking-tight
           text-slate-900
-          dark:text-white
+          dark:text-slate-900 dark:text-white
           sm:text-4xl
           lg:text-5xl
         "
@@ -51,7 +49,7 @@ export default function SectionTitle({
             text-base
             leading-7
             text-slate-600
-            dark:text-slate-400
+            dark:text-slate-600 dark:text-slate-400
             sm:text-lg
             ${center ? "mx-auto" : ""}
           `}

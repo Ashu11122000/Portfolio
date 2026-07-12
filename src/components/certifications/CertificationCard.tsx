@@ -113,7 +113,8 @@ before:opacity-70
         from-violet-500
         via-fuchsia-500
         to-cyan-500
-        text-white
+        text-black
+        text-slate-900 dark: text-black
         shadow-xl
         transition-all
         duration-500
@@ -136,11 +137,12 @@ text-2xl
 font-bold
 leading-tight
 tracking-tight
+text-black
 text-slate-900
 transition-all
 duration-300
 group-hover:text-violet-500
-dark:text-white
+text-slate-900 dark:text-slate-900 dark:text-white
 "
         >
           {title}
@@ -170,7 +172,7 @@ dark:text-white
             className="
                             mt-2
                             text-sm
-                            text-gray-500
+                            text-gray-800
                         "
           >
             Instructor: {instructor}
@@ -186,7 +188,7 @@ dark:text-white
                         items-center
                         gap-2
                         text-sm
-                        text-gray-400
+                        text-gray-800
                     "
         >
           <CalendarDays size={16} />
@@ -202,7 +204,7 @@ dark:text-white
                         flex-1
                         text-sm
                         leading-7
-                        text-gray-300
+                        text-gray-800
                     "
         >
           {description}
@@ -223,7 +225,7 @@ dark:text-white
               key={skill.id}
               className="
                                 bg-violet-500/10
-                                text-violet-300
+                                text-violet-600
                                 border-violet-500/20
                             "
             >

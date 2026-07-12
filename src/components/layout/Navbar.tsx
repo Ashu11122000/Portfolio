@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
-import {
-  Menu,
-  Sparkles,
-  X,
-} from "lucide-react";
+import { Menu, Sparkles, X } from "lucide-react";
 
 import Container from "../common/Container";
 import ThemeToggle from "../common/ThemeToggle";
@@ -42,8 +38,7 @@ function Navbar() {
   /**
    * Mobile Drawer
    */
-  const [isMobileOpen, setIsMobileOpen] =
-    useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   /**
    * Detect Scroll
@@ -55,24 +50,16 @@ function Navbar() {
 
     handleScroll();
 
-    window.addEventListener(
-      "scroll",
-      handleScroll
-    );
+    window.addEventListener("scroll", handleScroll);
 
-    return () =>
-      window.removeEventListener(
-        "scroll",
-        handleScroll
-      );
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   /**
    * Lock body when drawer opens
    */
   useEffect(() => {
-    document.body.style.overflow =
-      isMobileOpen ? "hidden" : "";
+    document.body.style.overflow = isMobileOpen ? "hidden" : "";
 
     return () => {
       document.body.style.overflow = "";
@@ -90,13 +77,10 @@ function Navbar() {
           "fixed inset-x-0 top-0 z-50",
           "transition-all duration-500",
 
-          isScrolled
-            ? "pt-3"
-            : "pt-5"
+          isScrolled ? "pt-3" : "pt-5",
         )}
       >
         <Container>
-
           <div
             className={cn(
               "relative overflow-hidden",
@@ -116,20 +100,17 @@ function Navbar() {
                 ? "shadow-[0_20px_60px_rgba(15,23,42,0.12)]"
                 : "shadow-[0_12px_40px_rgba(15,23,42,0.08)]",
 
-              "transition-all duration-500"
+              "transition-all duration-500",
             )}
           >
-
             {/* Animated Background */}
 
             <div className="absolute inset-0">
-
               <div className="absolute -left-16 top-1/2 h-32 w-32 -translate-y-1/2 rounded-full bg-violet-500/10 blur-3xl" />
 
               <div className="absolute -right-12 top-0 h-32 w-32 rounded-full bg-cyan-500/10 blur-3xl" />
 
               <div className="absolute bottom-0 left-1/3 h-28 w-28 rounded-full bg-fuchsia-500/10 blur-3xl" />
-
             </div>
 
             {/* Gradient Border */}
@@ -142,7 +123,7 @@ function Navbar() {
 
                 "from-violet-500/10",
                 "via-fuchsia-500/10",
-                "to-cyan-500/10"
+                "to-cyan-500/10",
               )}
             />
 
@@ -156,27 +137,19 @@ function Navbar() {
 
                 "px-5 lg:px-8",
 
-                isScrolled
-                  ? "h-16"
-                  : "h-20",
+                isScrolled ? "h-16" : "h-20",
 
-                "transition-all duration-500"
+                "transition-all duration-500",
               )}
             >
-
               {/* ===================================== */}
               {/* Logo */}
               {/* ===================================== */}
 
-              <Link
-                to="/"
-                className="group flex items-center gap-4"
-              >
-
+              <Link to="/" className="group flex items-center gap-4">
                 {/* Logo */}
 
                 <div className="relative">
-
                   {/* Glow */}
 
                   <div className="absolute inset-0 rounded-3xl bg-linear-to-br from-violet-600 via-fuchsia-500 to-cyan-500 opacity-40 blur-xl transition-all duration-500 group-hover:scale-150 group-hover:opacity-70" />
@@ -202,42 +175,33 @@ function Navbar() {
                       "transition-all duration-500",
 
                       "group-hover:-rotate-6",
-                      "group-hover:scale-110"
+                      "group-hover:scale-110",
                     )}
                   >
-                    <span className="text-lg font-black text-white">
+                    <span className="text-lg font-black text-slate-900 dark:text-white">
                       {SITE_CONFIG.logo}
                     </span>
                   </div>
-
                 </div>
 
                 {/* Brand */}
 
                 <div className="hidden sm:block">
-
                   <div className="flex items-center gap-2">
-
-                    <h1 className="text-lg font-black tracking-tight text-slate-900 dark:text-white">
+                    <h1 className="text-lg font-black tracking-tight text-slate-900 dark:text-slate-900 dark:text-white">
                       {SITE_CONFIG.name}
                     </h1>
 
-                    <Sparkles
-                      size={15}
-                      className="text-violet-500"
-                    />
-
+                    <Sparkles size={15} className="text-violet-500" />
                   </div>
 
-                  <p className="mt-1 text-xs font-medium uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400">
+                  <p className="mt-1 text-xs font-medium uppercase tracking-[0.25em] text-slate-500 dark:text-slate-600 dark:text-slate-400">
                     Software Engineer
                   </p>
-
                 </div>
-
               </Link>
 
-                            {/* ========================================= */}
+              {/* ========================================= */}
               {/* Desktop Navigation */}
               {/* ========================================= */}
 
@@ -257,7 +221,7 @@ function Navbar() {
                     "backdrop-blur-xl",
 
                     "dark:border-slate-700/60",
-                    "dark:bg-slate-800/40"
+                    "dark:bg-slate-800/40",
                   )}
                 >
                   {NAV_LINKS.map((item) => (
@@ -288,7 +252,7 @@ function Navbar() {
                                   "via-fuchsia-600",
                                   "to-cyan-500",
 
-                                  "text-white",
+                                  "text-slate-900 dark:text-white",
 
                                   "shadow-lg",
 
@@ -301,20 +265,18 @@ function Navbar() {
 
                                   "hover:text-violet-700",
 
-                                  "dark:text-slate-300",
+                                  "dark:text-slate-700 dark:text-slate-300",
 
                                   "dark:hover:bg-slate-800/70",
 
-                                  "dark:hover:text-white",
-                                ]
+                                  "dark:hover:text-slate-900 dark:text-white",
+                                ],
                           )
                         }
                       >
                         {({ isActive }) => (
                           <>
-                            <span className="relative z-10">
-                              {item.label}
-                            </span>
+                            <span className="relative z-10">{item.label}</span>
 
                             {!isActive && (
                               <span
@@ -335,7 +297,7 @@ function Navbar() {
 
                                   "transition-all duration-300",
 
-                                  "group-hover:w-8"
+                                  "group-hover:w-8",
                                 )}
                               />
                             )}
@@ -352,7 +314,6 @@ function Navbar() {
               {/* ========================================= */}
 
               <div className="flex items-center gap-3">
-
                 {/* Desktop Theme Toggle */}
 
                 <div className="hidden lg:block">
@@ -400,10 +361,9 @@ function Navbar() {
 
                     "dark:border-slate-700",
 
-                    "dark:bg-slate-900/70"
+                    "dark:bg-slate-900/70",
                   )}
                 >
-
                   {/* Hover Glow */}
 
                   <span
@@ -422,7 +382,7 @@ function Navbar() {
 
                       "via-fuchsia-500/10",
 
-                      "to-cyan-500/10"
+                      "to-cyan-500/10",
                     )}
                   />
 
@@ -430,20 +390,14 @@ function Navbar() {
                     size={21}
                     className="relative z-10 transition-transform duration-300 group-hover:scale-110"
                   />
-
                 </button>
-
               </div>
-
             </div>
-
           </div>
-
         </Container>
-
       </header>
 
-            {/* ================================================= */}
+      {/* ================================================= */}
       {/* Mobile Overlay */}
       {/* ================================================= */}
 
@@ -459,7 +413,7 @@ function Navbar() {
 
             "backdrop-blur-md",
 
-            "transition-opacity duration-300"
+            "transition-opacity duration-300",
           )}
         />
       )}
@@ -490,22 +444,17 @@ function Navbar() {
 
           "dark:bg-slate-950/80",
 
-          isMobileOpen
-            ? "translate-x-0"
-            : "translate-x-full"
+          isMobileOpen ? "translate-x-0" : "translate-x-full",
         )}
       >
-
         {/* Decorative Background */}
 
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
-
           <div className="absolute -top-20 -right-16 h-56 w-56 rounded-full bg-violet-500/15 blur-3xl" />
 
           <div className="absolute bottom-0 -left-20 h-60 w-60 rounded-full bg-cyan-500/10 blur-3xl" />
 
           <div className="absolute top-1/2 left-1/3 h-44 w-44 rounded-full bg-fuchsia-500/10 blur-3xl" />
-
         </div>
 
         {/* ====================================== */}
@@ -522,22 +471,19 @@ function Navbar() {
 
             "p-6",
 
-            "dark:border-slate-800/70"
+            "dark:border-slate-800/70",
           )}
         >
-
           {/* Brand */}
 
           <div>
-
-            <h2 className="text-xl font-black tracking-tight text-slate-900 dark:text-white">
+            <h2 className="text-xl font-black tracking-tight text-slate-900 dark:text-slate-900 dark:text-white">
               {SITE_CONFIG.name}
             </h2>
 
-            <p className="mt-1 text-xs uppercase tracking-[0.30em] text-slate-500 dark:text-slate-400">
+            <p className="mt-1 text-xs uppercase tracking-[0.30em] text-slate-500 dark:text-slate-600 dark:text-slate-400">
               Navigation
             </p>
-
           </div>
 
           {/* Close Button */}
@@ -573,22 +519,19 @@ function Navbar() {
 
               "dark:border-slate-700",
 
-              "dark:bg-slate-900/70"
+              "dark:bg-slate-900/70",
             )}
           >
-
             <span className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-linear-to-br from-violet-500/10 via-fuchsia-500/10 to-cyan-500/10" />
 
             <X
               size={20}
               className="relative z-10 transition-transform duration-300 group-hover:scale-110"
             />
-
           </button>
-
         </div>
 
-                {/* ====================================== */}
+        {/* ====================================== */}
         {/* Navigation */}
         {/* ====================================== */}
 
@@ -617,7 +560,7 @@ function Navbar() {
                             "via-fuchsia-600",
                             "to-cyan-500",
 
-                            "text-white",
+                            "text-slate-900 dark:text-white",
 
                             "shadow-lg shadow-violet-500/25",
                           ]
@@ -628,20 +571,18 @@ function Navbar() {
 
                             "hover:text-violet-700",
 
-                            "dark:text-slate-300",
+                            "dark:text-slate-700 dark:text-slate-300",
 
                             "dark:hover:bg-slate-800/70",
 
-                            "dark:hover:text-white",
-                          ]
+                            "dark:hover:text-slate-900 dark:text-white",
+                          ],
                     )
                   }
                 >
                   {({ isActive }) => (
                     <>
-                      <span className="relative z-10">
-                        {item.label}
-                      </span>
+                      <span className="relative z-10">{item.label}</span>
 
                       {!isActive && (
                         <span
@@ -660,7 +601,7 @@ function Navbar() {
 
                             "transition-transform duration-300",
 
-                            "group-hover:scale-y-100"
+                            "group-hover:scale-y-100",
                           )}
                         />
                       )}
@@ -685,7 +626,6 @@ function Navbar() {
         {/* ====================================== */}
 
         <div className="relative z-10 border-t border-slate-200/60 p-6 dark:border-slate-800/70">
-
           <div
             className={cn(
               "rounded-3xl",
@@ -704,26 +644,20 @@ function Navbar() {
 
               "backdrop-blur-xl",
 
-              "dark:border-white/10"
+              "dark:border-white/10",
             )}
           >
-
-            <h3 className="text-base font-bold text-slate-900 dark:text-white">
+            <h3 className="text-base font-bold text-slate-900 dark:text-slate-900 dark:text-white">
               Let's Build Something Amazing
             </h3>
 
-            <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-              Thank you for visiting my portfolio.
-              I'm always excited to collaborate on
-              innovative projects and meaningful ideas.
+            <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-600 dark:text-slate-400">
+              Thank you for visiting my portfolio. I'm always excited to
+              collaborate on innovative projects and meaningful ideas.
             </p>
-
           </div>
-
         </div>
-
       </aside>
-
     </>
   );
 }

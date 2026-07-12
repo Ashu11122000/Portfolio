@@ -30,14 +30,11 @@ import type {
  * ==========================================================
  */
 
-function CertificationGrid({
-  certifications,
-}: CertificationGridProps) {
+function CertificationGrid({ certifications }: CertificationGridProps) {
   const [selectedCertification, setSelectedCertification] =
     useState<Certification | null>(null);
 
-  const [isModalOpen, setIsModalOpen] =
-    useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   /**
    * ----------------------------------------------------------
@@ -46,10 +43,7 @@ function CertificationGrid({
    */
 
   const sortedCertifications = useMemo(
-    () =>
-      [...certifications].sort(
-        (a, b) => a.order - b.order,
-      ),
+    () => [...certifications].sort((a, b) => a.order - b.order),
     [certifications],
   );
 
@@ -59,9 +53,7 @@ function CertificationGrid({
    * ----------------------------------------------------------
    */
 
-  const handleOpenModal = (
-    certification: Certification,
-  ) => {
+  const handleOpenModal = (certification: Certification) => {
     setSelectedCertification(certification);
     setIsModalOpen(true);
   };
@@ -93,7 +85,7 @@ function CertificationGrid({
           rounded-[32px]
           border
           border-white/10
-          bg-white/[0.04]
+          bg-white/[0.4]
           px-10
           py-24
           text-center
@@ -130,7 +122,6 @@ function CertificationGrid({
         />
 
         <div className="relative z-10">
-
           {/* Icon */}
 
           <div
@@ -157,7 +148,7 @@ function CertificationGrid({
               viewBox="0 0 24 24"
               strokeWidth={1.8}
               stroke="currentColor"
-              className="h-10 w-10 text-white"
+              className="h-10 w-10 text-slate-900 dark:text-slate-900 dark:text-white"
             >
               <path
                 strokeLinecap="round"
@@ -177,7 +168,7 @@ function CertificationGrid({
               font-bold
               tracking-tight
               text-slate-900
-              dark:text-white
+              text-slate-900 dark:text-slate-900 dark:text-white
             "
           >
             No Certifications Found
@@ -192,15 +183,13 @@ function CertificationGrid({
               max-w-xl
               text-[15px]
               leading-8
-              text-slate-500
-              dark:text-slate-400
+              text-slate-800
+              dark:text-slate-800
             "
           >
-            Your certifications will automatically
-            appear here once they are added to the
-            centralized data source.
+            Your certifications will automatically appear here once they are
+            added to the centralized data source.
           </p>
-
         </div>
       </div>
     );
@@ -214,9 +203,8 @@ function CertificationGrid({
 
   return (
     <div className="relative">
-
       {/* Background Glow */}
-            <div
+      <div
         className="
           pointer-events-none
           absolute

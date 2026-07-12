@@ -23,10 +23,7 @@ import type { SkillProgressProps } from "../../types/skill";
  * ==========================================================
  */
 
-const SkillProgress = ({
-  value,
-  className,
-}: SkillProgressProps) => {
+const SkillProgress = ({ value, className }: SkillProgressProps) => {
   const progress = Math.min(Math.max(value, 0), 100);
 
   return (
@@ -34,8 +31,7 @@ const SkillProgress = ({
       {/* Header */}
 
       <div className="flex items-center justify-between">
-
-        <span className="text-sm font-semibold text-slate-600 dark:text-slate-300">
+        <span className="text-sm font-semibold text-slate-600 dark:text-slate-700 dark:text-slate-300">
           Proficiency
         </span>
 
@@ -47,12 +43,11 @@ const SkillProgress = ({
             "px-3 py-1",
             "text-xs font-bold",
             "text-violet-700",
-            "dark:text-violet-300"
+            "dark:text-violet-300",
           )}
         >
           {progress}%
         </span>
-
       </div>
 
       {/* Progress Track */}
@@ -68,7 +63,7 @@ const SkillProgress = ({
           "backdrop-blur-xl",
 
           "dark:border-white/10",
-          "dark:bg-slate-800/70"
+          "dark:bg-slate-800/70",
         )}
         role="progressbar"
         aria-label="Skill proficiency"
@@ -76,15 +71,11 @@ const SkillProgress = ({
         aria-valuemax={100}
         aria-valuenow={progress}
       >
-
         {/* Tick Marks */}
 
         <div className="pointer-events-none absolute inset-0 flex justify-between px-2 opacity-30">
           {Array.from({ length: 9 }).map((_, index) => (
-            <div
-              key={index}
-              className="h-full w-px bg-white/30"
-            />
+            <div key={index} className="h-full w-px bg-white/30" />
           ))}
         </div>
 
@@ -100,13 +91,12 @@ const SkillProgress = ({
             "via-fuchsia-500",
             "to-cyan-400",
 
-            "transition-all duration-1000 ease-out"
+            "transition-all duration-1000 ease-out",
           )}
           style={{
             width: `${progress}%`,
           }}
         >
-
           {/* Shine */}
 
           <div
@@ -123,10 +113,9 @@ const SkillProgress = ({
 
               "transition-transform duration-[1800ms]",
 
-              "group-hover:translate-x-[120%]"
+              "group-hover:translate-x-[120%]",
             )}
           />
-
         </div>
 
         {/* Glow */}
@@ -137,19 +126,17 @@ const SkillProgress = ({
             width: `${progress}%`,
           }}
         />
-
       </div>
 
       {/* Scale */}
 
-      <div className="flex justify-between text-[10px] font-medium uppercase tracking-widest text-slate-400 dark:text-slate-500">
+      <div className="flex justify-between text-[10px] font-medium uppercase tracking-widest text-slate-600 dark:text-slate-400 dark:text-slate-500">
         <span>0</span>
         <span>25</span>
         <span>50</span>
         <span>75</span>
         <span>100</span>
       </div>
-
     </div>
   );
 };

@@ -34,15 +34,21 @@ html {
 body {
   background-color: #fcfcfd;
 
-  @apply bg-slate-50 text-slate-700 antialiased;
-}
+  font-family: var(--font-sans);
 
-/* Dark Theme */
+  @apply bg-slate-100;
+
+  @apply text-slate-900;
+
+  @apply antialiased;
+
+  @apply transition-colors duration-300;
+}
 
 .dark body {
   @apply bg-slate-950;
 
-  @apply text-slate-300;
+  @apply text-slate-700 dark:text-slate-400;
 }
 
 /* Global */
@@ -63,7 +69,7 @@ body {
 /* Text Selection */
 
 ::selection {
-  @apply bg-violet-500 text-white;
+  @apply bg-violet-500 text-slate-900 dark:text-white;
 }
 
 /* Links */
@@ -106,34 +112,34 @@ body::before {
   pointer-events: none;
 
   background:
-    radial-gradient(circle at top left,
-      rgba(99,102,241,0.08),
-      transparent 35%),
-
-    radial-gradient(circle at top right,
-      rgba(139,92,246,0.06),
-      transparent 30%),
-
-    radial-gradient(circle at bottom,
-      rgba(6,182,212,0.05),
-      transparent 35%);
+    radial-gradient(
+      circle at top left,
+      rgba(99, 102, 241, 0.08),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(139, 92, 246, 0.06),
+      transparent 30%
+    ),
+    radial-gradient(circle at bottom, rgba(6, 182, 212, 0.05), transparent 35%);
 
   z-index: -1;
 }
 
 .dark body::before {
   background:
-    radial-gradient(circle at top left,
-      rgba(99,102,241,0.15),
-      transparent 35%),
-
-    radial-gradient(circle at top right,
-      rgba(139,92,246,0.12),
-      transparent 30%),
-
-    radial-gradient(circle at bottom,
-      rgba(6,182,212,0.10),
-      transparent 35%);
+    radial-gradient(
+      circle at top left,
+      rgba(99, 102, 241, 0.15),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(139, 92, 246, 0.12),
+      transparent 30%
+    ),
+    radial-gradient(circle at bottom, rgba(6, 182, 212, 0.1), transparent 35%);
 }
 
 /* ==========================================================
@@ -159,7 +165,7 @@ h6 {
 .dark h4,
 .dark h5,
 .dark h6 {
-  @apply text-white;
+  @apply text-slate-500 dark:text-slate-400;
 }
 
 /* ==========================================================
@@ -194,30 +200,40 @@ h6 {
   @apply bg-violet-500;
 }
 
-/* ==========================================================
-   Utilities
-========================================================== */
+body {
+  background-color: #fcfcfd;
 
-.glass {
-  @apply border border-white/30;
+  font-family: var(--font-sans);
 
-  @apply bg-white/65;
+  @apply bg-slate-100;
 
-  @apply backdrop-blur-2xl;
+  @apply text-slate-900;
 
-  @apply shadow-xl;
+  @apply antialiased;
+
+  @apply transition-colors duration-300;
 }
 
-.dark .glass {
-  @apply border-slate-700/60;
-
-  @apply bg-slate-900/60;
+.dark .text-slate-900 dark:text-white {
+  color: white !important;
 }
 
-.section {
-  @apply py-24;
+html:not(.dark) .text-slate-900 dark:text-white {
+  color: #0f172a !important;
 }
 
-.container-custom {
-  @apply mx-auto max-w-7xl px-6 lg:px-8;
+.dark .text-slate-700 dark:text-slate-300 {
+  color: rgb(203 213 225) !important;
+}
+
+html:not(.dark) .text-slate-700 dark:text-slate-300 {
+  color: rgb(51 65 85) !important;
+}
+
+.dark .text-slate-600 dark:text-slate-400 {
+  color: rgb(148 163 184) !important;
+}
+
+html:not(.dark) .text-slate-600 dark:text-slate-400 {
+  color: rgb(71 85 105) !important;
 }

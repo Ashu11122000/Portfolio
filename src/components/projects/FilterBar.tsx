@@ -35,17 +35,9 @@ interface FilterBarProps {
   onFilterChange: (filter: ProjectFilter) => void;
 }
 
-const filters: ProjectFilter[] = [
-  "All",
-  "Frontend",
-  "Backend",
-  "Full Stack",
-];
+const filters: ProjectFilter[] = ["All", "Frontend", "Backend", "Full Stack"];
 
-const FilterBar: FC<FilterBarProps> = ({
-  activeFilter,
-  onFilterChange,
-}) => {
+const FilterBar: FC<FilterBarProps> = ({ activeFilter, onFilterChange }) => {
   return (
     <div className="flex justify-center">
       <div
@@ -92,16 +84,16 @@ const FilterBar: FC<FilterBarProps> = ({
                       from-cyan-500
                       via-indigo-500
                       to-violet-600
-                      text-white
+                      text-slate-900 dark:text-white
                       shadow-lg
                       shadow-cyan-500/30
                       hover:scale-105
                     `
                     : `
                       bg-transparent
-                      text-slate-400
+                      text-slate-600 dark:text-slate-400
                       hover:bg-white/8
-                      hover:text-white
+                      hover:text-slate-900 dark:text-white
                       hover:shadow-md
                     `
                 }

@@ -1,7 +1,4 @@
-import {
-  BriefcaseBusiness,
-  Sparkles,
-} from "lucide-react";
+import { BriefcaseBusiness, Sparkles } from "lucide-react";
 
 import ExperienceCard from "./ExperienceCard";
 
@@ -30,10 +27,7 @@ interface TimelineItemProps {
   isLast: boolean;
 }
 
-function TimelineItem({
-  experience,
-  isLast,
-}: TimelineItemProps) {
+function TimelineItem({ experience, isLast }: TimelineItemProps) {
   return (
     <div
       className="
@@ -171,7 +165,7 @@ function TimelineItem({
               className="
                 h-5
                 w-5
-                text-white
+                text-slate-900 dark:text-white
               "
             />
 
@@ -190,10 +184,7 @@ function TimelineItem({
                 shadow-lg
               "
             >
-              <Sparkles
-                size={10}
-                className="text-violet-600"
-              />
+              <Sparkles size={10} className="text-violet-600" />
             </div>
           </div>
         </div>
@@ -202,25 +193,25 @@ function TimelineItem({
       {/* ====================================== */}
 
       {/* Mobile Timeline */}
-              {/* ====================================== */}
+      {/* ====================================== */}
 
-        {/* Mobile Timeline */}
+      {/* Mobile Timeline */}
 
-        {/* ====================================== */}
+      {/* ====================================== */}
 
-        <div
-          className="
+      <div
+        className="
             relative
             flex
             items-center
             gap-5
             md:hidden
           "
-        >
-          {/* Background Glow */}
+      >
+        {/* Background Glow */}
 
-          <div
-            className="
+        <div
+          className="
               absolute
               -left-4
               h-16
@@ -229,12 +220,12 @@ function TimelineItem({
               bg-violet-500/10
               blur-2xl
             "
-          />
+        />
 
-          {/* Timeline Node */}
+        {/* Timeline Node */}
 
-          <div
-            className="
+        <div
+          className="
               relative
               z-10
               flex
@@ -244,23 +235,23 @@ function TimelineItem({
               items-center
               justify-center
             "
-          >
-            {/* Pulse */}
+        >
+          {/* Pulse */}
 
-            <div
-              className="
+          <div
+            className="
                 absolute
                 inset-0
                 animate-[ping_3s_linear_infinite]
                 rounded-full
                 bg-indigo-500/15
               "
-            />
+          />
 
-            {/* Glass Ring */}
+          {/* Glass Ring */}
 
-            <div
-              className="
+          <div
+            className="
                 absolute
                 inset-0
                 rounded-full
@@ -269,12 +260,12 @@ function TimelineItem({
                 bg-white/10
                 backdrop-blur-xl
               "
-            />
+          />
 
-            {/* Gradient Circle */}
+          {/* Gradient Circle */}
 
-            <div
-              className="
+          <div
+            className="
                 relative
                 flex
                 h-10
@@ -288,24 +279,24 @@ function TimelineItem({
                 to-cyan-500
                 shadow-[0_12px_30px_rgba(99,102,241,0.30)]
               "
-            >
-              <BriefcaseBusiness
-                className="
+          >
+            <BriefcaseBusiness
+              className="
                   h-4
                   w-4
-                  text-white
+                  text-slate-900 dark:text-white
                 "
-              />
-            </div>
+            />
           </div>
+        </div>
 
-          {/* Decorative Line */}
+        {/* Decorative Line */}
 
-          <div className="relative flex-1">
-            {/* Glow */}
+        <div className="relative flex-1">
+          {/* Glow */}
 
-            <div
-              className="
+          <div
+            className="
                 absolute
                 inset-y-0
                 left-0
@@ -316,12 +307,12 @@ function TimelineItem({
                 to-transparent
                 blur-lg
               "
-            />
+          />
 
-            {/* Line */}
+          {/* Line */}
 
-            <div
-              className="
+          <div
+            className="
                 relative
                 h-[2px]
                 w-full
@@ -330,29 +321,29 @@ function TimelineItem({
                 via-violet-500/60
                 to-transparent
               "
-            />
-          </div>
+          />
         </div>
+      </div>
 
-        {/* ====================================== */}
+      {/* ====================================== */}
 
-        {/* Experience Card */}
-                {/* ====================================== */}
+      {/* Experience Card */}
+      {/* ====================================== */}
 
-        {/* Experience Card */}
+      {/* Experience Card */}
 
-        {/* ====================================== */}
+      {/* ====================================== */}
 
-        <div
-          className="
+      <div
+        className="
             relative
             min-w-0
           "
-        >
-          {/* Ambient Background */}
+      >
+        {/* Ambient Background */}
 
-          <div
-            className="
+        <div
+          className="
               pointer-events-none
               absolute
               inset-0
@@ -368,17 +359,17 @@ function TimelineItem({
               duration-500
               group-hover:opacity-100
             "
-          />
+        />
 
-          {/* Card */}
+        {/* Card */}
 
-          <ExperienceCard experience={experience} />
-        </div>
+        <ExperienceCard experience={experience} />
+      </div>
 
-        {/* Floating Accent */}
+      {/* Floating Accent */}
 
-        <div
-          className="
+      <div
+        className="
             pointer-events-none
             absolute
             -right-16
@@ -395,13 +386,13 @@ function TimelineItem({
             group-hover:opacity-100
             lg:block
           "
-        />
+      />
 
-        {/* Bottom Glow */}
+      {/* Bottom Glow */}
 
-        {!isLast && (
-          <div
-            className="
+      {!isLast && (
+        <div
+          className="
               pointer-events-none
               absolute
               bottom-[-40px]
@@ -415,9 +406,9 @@ function TimelineItem({
               blur-3xl
               md:block
             "
-          />
-        )}
-      </div>
+        />
+      )}
+    </div>
   );
 }
 
