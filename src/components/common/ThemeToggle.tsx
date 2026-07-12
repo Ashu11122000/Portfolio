@@ -8,15 +8,16 @@ import { cn } from "../../utils/cn";
  * Theme Toggle
  * ==========================================================
  *
- * Toggle between Light and Dark themes.
+ * Premium Light / Dark Toggle
  *
  * Features
  * ----------
- * ✓ Light/Dark Toggle
+ * ✓ Light / Dark Mode
  * ✓ Accessible
- * ✓ Animated
+ * ✓ Glassmorphism
  * ✓ Keyboard Friendly
- * ✓ Reusable
+ * ✓ Premium Animations
+ * ✓ Tailwind CSS v4
  *
  * ==========================================================
  */
@@ -28,36 +29,61 @@ interface ThemeToggleProps {
 function ThemeToggle({ className }: ThemeToggleProps) {
   const { isDark, toggleTheme } = useTheme();
 
+  const handleToggle = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    toggleTheme();
+
+    /**
+     * Remove mouse focus after clicking.
+     * Keyboard users still receive focus.
+     */
+    event.currentTarget.blur();
+  };
+
   return (
     <button
       type="button"
-      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      aria-label={
+        isDark
+          ? "Switch to light mode"
+          : "Switch to dark mode"
+      }
       aria-pressed={isDark}
-      onClick={toggleTheme}
+      onClick={handleToggle}
       className={cn(
-  "group relative inline-flex h-11 w-11 items-center justify-center",
-  "rounded-2xl overflow-hidden",
+        "group relative inline-flex h-11 w-11 items-center justify-center",
 
-  "border border-slate-200/70",
-  "bg-white/70 backdrop-blur-xl",
+        "overflow-hidden rounded-2xl",
 
-  "shadow-lg transition-all duration-300",
+        "border border-slate-200/70",
+        "bg-white/70",
 
-  "hover:-translate-y-0.5",
-  "hover:border-violet-400/40",
-  "hover:shadow-violet-500/20",
+        "backdrop-blur-xl",
 
-  "dark:border-slate-700",
-  "dark:bg-slate-900/70",
+        "shadow-lg",
 
-  "focus:outline-none",
-  "focus:ring-2",
-  "focus:ring-violet-500/40",
+        "transition-all duration-300",
 
-  className
-)}
+        "hover:-translate-y-0.5",
+        "hover:scale-105",
+
+        "hover:border-violet-400/40",
+        "hover:shadow-xl",
+        "hover:shadow-violet-500/20",
+
+        "dark:border-slate-700",
+        "dark:bg-slate-900/70",
+
+        "focus-visible:outline-none",
+        "focus-visible:ring-2",
+        "focus-visible:ring-violet-500/40",
+
+        className
+      )}
     >
-      {/* Premium Shine */}
+      {/* Shine */}
+
       <span
         className="
           pointer-events-none
@@ -67,8 +93,8 @@ function ThemeToggle({ className }: ThemeToggleProps) {
           transition-opacity
           duration-300
           group-hover:opacity-100
-          bg-gradient-to-br
-          from-white/25
+          bg-linear-to-br
+          from-white/20
           via-transparent
           to-transparent
         "
@@ -79,7 +105,7 @@ function ThemeToggle({ className }: ThemeToggleProps) {
           size={20}
           className="
             relative z-10
-            text-amber-300
+            text-amber-400
             transition-all
             duration-500
             group-hover:rotate-180

@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
-import { Menu, Sparkles, X } from "lucide-react";
+import {
+  Menu,
+  Sparkles,
+  X,
+} from "lucide-react";
 
 import Container from "../common/Container";
+import ThemeToggle from "../common/ThemeToggle";
 
 import { cn } from "../../utils/cn";
 import { NAV_LINKS, SITE_CONFIG } from "../../utils/constants";
@@ -13,54 +18,61 @@ import { NAV_LINKS, SITE_CONFIG } from "../../utils/constants";
  * Navbar Component
  * ==========================================================
  *
- * Ultra Premium Floating Navigation
+ * Ultra Premium Floating Navbar
  *
  * Features
  * ----------
- * ✓ Floating Glass Navbar
- * ✓ Animated Gradient Border
- * ✓ Scroll Detection
- * ✓ Active Navigation
+ * ✓ Floating Glassmorphism
+ * ✓ Scroll Animation
  * ✓ Premium Logo
- * ✓ Glassmorphism
+ * ✓ Theme Toggle
  * ✓ Responsive
  * ✓ Mobile Drawer
- * ✓ Theme Toggle
  * ✓ Tailwind CSS v4
+ *
  * ==========================================================
  */
 
 function Navbar() {
   /**
-   * Floating navbar state.
+   * Navbar scroll state
    */
   const [isScrolled, setIsScrolled] = useState(false);
 
   /**
-   * Mobile drawer state.
+   * Mobile Drawer
    */
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isMobileOpen, setIsMobileOpen] =
+    useState(false);
 
   /**
-   * Detect page scrolling.
+   * Detect Scroll
    */
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 15);
     };
 
     handleScroll();
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener(
+      "scroll",
+      handleScroll
+    );
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () =>
+      window.removeEventListener(
+        "scroll",
+        handleScroll
+      );
   }, []);
 
   /**
-   * Lock body while drawer is open.
+   * Lock body when drawer opens
    */
   useEffect(() => {
-    document.body.style.overflow = isMobileOpen ? "hidden" : "";
+    document.body.style.overflow =
+      isMobileOpen ? "hidden" : "";
 
     return () => {
       document.body.style.overflow = "";
@@ -76,60 +88,65 @@ function Navbar() {
       <header
         className={cn(
           "fixed inset-x-0 top-0 z-50",
-
           "transition-all duration-500",
 
-          isScrolled ? "pt-3" : "pt-5",
+          isScrolled
+            ? "pt-3"
+            : "pt-5"
         )}
       >
         <Container>
+
           <div
             className={cn(
-              "group relative overflow-hidden",
+              "relative overflow-hidden",
 
               "rounded-[28px]",
 
               "border border-white/20",
 
-              "bg-white/65",
+              "bg-white/70",
 
               "backdrop-blur-3xl",
 
-              "dark:border-white/10",
-              "dark:bg-slate-900/65",
-
-              "transition-all duration-500",
+              "dark:border-slate-700/60",
+              "dark:bg-slate-900/70",
 
               isScrolled
                 ? "shadow-[0_20px_60px_rgba(15,23,42,0.12)]"
-                : "shadow-[0_12px_40px_rgba(15,23,42,0.06)]",
+                : "shadow-[0_12px_40px_rgba(15,23,42,0.08)]",
+
+              "transition-all duration-500"
             )}
           >
+
+            {/* Animated Background */}
+
+            <div className="absolute inset-0">
+
+              <div className="absolute -left-16 top-1/2 h-32 w-32 -translate-y-1/2 rounded-full bg-violet-500/10 blur-3xl" />
+
+              <div className="absolute -right-12 top-0 h-32 w-32 rounded-full bg-cyan-500/10 blur-3xl" />
+
+              <div className="absolute bottom-0 left-1/3 h-28 w-28 rounded-full bg-fuchsia-500/10 blur-3xl" />
+
+            </div>
+
             {/* Gradient Border */}
 
             <div
               className={cn(
-                "pointer-events-none absolute inset-0",
+                "pointer-events-none absolute inset-0 rounded-[28px]",
 
-                "rounded-[28px]",
-
-                "bg-gradient-to-r",
+                "bg-linear-to-r",
 
                 "from-violet-500/10",
                 "via-fuchsia-500/10",
-                "to-cyan-500/10",
+                "to-cyan-500/10"
               )}
             />
 
-            {/* Decorative Glow */}
-
-            <div className="absolute -left-16 top-1/2 h-32 w-32 -translate-y-1/2 rounded-full bg-violet-500/10 blur-3xl" />
-
-            <div className="absolute -right-12 top-0 h-28 w-28 rounded-full bg-cyan-500/10 blur-3xl" />
-
-            {/* ================================================= */}
             {/* Navbar Content */}
-            {/* ================================================= */}
 
             <div
               className={cn(
@@ -139,24 +156,32 @@ function Navbar() {
 
                 "px-5 lg:px-8",
 
-                isScrolled ? "h-16" : "h-20",
+                isScrolled
+                  ? "h-16"
+                  : "h-20",
 
-                "transition-all duration-500",
+                "transition-all duration-500"
               )}
             >
-              {/* ========================================= */}
-              {/* Logo */}
-              {/* ========================================= */}
 
-              <Link to="/" className="group/logo flex items-center gap-4">
-                {/* Logo Container */}
+              {/* ===================================== */}
+              {/* Logo */}
+              {/* ===================================== */}
+
+              <Link
+                to="/"
+                className="group flex items-center gap-4"
+              >
+
+                {/* Logo */}
 
                 <div className="relative">
+
                   {/* Glow */}
 
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-violet-600 via-fuchsia-500 to-cyan-500 opacity-40 blur-xl transition-all duration-500 group-hover/logo:scale-150 group-hover/logo:opacity-70" />
+                  <div className="absolute inset-0 rounded-3xl bg-linear-to-br from-violet-600 via-fuchsia-500 to-cyan-500 opacity-40 blur-xl transition-all duration-500 group-hover:scale-150 group-hover:opacity-70" />
 
-                  {/* Logo */}
+                  {/* Icon */}
 
                   <div
                     className={cn(
@@ -166,7 +191,7 @@ function Navbar() {
 
                       "rounded-3xl",
 
-                      "bg-gradient-to-br",
+                      "bg-linear-to-br",
 
                       "from-indigo-600",
                       "via-violet-600",
@@ -176,85 +201,141 @@ function Navbar() {
 
                       "transition-all duration-500",
 
-                      "group-hover/logo:-rotate-6",
-                      "group-hover/logo:scale-110",
+                      "group-hover:-rotate-6",
+                      "group-hover:scale-110"
                     )}
                   >
                     <span className="text-lg font-black text-white">
                       {SITE_CONFIG.logo}
                     </span>
                   </div>
+
                 </div>
 
                 {/* Brand */}
 
                 <div className="hidden sm:block">
+
                   <div className="flex items-center gap-2">
+
                     <h1 className="text-lg font-black tracking-tight text-slate-900 dark:text-white">
                       {SITE_CONFIG.name}
                     </h1>
 
-                    <Sparkles size={15} className="text-violet-500" />
+                    <Sparkles
+                      size={15}
+                      className="text-violet-500"
+                    />
+
                   </div>
 
-                  <p className="mt-1 text-xs font-medium tracking-[0.25em] uppercase text-slate-500 dark:text-slate-400">
+                  <p className="mt-1 text-xs font-medium uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400">
                     Software Engineer
                   </p>
+
                 </div>
+
               </Link>
 
-              {/* ========================================= */}
+                            {/* ========================================= */}
               {/* Desktop Navigation */}
               {/* ========================================= */}
 
               <nav className="hidden lg:block">
-                <ul className="flex items-center gap-2 rounded-2xl border border-white/20 bg-white/40 p-2 backdrop-blur-xl dark:border-white/10 dark:bg-slate-800/30">
+                <ul
+                  className={cn(
+                    "flex items-center gap-2",
+
+                    "rounded-2xl",
+
+                    "border border-white/20",
+
+                    "bg-white/45",
+
+                    "p-2",
+
+                    "backdrop-blur-xl",
+
+                    "dark:border-slate-700/60",
+                    "dark:bg-slate-800/40"
+                  )}
+                >
                   {NAV_LINKS.map((item) => (
                     <li key={item.label}>
                       <NavLink
                         to={item.href}
                         className={({ isActive }) =>
                           cn(
-                            "group/nav relative overflow-hidden",
+                            "group relative",
+
                             "flex items-center justify-center",
-                            "rounded-2xl px-5 py-3",
+
+                            "overflow-hidden",
+
+                            "rounded-2xl",
+
+                            "px-5 py-3",
+
                             "text-sm font-semibold",
+
                             "transition-all duration-300",
 
                             isActive
                               ? [
-                                  "bg-gradient-to-r",
+                                  "bg-linear-to-r",
+
                                   "from-violet-600",
                                   "via-fuchsia-600",
                                   "to-cyan-500",
+
                                   "text-white",
-                                  "shadow-lg shadow-violet-500/25",
+
+                                  "shadow-lg",
+
+                                  "shadow-violet-500/25",
                                 ]
                               : [
                                   "text-slate-700",
+
                                   "hover:bg-white/70",
+
                                   "hover:text-violet-700",
+
                                   "dark:text-slate-300",
+
                                   "dark:hover:bg-slate-800/70",
+
                                   "dark:hover:text-white",
-                                ],
+                                ]
                           )
                         }
                       >
                         {({ isActive }) => (
                           <>
-                            <span className="relative z-10">{item.label}</span>
+                            <span className="relative z-10">
+                              {item.label}
+                            </span>
 
                             {!isActive && (
                               <span
                                 className={cn(
-                                  "absolute bottom-2 left-1/2 h-0.5 w-0",
-                                  "-translate-x-1/2 rounded-full",
-                                  "bg-gradient-to-r",
+                                  "absolute bottom-2 left-1/2",
+
+                                  "h-0.5 w-0",
+
+                                  "-translate-x-1/2",
+
+                                  "rounded-full",
+
+                                  "bg-linear-to-r",
+
                                   "from-violet-500",
+
                                   "to-cyan-500",
+
                                   "transition-all duration-300",
-                                  "group-hover/nav:w-8",
+
+                                  "group-hover:w-8"
                                 )}
                               />
                             )}
@@ -272,24 +353,38 @@ function Navbar() {
 
               <div className="flex items-center gap-3">
 
+                {/* Desktop Theme Toggle */}
+
+                <div className="hidden lg:block">
+                  <ThemeToggle />
+                </div>
+
+                {/* Mobile Theme Toggle */}
+
+                <div className="lg:hidden">
+                  <ThemeToggle />
+                </div>
+
                 {/* Mobile Menu */}
 
                 <button
                   type="button"
-                  aria-label="Open menu"
+                  aria-label="Open navigation menu"
                   onClick={() => setIsMobileOpen(true)}
                   className={cn(
-                    "group/menu lg:hidden",
+                    "group lg:hidden",
 
-                    "relative overflow-hidden",
+                    "relative",
 
-                    "flex h-12 w-12 items-center justify-center",
+                    "flex h-11 w-11 items-center justify-center",
+
+                    "overflow-hidden",
 
                     "rounded-2xl",
 
-                    "border border-white/20",
+                    "border border-slate-200/70",
 
-                    "bg-white/60",
+                    "bg-white/70",
 
                     "backdrop-blur-xl",
 
@@ -298,36 +393,64 @@ function Navbar() {
                     "transition-all duration-300",
 
                     "hover:-translate-y-0.5",
+
                     "hover:border-violet-400/40",
+
                     "hover:shadow-violet-500/20",
 
-                    "dark:border-white/10",
-                    "dark:bg-slate-800/60",
+                    "dark:border-slate-700",
+
+                    "dark:bg-slate-900/70"
                   )}
                 >
+
                   {/* Hover Glow */}
 
-                  <div className="absolute inset-0 bg-gradient-to-br from-violet-500/0 via-fuchsia-500/0 to-cyan-500/0 transition-all duration-300 group-hover/menu:from-violet-500/10 group-hover/menu:via-fuchsia-500/10 group-hover/menu:to-cyan-500/10" />
+                  <span
+                    className={cn(
+                      "absolute inset-0",
+
+                      "opacity-0",
+
+                      "transition-opacity duration-300",
+
+                      "group-hover:opacity-100",
+
+                      "bg-linear-to-br",
+
+                      "from-violet-500/10",
+
+                      "via-fuchsia-500/10",
+
+                      "to-cyan-500/10"
+                    )}
+                  />
 
                   <Menu
-                    size={22}
-                    className="relative z-10 transition-transform duration-300 group-hover/menu:scale-110"
+                    size={21}
+                    className="relative z-10 transition-transform duration-300 group-hover:scale-110"
                   />
+
                 </button>
+
               </div>
+
             </div>
+
           </div>
+
         </Container>
+
       </header>
 
-      {/* ================================================= */}
+            {/* ================================================= */}
       {/* Mobile Overlay */}
       {/* ================================================= */}
 
       {isMobileOpen && (
         <button
           type="button"
-          aria-label="Close navigation menu"
+          aria-label="Close navigation"
           onClick={() => setIsMobileOpen(false)}
           className={cn(
             "fixed inset-0 z-40 lg:hidden",
@@ -336,7 +459,7 @@ function Navbar() {
 
             "backdrop-blur-md",
 
-            "animate-in fade-in duration-300",
+            "transition-opacity duration-300"
           )}
         />
       )}
@@ -355,7 +478,7 @@ function Navbar() {
 
           "border-l border-white/20",
 
-          "bg-white/75",
+          "bg-white/80",
 
           "backdrop-blur-3xl",
 
@@ -363,26 +486,50 @@ function Navbar() {
 
           "transition-transform duration-500 ease-[cubic-bezier(.22,1,.36,1)]",
 
-          "dark:border-white/10",
-          "dark:bg-slate-950/75",
+          "dark:border-slate-700/60",
 
-          isMobileOpen ? "translate-x-0" : "translate-x-full",
+          "dark:bg-slate-950/80",
+
+          isMobileOpen
+            ? "translate-x-0"
+            : "translate-x-full"
         )}
       >
-        {/* Background Effects */}
+
+        {/* Decorative Background */}
 
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute -top-20 -right-16 h-52 w-52 rounded-full bg-violet-500/15 blur-3xl" />
 
-          <div className="absolute bottom-0 -left-20 h-56 w-56 rounded-full bg-cyan-500/10 blur-3xl" />
+          <div className="absolute -top-20 -right-16 h-56 w-56 rounded-full bg-violet-500/15 blur-3xl" />
+
+          <div className="absolute bottom-0 -left-20 h-60 w-60 rounded-full bg-cyan-500/10 blur-3xl" />
+
+          <div className="absolute top-1/2 left-1/3 h-44 w-44 rounded-full bg-fuchsia-500/10 blur-3xl" />
+
         </div>
 
-        {/* ============================== */}
+        {/* ====================================== */}
         {/* Drawer Header */}
-        {/* ============================== */}
+        {/* ====================================== */}
 
-        <div className="relative z-10 flex items-center justify-between border-b border-slate-200/60 p-6 dark:border-slate-800/70">
+        <div
+          className={cn(
+            "relative z-10",
+
+            "flex items-center justify-between",
+
+            "border-b border-slate-200/60",
+
+            "p-6",
+
+            "dark:border-slate-800/70"
+          )}
+        >
+
+          {/* Brand */}
+
           <div>
+
             <h2 className="text-xl font-black tracking-tight text-slate-900 dark:text-white">
               {SITE_CONFIG.name}
             </h2>
@@ -390,68 +537,71 @@ function Navbar() {
             <p className="mt-1 text-xs uppercase tracking-[0.30em] text-slate-500 dark:text-slate-400">
               Navigation
             </p>
+
           </div>
+
+          {/* Close Button */}
 
           <button
             type="button"
-            aria-label="Close menu"
+            aria-label="Close navigation menu"
             onClick={() => setIsMobileOpen(false)}
             className={cn(
-              "group/close",
+              "group",
+
+              "relative",
 
               "flex h-11 w-11 items-center justify-center",
+
+              "overflow-hidden",
 
               "rounded-2xl",
 
               "border border-slate-200/70",
 
-              "bg-white/60",
+              "bg-white/70",
 
               "backdrop-blur-xl",
 
               "transition-all duration-300",
 
               "hover:rotate-90",
+
               "hover:border-violet-400/40",
+
               "hover:bg-violet-500/10",
 
               "dark:border-slate-700",
-              "dark:bg-slate-900/60",
+
+              "dark:bg-slate-900/70"
             )}
           >
+
+            <span className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-linear-to-br from-violet-500/10 via-fuchsia-500/10 to-cyan-500/10" />
+
             <X
               size={20}
-              className="transition-transform duration-300 group-hover/close:scale-110"
+              className="relative z-10 transition-transform duration-300 group-hover:scale-110"
             />
+
           </button>
+
         </div>
 
-        {/* ============================== */}
+                {/* ====================================== */}
         {/* Navigation */}
-        {/* ============================== */}
+        {/* ====================================== */}
 
-        <nav className="relative z-10 flex-1 px-5 py-8">
+        <nav className="relative z-10 flex-1 overflow-y-auto px-5 py-8">
           <ul className="space-y-3">
-            {NAV_LINKS.map((item, index) => (
-              <li
-                key={item.label}
-                style={{
-                  animationDelay: `${index * 70}ms`,
-                }}
-                className="animate-in slide-in-from-right-6 fade-in duration-500"
-              >
+            {NAV_LINKS.map((item) => (
+              <li key={item.label}>
                 <NavLink
                   to={item.href}
                   onClick={() => setIsMobileOpen(false)}
                   className={({ isActive }) =>
                     cn(
-                      "group/link",
-
-                      "relative flex items-center",
-
-                      "overflow-hidden",
-
-                      "rounded-2xl",
+                      "group relative flex items-center overflow-hidden rounded-2xl",
 
                       "px-5 py-4",
 
@@ -461,7 +611,7 @@ function Navbar() {
 
                       isActive
                         ? [
-                            "bg-gradient-to-r",
+                            "bg-linear-to-r",
 
                             "from-violet-600",
                             "via-fuchsia-600",
@@ -474,19 +624,24 @@ function Navbar() {
                         : [
                             "text-slate-700",
 
-                            "hover:bg-white/60",
+                            "hover:bg-white/70",
+
                             "hover:text-violet-700",
 
                             "dark:text-slate-300",
+
                             "dark:hover:bg-slate-800/70",
+
                             "dark:hover:text-white",
-                          ],
+                          ]
                     )
                   }
                 >
                   {({ isActive }) => (
                     <>
-                      <span className="relative z-10">{item.label}</span>
+                      <span className="relative z-10">
+                        {item.label}
+                      </span>
 
                       {!isActive && (
                         <span
@@ -497,14 +652,15 @@ function Navbar() {
 
                             "origin-bottom scale-y-0",
 
-                            "bg-gradient-to-b",
+                            "bg-linear-to-b",
 
                             "from-violet-500",
+
                             "to-cyan-500",
 
                             "transition-transform duration-300",
 
-                            "group-hover/link:scale-y-100",
+                            "group-hover:scale-y-100"
                           )}
                         />
                       )}
@@ -514,25 +670,60 @@ function Navbar() {
               </li>
             ))}
           </ul>
+
+          {/* ====================================== */}
+          {/* Mobile Theme Toggle */}
+          {/* ====================================== */}
+
+          <div className="mt-10 flex justify-center lg:hidden">
+            <ThemeToggle />
+          </div>
         </nav>
 
-        {/* ============================== */}
+        {/* ====================================== */}
         {/* Drawer Footer */}
-        {/* ============================== */}
+        {/* ====================================== */}
 
         <div className="relative z-10 border-t border-slate-200/60 p-6 dark:border-slate-800/70">
-          <div className="rounded-3xl border border-white/20 bg-gradient-to-br from-violet-500/10 via-fuchsia-500/10 to-cyan-500/10 p-5 backdrop-blur-xl dark:border-white/10">
-            <p className="text-sm font-semibold text-slate-900 dark:text-white">
-              Let's build something amazing.
-            </p>
+
+          <div
+            className={cn(
+              "rounded-3xl",
+
+              "border border-white/20",
+
+              "bg-linear-to-br",
+
+              "from-violet-500/10",
+
+              "via-fuchsia-500/10",
+
+              "to-cyan-500/10",
+
+              "p-5",
+
+              "backdrop-blur-xl",
+
+              "dark:border-white/10"
+            )}
+          >
+
+            <h3 className="text-base font-bold text-slate-900 dark:text-white">
+              Let's Build Something Amazing
+            </h3>
 
             <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
-              Thanks for visiting my portfolio. Explore my work, experience, and
-              feel free to get in touch.
+              Thank you for visiting my portfolio.
+              I'm always excited to collaborate on
+              innovative projects and meaningful ideas.
             </p>
+
           </div>
+
         </div>
+
       </aside>
+
     </>
   );
 }
