@@ -78,7 +78,7 @@ function PersonalInfo() {
               rounded-3xl
               border
               border-emerald-500/20
-              bg-gradient-to-br
+              bg-linear-to-br
               from-emerald-500/10
               via-emerald-400/5
               to-transparent
@@ -137,14 +137,14 @@ function PersonalInfo() {
                       hover:shadow-2xl
                       hover:shadow-indigo-500/20
                       dark:border-white/10
-                      dark:bg-white/[0.04]
+                      dark:bg-white/4
                     "
                   >
                     <div
                       className="
                         absolute
                         inset-0
-                        bg-gradient-to-br
+                        bg-linear-to-br
                         from-indigo-500
                         via-violet-500
                         to-cyan-500
@@ -217,7 +217,7 @@ function InfoItem({
         hover:shadow-xl
         hover:shadow-indigo-500/10
         dark:border-white/10
-        dark:bg-white/[0.04]
+        dark:bg-white/4
       "
     >
       <div
@@ -228,7 +228,7 @@ function InfoItem({
           items-center
           justify-center
           rounded-xl
-          bg-gradient-to-br
+          bg-linear-to-br
           from-indigo-500/15
           via-violet-500/15
           to-cyan-500/15

@@ -58,10 +58,10 @@ function FeaturedCertifications() {
         <div
           className="
             absolute
-            left-[-180px]
+            -left-45
             top-20
-            h-[380px]
-            w-[380px]
+            h-95
+            w-95
             rounded-full
             bg-violet-500/15
             blur-[140px]
@@ -71,10 +71,10 @@ function FeaturedCertifications() {
         <div
           className="
             absolute
-            right-[-140px]
+            -right-35
             bottom-0
-            h-[420px]
-            w-[420px]
+            h-105
+            w-105
             rounded-full
             bg-cyan-500/10
             blur-[150px]
@@ -86,8 +86,8 @@ function FeaturedCertifications() {
             absolute
             left-1/2
             top-0
-            h-[260px]
-            w-[260px]
+            h-65
+            w-65
             -translate-x-1/2
             rounded-full
             bg-fuchsia-500/10
@@ -108,7 +108,7 @@ function FeaturedCertifications() {
               rounded-full
               border
               border-violet-500/20
-              bg-white/[0.04]
+              bg-white/4
               px-6
               py-3
               backdrop-blur-xl
@@ -123,7 +123,7 @@ function FeaturedCertifications() {
                 items-center
                 justify-center
                 rounded-full
-                bg-gradient-to-br
+                bg-linear-to-br
                 from-violet-600
                 via-fuchsia-600
                 to-cyan-500
@@ -190,7 +190,7 @@ function FeaturedCertifications() {
                 rounded-3xl
                 border
                 border-white/10
-                bg-white/[0.04]
+                bg-white/4
                 p-6
                 backdrop-blur-xl
                 transition-all
@@ -216,7 +216,7 @@ function FeaturedCertifications() {
                 rounded-3xl
                 border
                 border-white/10
-                bg-white/[0.04]
+                bg-white/4
                 p-6
                 backdrop-blur-xl
                 transition-all
@@ -242,7 +242,7 @@ function FeaturedCertifications() {
                 rounded-3xl
                 border
                 border-white/10
-                bg-white/[0.04]
+                bg-white/4
                 p-6
                 backdrop-blur-xl
                 transition-all
@@ -312,7 +312,7 @@ function FeaturedCertifications() {
             my-14
             h-px
             w-full
-            bg-gradient-to-r
+            bg-linear-to-r
             from-transparent
             via-white/10
             to-transparent
@@ -345,10 +345,10 @@ function FeaturedCertifications() {
             className="
               relative
               overflow-hidden
-              rounded-[32px]
+              rounded-4xl
               border
               border-white/10
-              bg-white/[0.04]
+              bg-white/4
               px-8
               py-8
               backdrop-blur-2xl
@@ -361,7 +361,7 @@ function FeaturedCertifications() {
               className="
                 absolute
                 inset-0
-                bg-gradient-to-r
+                bg-linear-to-r
                 from-violet-500/5
                 via-fuchsia-500/5
                 to-cyan-500/5
@@ -391,7 +391,7 @@ function FeaturedCertifications() {
                   items-center
                   justify-center
                   rounded-2xl
-                  bg-gradient-to-br
+                  bg-linear-to-br
                   from-violet-600
                   via-fuchsia-600
                   to-cyan-500

@@ -1,16 +1,18 @@
 @import "tailwindcss";
 
-/* ==========================
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ==========================================================
    Theme Variables
-========================== */
+========================================================== */
 
 @theme {
   --color-primary: #6366f1;
   --color-secondary: #8b5cf6;
   --color-accent: #06b6d4;
 
-  --color-background: #ffffff;
-  --color-surface: #f8fafc;
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
   --color-border: #e2e8f0;
 
   --color-dark: #020617;
@@ -21,50 +23,122 @@
   --font-heading: "Poppins", sans-serif;
 }
 
-/* ==========================
-   Base Styles
-========================== */
+/* ==========================================================
+   Base
+========================================================== */
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  @apply bg-white text-slate-700 antialiased;
-  font-family: var(--font-sans);
+  background-color: #fcfcfd;
+
+  @apply bg-slate-50 text-slate-700 antialiased;
 }
+
+/* Dark Theme */
 
 .dark body {
-  @apply bg-slate-950 text-slate-300;
+  @apply bg-slate-950;
+
+  @apply text-slate-300;
 }
 
-* {
+/* Global */
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-*::selection {
-  @apply bg-indigo-500 text-white;
+* {
+  transition:
+    background-color 250ms ease,
+    border-color 250ms ease,
+    color 250ms ease;
 }
+
+/* Text Selection */
+
+::selection {
+  @apply bg-violet-500 text-white;
+}
+
+/* Links */
 
 a {
   @apply no-underline transition-colors duration-300;
 }
 
+/* Buttons */
+
 button {
   @apply cursor-pointer;
 }
+
+/* Images */
 
 img {
   @apply block max-w-full;
 }
 
+/* Root */
+
 #root {
   min-height: 100vh;
+
+  position: relative;
 }
 
-/* ==========================
+/* ==========================================================
+   Page Background
+========================================================== */
+
+body::before {
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(circle at top left,
+      rgba(99,102,241,0.08),
+      transparent 35%),
+
+    radial-gradient(circle at top right,
+      rgba(139,92,246,0.06),
+      transparent 30%),
+
+    radial-gradient(circle at bottom,
+      rgba(6,182,212,0.05),
+      transparent 35%);
+
+  z-index: -1;
+}
+
+.dark body::before {
+  background:
+    radial-gradient(circle at top left,
+      rgba(99,102,241,0.15),
+      transparent 35%),
+
+    radial-gradient(circle at top right,
+      rgba(139,92,246,0.12),
+      transparent 30%),
+
+    radial-gradient(circle at bottom,
+      rgba(6,182,212,0.10),
+      transparent 35%);
+}
+
+/* ==========================================================
    Headings
-========================== */
+========================================================== */
 
 h1,
 h2,
@@ -73,7 +147,10 @@ h4,
 h5,
 h6 {
   font-family: var(--font-heading);
-  @apply font-bold text-slate-900;
+
+  @apply font-bold;
+
+  @apply text-slate-900;
 }
 
 .dark h1,
@@ -85,9 +162,9 @@ h6 {
   @apply text-white;
 }
 
-/* ==========================
+/* ==========================================================
    Scrollbar
-========================== */
+========================================================== */
 
 ::-webkit-scrollbar {
   width: 10px;
@@ -97,32 +174,44 @@ h6 {
   @apply bg-slate-100;
 }
 
-::-webkit-scrollbar-thumb {
-  @apply bg-indigo-500 rounded-full;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-indigo-600;
-}
-
 .dark ::-webkit-scrollbar-track {
   @apply bg-slate-900;
 }
 
-.dark ::-webkit-scrollbar-thumb {
-  @apply bg-indigo-400;
+::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-slate-400;
 }
 
-/* ==========================
-   Utility Classes
-========================== */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-violet-500;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-slate-700;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  @apply bg-violet-500;
+}
+
+/* ==========================================================
+   Utilities
+========================================================== */
 
 .glass {
-  @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-xl;
+  @apply border border-white/30;
+
+  @apply bg-white/65;
+
+  @apply backdrop-blur-2xl;
+
+  @apply shadow-xl;
 }
 
 .dark .glass {
-  @apply bg-slate-900/60 border-slate-700/50;
+  @apply border-slate-700/60;
+
+  @apply bg-slate-900/60;
 }
 
 .section {

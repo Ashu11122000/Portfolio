@@ -7,27 +7,27 @@ function Layout() {
   return (
     <div
       className="
-        relative
-        flex
-        min-h-screen
-        flex-col
-        overflow-x-hidden
+  relative
+  flex
+  min-h-screen
+  flex-col
+  overflow-x-hidden
 
-        bg-gradient-to-b
-        from-white
-        via-slate-50
-        to-slate-100
+  bg-linear-to-b
+  from-slate-50
+  via-slate-100
+  to-slate-200/60
 
-        text-slate-800
+  text-slate-800
 
-        transition-colors
-        duration-500
+  transition-colors
+  duration-500
 
-        dark:from-slate-950
-        dark:via-slate-950
-        dark:to-black
-        dark:text-slate-100
-      "
+  dark:from-slate-950
+  dark:via-slate-950
+  dark:to-black
+  dark:text-slate-100
+"
     >
       {/* Background Ambient Glow */}
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
@@ -36,8 +36,8 @@ function Layout() {
             absolute
             -left-40
             -top-40
-            h-[34rem]
-            w-[34rem]
+            h-136
+            w-136
             rounded-full
             bg-indigo-500/8
             blur-[140px]
@@ -47,10 +47,10 @@ function Layout() {
         <div
           className="
             absolute
-            right-[-8rem]
+            -right-32
             top-1/4
-            h-[30rem]
-            w-[30rem]
+            h-120
+            w-120
             rounded-full
             bg-fuchsia-500/8
             blur-[130px]
@@ -60,10 +60,10 @@ function Layout() {
         <div
           className="
             absolute
-            bottom-[-12rem]
+            -bottom-48
             left-1/2
-            h-[40rem]
-            w-[40rem]
+            h-160
+            w-160
             -translate-x-1/2
             rounded-full
             bg-cyan-500/6
