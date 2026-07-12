@@ -62,45 +62,96 @@ function AboutCard({
   return (
     <GlassCard
       className={cn(
-        "relative overflow-hidden rounded-3xl p-6 transition-all duration-500",
-        "hover:-translate-y-1 hover:shadow-2xl",
-        "hover:shadow-indigo-500/10",
+        "group relative overflow-hidden rounded-3xl",
+        "transition-all duration-500 ease-out",
+        "hover:-translate-y-2",
+        "hover:scale-[1.015]",
+        "hover:shadow-2xl",
+        "hover:shadow-violet-500/20",
         className
       )}
     >
-      {/* Decorative Glow */}
+      {/* Premium Ambient Glow */}
       <div
         aria-hidden="true"
         className="
           pointer-events-none
           absolute
-          -right-16
-          -top-16
-          h-40
-          w-40
+          -right-24
+          -top-24
+          h-56
+          w-56
           rounded-full
-          bg-indigo-500/10
+          bg-violet-500/10
           blur-3xl
+          opacity-0
+          transition-opacity
+          duration-500
+          group-hover:opacity-100
+        "
+      />
+
+      <div
+        aria-hidden="true"
+        className="
+          pointer-events-none
+          absolute
+          -bottom-24
+          -left-20
+          h-52
+          w-52
+          rounded-full
+          bg-cyan-500/10
+          blur-3xl
+          opacity-0
+          transition-opacity
+          duration-500
+          group-hover:opacity-100
+        "
+      />
+
+      {/* Premium Glass Highlight */}
+      <div
+        aria-hidden="true"
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          rounded-3xl
+          bg-gradient-to-br
+          from-white/10
+          via-transparent
+          to-transparent
         "
       />
 
       {(title || icon) && (
-        <header className="relative z-10 mb-6 flex items-center gap-3">
+        <header className="relative z-10 mb-6 flex items-center gap-4">
           {icon && (
             <div
               className="
                 flex
-                h-12
-                w-12
+                h-14
+                w-14
                 items-center
                 justify-center
                 rounded-2xl
-                bg-linear-to-br
-                from-indigo-500
-                via-violet-500
-                to-cyan-500
+
+                bg-gradient-to-br
+                from-indigo-600
+                via-violet-600
+                to-fuchsia-600
+
                 text-white
-                shadow-lg
+
+                shadow-xl
+                shadow-violet-500/25
+
+                transition-all
+                duration-300
+
+                group-hover:scale-110
+                group-hover:rotate-3
               "
             >
               {icon}
@@ -111,7 +162,8 @@ function AboutCard({
             <h3
               className="
                 text-xl
-                font-semibold
+                font-bold
+                tracking-tight
                 text-slate-900
                 dark:text-white
               "

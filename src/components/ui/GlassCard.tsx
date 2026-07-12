@@ -43,61 +43,109 @@ const paddingClasses = {
 
 function GlassCard({
   children,
-
   className,
-
   hover = true,
-
   padding = "md",
-
   ...props
 }: GlassCardProps) {
   return (
     <div
       className={cn(
-        // Base
-        "relative overflow-hidden",
+        "group relative overflow-hidden",
 
-        // Radius
         "rounded-3xl",
 
-        // Glass Effect
-        "border border-white/10",
-        "bg-white/5",
-        "backdrop-blur-2xl",
+        "border border-white/20",
 
-        // Shadow
-        "shadow-xl shadow-black/10",
+        "bg-white/60",
+        "backdrop-blur-3xl",
 
-        // Dark Mode
-        "dark:border-slate-700/40",
-        "dark:bg-slate-900/40",
+        "ring-1 ring-white/10",
 
-        // Transition
-        "transition-all duration-300",
+        "shadow-xl shadow-slate-300/15",
+        "dark:bg-slate-900/50",
+        "dark:border-white/10",
+        "dark:ring-white/5",
+        "dark:shadow-black/30",
+
+        "transition-all duration-500 ease-out",
 
         hover && [
-          "hover:-translate-y-1",
-          "hover:border-indigo-500/40",
+          "hover:-translate-y-2",
+          "hover:scale-[1.015]",
+          "hover:border-violet-400/40",
           "hover:shadow-2xl",
-          "hover:shadow-indigo-500/10",
+          "hover:shadow-violet-500/20",
         ],
 
         paddingClasses[padding],
 
-        className,
+        className
       )}
       {...props}
     >
-      {/* Glass Highlight */}
-
+      {/* Glass Shine */}
       <div
         className="
           pointer-events-none
           absolute
           inset-0
           rounded-3xl
-          bg-linear-to-br
+          bg-gradient-to-br
+          from-white/25
+          via-transparent
+          to-transparent
+        "
+      />
+
+      {/* Ambient Glow */}
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -top-24
+          -right-20
+          h-56
+          w-56
+          rounded-full
+          bg-violet-500/10
+          blur-3xl
+          opacity-0
+          transition-opacity
+          duration-500
+          group-hover:opacity-100
+        "
+      />
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -bottom-24
+          -left-20
+          h-56
+          w-56
+          rounded-full
+          bg-cyan-500/10
+          blur-3xl
+          opacity-0
+          transition-opacity
+          duration-500
+          group-hover:opacity-100
+        "
+      />
+
+      {/* Premium Shine Sweep */}
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          opacity-0
+          transition-opacity
+          duration-500
+          group-hover:opacity-100
+          bg-gradient-to-br
           from-white/10
           via-transparent
           to-transparent
@@ -105,8 +153,9 @@ function GlassCard({
       />
 
       {/* Content */}
-
-      <div className="relative z-10">{children}</div>
+      <div className="relative z-10">
+        {children}
+      </div>
     </div>
   );
 }

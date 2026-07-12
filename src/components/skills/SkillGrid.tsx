@@ -11,49 +11,66 @@ import type { ComponentProps } from "../../types/common";
  * SkillGrid Component
  * ==========================================================
  *
- * Displays all skill categories in a responsive grid.
+ * Ultra Premium Skills Grid
  *
  * Features
  * ----------
- * ✓ Responsive Grid Layout
- * ✓ Mobile First
- * ✓ Centralized Data
- * ✓ Reusable
+ * ✓ Responsive Grid
+ * ✓ Decorative Background
  * ✓ Premium Spacing
+ * ✓ Staggered Desktop Layout
+ * ✓ Glassmorphism Ready
  * ✓ Tailwind CSS v4
  * ✓ TypeScript Strict
- *
- * Used By
- * ----------
- * - Skills.tsx
- *
  * ==========================================================
  */
 
 const SkillGrid = ({ className }: ComponentProps) => {
   return (
-    <div
-      className={cn(
-        "grid gap-8",
+    <div className={cn("relative", className)}>
+      {/* Decorative Background */}
 
-        /*
-        Responsive Columns
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -top-28 -left-24 h-72 w-72 rounded-full bg-violet-500/10 blur-[120px]" />
 
-        Mobile  : 1
-        Tablet  : 2
-        Desktop : 3
-        */
+        <div className="absolute right-0 top-1/3 h-80 w-80 rounded-full bg-cyan-500/10 blur-[140px]" />
 
-        "grid-cols-1",
-        "md:grid-cols-2",
-        "xl:grid-cols-3",
+        <div className="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-fuchsia-500/10 blur-[130px]" />
+      </div>
 
-        className,
-      )}
-    >
-      {skills.map((category) => (
-        <SkillCategory key={category.id} category={category} />
-      ))}
+      {/* Skills Grid */}
+
+      <div
+        className={cn(
+          "relative z-10",
+
+          "grid gap-8",
+
+          "grid-cols-1",
+
+          "md:grid-cols-2",
+
+          "xl:grid-cols-3",
+
+          "items-start",
+        )}
+      >
+        {skills.map((category, index) => (
+          <div
+            key={category.id}
+            className={cn(
+              "transition-all duration-500",
+
+              // Premium stagger on desktop
+              index % 3 === 1 && "xl:mt-12",
+
+              index % 3 === 2 && "xl:mt-6",
+            )}
+          >
+            <SkillCategory category={category} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

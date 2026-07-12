@@ -1,4 +1,4 @@
-import { Phone } from "lucide-react";
+import { Phone, Sparkles } from "lucide-react";
 
 import GradientText from "../ui/GradientText";
 import SocialIcons from "../common/SocialIcons";
@@ -7,101 +7,173 @@ import HeroButtons from "./HeroButtons";
 import { heroData } from "../../data/hero";
 import personalInfo from "../../data/personalInfo";
 
+/**
+ * ==========================================================
+ * Hero Content
+ * ==========================================================
+ *
+ * Ultra Premium Hero Content
+ *
+ * Features
+ * ----------
+ * ✓ Availability Badge
+ * ✓ Premium Typography
+ * ✓ Gradient Heading
+ * ✓ Responsive Layout
+ * ✓ Contact Card
+ * ✓ Social Links
+ */
+
 function HeroContent() {
   return (
-    <div className="space-y-8">
-      {/* Greeting */}
+    <div
+      className="
+        relative
+        z-10
+        space-y-10
+      "
+    >
+      {/* Availability Badge */}
 
-      <span
+      <div
         className="
-        inline-flex
-        rounded-full
-        border
-        border-slate-700
-        bg-slate-900/50
-        px-4
-        py-2
-        text-sm
-        text-slate-300
-        backdrop-blur-xl
+          inline-flex
+          items-center
+          gap-3
+          rounded-full
+          border
+          border-emerald-500/20
+          bg-emerald-500/10
+          px-5
+          py-2.5
+          backdrop-blur-xl
         "
       >
-        {heroData.greeting}
-      </span>
+        <span className="relative flex h-3 w-3">
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
 
-      {/* Name */}
+          <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-400" />
+        </span>
 
-      <h1
-        className="
-        text-5xl
-        font-bold
-        leading-tight
-        md:text-6xl
-        "
-      >
-        Ashish{" "}
+        <Sparkles
+          size={15}
+          className="text-emerald-300"
+        />
 
-        <GradientText>
-          Sharma
-        </GradientText>
-      </h1>
+        <span className="text-sm font-medium text-emerald-200">
+          {heroData.greeting}
+        </span>
+      </div>
 
-      {/* Role */}
+      {/* Heading */}
 
-      <h2
-        className="
-        text-2xl
-        font-semibold
-        text-slate-300
-        "
-      >
-        Aspiring{" "}
-        <GradientText>
-          {heroData.role}
-        </GradientText>
-      </h2>
+      <div className="space-y-5">
+        <h1
+          className="
+            text-5xl
+            font-black
+            leading-[1.05]
+            tracking-tight
+            sm:text-6xl
+            lg:text-7xl
+          "
+        >
+          Ashish <GradientText>Sharma</GradientText>
+        </h1>
+
+        <h2
+          className="
+            text-2xl
+            font-semibold
+            text-slate-300
+            sm:text-3xl
+          "
+        >
+          Aspiring{" "}
+          <GradientText>
+            {heroData.role}
+          </GradientText>
+        </h2>
+
+        <div
+          className="
+            h-1
+            w-28
+            rounded-full
+            bg-gradient-to-r
+            from-cyan-400
+            via-indigo-500
+            to-violet-500
+          "
+        />
+      </div>
 
       {/* Description */}
 
       <p
         className="
-        max-w-xl
-        leading-8
-        text-slate-400
+          max-w-2xl
+          text-lg
+          leading-9
+          text-slate-400
         "
       >
         {heroData.description}
       </p>
 
-      {/* Button */}
+      {/* CTA */}
 
       <HeroButtons />
 
-      {/* Phone Number */}
+      {/* Contact */}
 
-      <div className="flex items-center gap-3 text-slate-300">
+      <div
+        className="
+          flex
+          w-fit
+          items-center
+          gap-4
+          rounded-2xl
+          border
+          border-white/10
+          bg-white/5
+          px-5
+          py-4
+          backdrop-blur-xl
+          transition-all
+          duration-300
+          hover:border-cyan-400/30
+          hover:bg-white/8
+          hover:shadow-xl
+          hover:shadow-cyan-500/10
+        "
+      >
         <div
           className="
-          flex
-          h-11
-          w-11
-          items-center
-          justify-center
-          rounded-full
-          border
-          border-slate-700
-          bg-slate-900/60
-          backdrop-blur-xl
+            flex
+            h-12
+            w-12
+            items-center
+            justify-center
+            rounded-xl
+            bg-gradient-to-br
+            from-cyan-500
+            to-indigo-600
+            text-white
           "
         >
-          <Phone
-            size={18}
-            className="text-indigo-400"
-          />
+          <Phone size={18} />
         </div>
 
         <div>
-          <p className="text-xs uppercase tracking-widest text-slate-500">
+          <p
+            className="
+              text-xs
+              uppercase
+              tracking-[0.3em]
+              text-slate-500
+            "
+          >
             Call Me
           </p>
 
@@ -110,9 +182,10 @@ function HeroContent() {
             className="
               text-lg
               font-semibold
+              text-white
               transition-colors
               duration-300
-              hover:text-indigo-400
+              hover:text-cyan-400
             "
           >
             {personalInfo.phone}
@@ -122,7 +195,9 @@ function HeroContent() {
 
       {/* Social Icons */}
 
-      <SocialIcons />
+      <div className="pt-2">
+        <SocialIcons />
+      </div>
     </div>
   );
 }

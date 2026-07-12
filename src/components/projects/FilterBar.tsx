@@ -3,24 +3,22 @@
  * FilterBar Component
  * ==========================================================
  *
- * Reusable category filter for the Projects module.
+ * Ultra Premium Project Filter
  *
  * Features
  * ----------
- * ✓ Strongly Typed
+ * ✓ Glassmorphism Container
+ * ✓ Gradient Active Button
+ * ✓ Smooth Hover Animations
  * ✓ Responsive
+ * ✓ Strongly Typed
+ * ✓ Accessible
  * ✓ Reusable
- * ✓ Glassmorphism UI
- * ✓ Active Filter State
- * ✓ Hover Animations
- * ✓ Dark / Light Theme
- * ✓ Accessibility Friendly
  *
  * Used By
  * ----------
  * - Projects.tsx
  * - ProjectGrid.tsx
- *
  * ==========================================================
  */
 
@@ -37,60 +35,83 @@ interface FilterBarProps {
   onFilterChange: (filter: ProjectFilter) => void;
 }
 
-const filters: ProjectFilter[] = ["All", "Frontend", "Backend", "Full Stack"];
+const filters: ProjectFilter[] = [
+  "All",
+  "Frontend",
+  "Backend",
+  "Full Stack",
+];
 
-const FilterBar: FC<FilterBarProps> = ({ activeFilter, onFilterChange }) => {
+const FilterBar: FC<FilterBarProps> = ({
+  activeFilter,
+  onFilterChange,
+}) => {
   return (
-    <div
-      className="
-                flex
-                flex-wrap
-                items-center
-                justify-center
-                gap-3
-            "
-    >
-      {filters.map((filter) => {
-        const isActive = activeFilter === filter;
+    <div className="flex justify-center">
+      <div
+        className="
+          inline-flex
+          flex-wrap
+          items-center
+          justify-center
+          gap-3
+          rounded-full
+          border
+          border-white/10
+          bg-white/5
+          p-2
+          shadow-xl
+          shadow-black/20
+          backdrop-blur-2xl
+        "
+        role="tablist"
+        aria-label="Project Categories"
+      >
+        {filters.map((filter) => {
+          const isActive = activeFilter === filter;
 
-        return (
-          <Button
-            key={filter}
-            type="button"
-            onClick={() => onFilterChange(filter)}
-            className={`
-                            rounded-full
-                            px-5
-                            py-2
-                            transition-all
-                            duration-300
-                            ${
-                              isActive
-                                ? `
-                                        border
-                                        border-primary/40
-                                        bg-primary
-                                        text-white
-                                        shadow-lg
-                                        shadow-primary/20
-                                      `
-                                : `
-                                        border
-                                        border-white/10
-                                        bg-white/5
-                                        text-muted-foreground
-                                        hover:border-primary/30
-                                        hover:bg-primary/10
-                                        hover:text-primary
-                                      `
-                            }
-                        `}
-            aria-pressed={isActive}
-          >
-            {filter}
-          </Button>
-        );
-      })}
+          return (
+            <Button
+              key={filter}
+              type="button"
+              onClick={() => onFilterChange(filter)}
+              aria-pressed={isActive}
+              className={`
+                relative
+                rounded-full
+                px-6
+                py-2.5
+                text-sm
+                font-semibold
+                transition-all
+                duration-300
+                ${
+                  isActive
+                    ? `
+                      bg-gradient-to-r
+                      from-cyan-500
+                      via-indigo-500
+                      to-violet-600
+                      text-white
+                      shadow-lg
+                      shadow-cyan-500/30
+                      hover:scale-105
+                    `
+                    : `
+                      bg-transparent
+                      text-slate-400
+                      hover:bg-white/8
+                      hover:text-white
+                      hover:shadow-md
+                    `
+                }
+              `}
+            >
+              {filter}
+            </Button>
+          );
+        })}
+      </div>
     </div>
   );
 };

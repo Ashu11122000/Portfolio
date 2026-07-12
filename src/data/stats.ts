@@ -6,13 +6,13 @@
 
 export const heroStats = [
   {
-    value: "2+",
-    label: "Years Experience",
+    value: "10",
+    label: "months Experience",
     icon: "code",
   },
 
   {
-    value: "10+",
+    value: "10",
     label: "Projects Completed",
     icon: "folder",
   },

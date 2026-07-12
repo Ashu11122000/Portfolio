@@ -37,24 +37,56 @@ function Footer() {
   };
 
   return (
-    <footer className="border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950">
+    <footer className="relative overflow-hidden border-t border-white/10 bg-gradient-to-b from-white via-slate-50 to-slate-100 dark:from-slate-950 dark:via-slate-950 dark:to-black">
+      {/* Background Glow */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -top-32 left-0 h-72 w-72 rounded-full bg-indigo-500/10 blur-3xl" />
+
+        <div className="absolute right-0 top-20 h-72 w-72 rounded-full bg-fuchsia-500/10 blur-3xl" />
+
+        <div className="absolute bottom-0 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-cyan-500/10 blur-3xl" />
+      </div>
+
       <Container>
-        <div className="py-16">
+        <div className="relative py-20">
           {/* ==========================
               Top Section
           =========================== */}
 
-          <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-14 md:grid-cols-2 lg:grid-cols-3">
             {/* Brand */}
 
             <div>
-              <Link to="/" className="inline-flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-linear-to-br from-indigo-600 via-violet-600 to-cyan-500 font-bold text-white shadow-lg">
+              <Link
+                to="/"
+                className="group inline-flex items-center gap-4"
+              >
+                <div
+                  className="
+                    flex h-14 w-14 items-center justify-center
+                    rounded-2xl
+                    bg-gradient-to-br
+                    from-indigo-600
+                    via-violet-600
+                    to-fuchsia-600
+                    text-lg
+                    font-bold
+                    text-white
+                    shadow-xl
+                    shadow-violet-500/20
+                    transition-all
+                    duration-300
+                    group-hover:scale-110
+                    group-hover:rotate-3
+                  "
+                >
                   {SITE_CONFIG.logo}
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-bold">{SITE_CONFIG.name}</h3>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                    {SITE_CONFIG.name}
+                  </h3>
 
                   <p className="text-sm text-slate-500 dark:text-slate-400">
                     Full Stack Developer
@@ -62,24 +94,35 @@ function Footer() {
                 </div>
               </Link>
 
-              <p className="mt-6 max-w-sm leading-7 text-slate-600 dark:text-slate-400">
-                Passionate about creating modern, responsive and
-                high-performance web applications with exceptional user
-                experiences.
+              <p className="mt-7 max-w-sm leading-8 text-slate-600 dark:text-slate-400">
+                Passionate about crafting elegant, high-performance web
+                experiences with modern technologies, intuitive interfaces, and
+                exceptional attention to detail.
               </p>
             </div>
 
             {/* Quick Links */}
 
             <div>
-              <h4 className="mb-5 text-lg font-semibold">Quick Links</h4>
+              <h4 className="mb-6 text-lg font-semibold text-slate-900 dark:text-white">
+                Quick Links
+              </h4>
 
-              <ul className="space-y-3">
+              <ul className="space-y-4">
                 {NAV_LINKS.map((item) => (
                   <li key={item.label}>
                     <Link
                       to={item.href}
-                      className="text-slate-600 transition-colors duration-300 hover:text-indigo-600 dark:text-slate-400 dark:hover:text-white"
+                      className="
+                        inline-flex
+                        text-slate-600
+                        transition-all
+                        duration-300
+                        hover:translate-x-1
+                        hover:text-indigo-600
+                        dark:text-slate-400
+                        dark:hover:text-indigo-300
+                      "
                     >
                       {item.label}
                     </Link>
@@ -91,10 +134,13 @@ function Footer() {
             {/* Connect */}
 
             <div>
-              <h4 className="mb-5 text-lg font-semibold">Connect</h4>
+              <h4 className="mb-6 text-lg font-semibold text-slate-900 dark:text-white">
+                Let's Connect
+              </h4>
 
-              <p className="mb-6 text-slate-600 dark:text-slate-400">
-                Feel free to connect with me through these platforms.
+              <p className="mb-7 text-slate-600 dark:text-slate-400">
+                Feel free to connect with me for collaborations, opportunities,
+                or simply to say hello.
               </p>
 
               <SocialIcons />
@@ -115,12 +161,12 @@ function Footer() {
               Bottom Section
           =========================== */}
 
-          <div className="mt-14 flex flex-col items-center justify-between gap-5 border-t border-slate-200 pt-8 text-sm text-slate-500 dark:border-slate-800 dark:text-slate-400 md:flex-row">
+          <div className="mt-16 flex flex-col items-center justify-between gap-5 border-t border-slate-200/70 pt-8 text-sm text-slate-500 dark:border-slate-800 md:flex-row dark:text-slate-400">
             <p>
               © {currentYear} {SITE_CONFIG.name}. All rights reserved.
             </p>
 
-            <p>
+            <p className="text-center md:text-right">
               Designed & Developed with ❤️ using React, TypeScript & Tailwind
               CSS.
             </p>

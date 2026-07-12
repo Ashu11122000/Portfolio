@@ -8,7 +8,7 @@
  * ==========================================================
  */
 
-import { Globe, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
 
 import type { SocialLink } from "../types/common";
@@ -31,12 +31,6 @@ const socialLinks: SocialLink[] = [
     name: "Email",
     url: "mailto:your@email.com",
     icon: Mail,
-  },
-  {
-    id: 4,
-    name: "Portfolio",
-    url: "https://yourportfolio.com",
-    icon: Globe,
   },
 ];
 

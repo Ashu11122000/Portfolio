@@ -11,10 +11,6 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.2",
-<<<<<<< HEAD
-    "class-variance-authority": "^0.7.1",
-=======
->>>>>>> 11d8adadfcbb10208ca3c1e53e4516cca8e5d0ae
     "clsx": "^2.1.1",
     "framer-motion": "^12.42.2",
     "lucide-react": "^1.24.0",
@@ -37,11 +33,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.3",
     "globals": "^17.7.0",
-<<<<<<< HEAD
-    "typescript": "~5.9.3",
-=======
     "typescript": "~6.0.2",
->>>>>>> 11d8adadfcbb10208ca3c1e53e4516cca8e5d0ae
     "typescript-eslint": "^8.62.0",
     "vite": "^8.1.1"
   }

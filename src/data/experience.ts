@@ -135,7 +135,7 @@ export const experiences: Experience[] = [
 
     position: "Frontend Developer",
 
-    employmentType: "Internship",
+    employmentType: "Full Time",
 
     location: "Gurugram, Haryana",
 

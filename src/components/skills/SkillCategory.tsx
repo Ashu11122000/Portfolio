@@ -9,23 +9,19 @@ import type { SkillCategory as SkillCategoryType } from "../../types/skill";
  * SkillCategory Component
  * ==========================================================
  *
- * Wraps a single skill category and renders
- * its corresponding SkillCard.
+ * Premium wrapper around SkillCard.
  *
  * Responsibilities
  * ----------------
- * ✓ Category Section Wrapper
- * ✓ Category Header
- * ✓ Optional Description
- * ✓ Decorative Divider
- * ✓ Renders SkillCard
- * ✓ Responsive
+ * ✓ Section spacing
+ * ✓ Decorative background
+ * ✓ Hover glow
+ * ✓ Responsive layout
  * ✓ Reusable
  *
  * Used By
  * ----------
  * - SkillGrid.tsx
- *
  * ==========================================================
  */
 
@@ -38,60 +34,52 @@ const SkillCategory = ({
   category,
   className,
 }: SkillCategoryProps) => {
-  const Icon = category.icon;
-
   return (
     <section
       className={cn(
-        "space-y-5",
+        "group relative",
+        "overflow-hidden rounded-[32px]",
         className
       )}
     >
-      {/* Category Header */}
-
-      <header className="flex items-center gap-4">
-        <div
-          className={cn(
-            "flex h-12 w-12 items-center justify-center",
-            "rounded-2xl",
-            "bg-linear-to-br",
-            category.color,
-            "shadow-lg"
-          )}
-        >
-          <Icon
-            size={22}
-            className="text-white"
-          />
-        </div>
-
-        <div className="flex-1">
-          <h2 className="text-xl font-bold text-slate-900 dark:text-white">
-            {category.title}
-          </h2>
-
-          <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-            {category.skills.length} Technologies
-          </p>
-        </div>
-      </header>
-
-      {/* Decorative Divider */}
+      {/* Background Glow */}
 
       <div
-        className="
-          h-px
-          w-full
-          bg-linear-to-r
-          from-transparent
-          via-violet-500/30
-          to-transparent
-        "
+        className={cn(
+          "absolute -top-20 -right-20 h-48 w-48 rounded-full",
+          "bg-gradient-to-br",
+          category.color,
+          "opacity-10 blur-3xl",
+          "transition-all duration-700",
+          "group-hover:opacity-25",
+          "group-hover:scale-125"
+        )}
+      />
+
+      {/* Bottom Glow */}
+
+      <div
+        className={cn(
+          "absolute -bottom-24 -left-24 h-56 w-56 rounded-full",
+          "bg-violet-500/10 blur-3xl"
+        )}
+      />
+
+      {/* Decorative Border */}
+
+      <div
+        className={cn(
+          "pointer-events-none absolute inset-0 rounded-[32px]",
+          "border border-white/20",
+          "dark:border-white/5"
+        )}
       />
 
       {/* Card */}
 
-      <SkillCard category={category} />
+      <div className="relative z-10">
+        <SkillCard category={category} />
+      </div>
     </section>
   );
 };

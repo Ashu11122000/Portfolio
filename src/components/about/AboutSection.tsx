@@ -35,41 +35,72 @@ import EducationCard from "./EducationCard";
 
 function AboutSection() {
   return (
-    <section id="about" className="relative overflow-hidden py-24 lg:py-32">
-      {/* Background Glow */}
+    <section
+      id="about"
+      className="relative overflow-hidden py-28 lg:py-36"
+    >
+      {/* ==========================
+          Premium Background Glow
+      =========================== */}
+
       <div
         aria-hidden="true"
-        className="
-          pointer-events-none
-          absolute
-          inset-0
-          -z-10
-          overflow-hidden
-        "
+        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
       >
+        {/* Left Glow */}
         <div
           className="
             absolute
-            left-0
-            top-20
-            h-72
-            w-72
+            -left-32
+            top-16
+            h-[32rem]
+            w-[32rem]
             rounded-full
             bg-indigo-500/10
-            blur-3xl
+            blur-[150px]
           "
         />
 
+        {/* Right Glow */}
         <div
           className="
             absolute
-            bottom-0
-            right-0
-            h-80
-            w-80
+            -right-32
+            top-1/3
+            h-[30rem]
+            w-[30rem]
+            rounded-full
+            bg-fuchsia-500/10
+            blur-[150px]
+          "
+        />
+
+        {/* Bottom Center Glow */}
+        <div
+          className="
+            absolute
+            bottom-[-10rem]
+            left-1/2
+            h-[40rem]
+            w-[40rem]
+            -translate-x-1/2
             rounded-full
             bg-cyan-500/10
-            blur-3xl
+            blur-[180px]
+          "
+        />
+
+        {/* Accent Orb */}
+        <div
+          className="
+            absolute
+            right-1/4
+            top-12
+            h-40
+            w-40
+            rounded-full
+            bg-violet-500/8
+            blur-[100px]
           "
         />
       </div>
@@ -78,9 +109,10 @@ function AboutSection() {
         <div
           className="
             grid
-            gap-12
+            items-start
+            gap-16
             lg:grid-cols-2
-            lg:items-start
+            lg:gap-20
           "
         >
           {/* Left Column */}

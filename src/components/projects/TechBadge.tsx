@@ -3,24 +3,23 @@
  * TechBadge Component
  * ==========================================================
  *
- * Reusable technology badge for project cards and modals.
+ * Ultra Premium Technology Badge
  *
  * Features
  * ----------
- * ✓ Strongly Typed
- * ✓ Reusable
+ * ✓ Glassmorphism
+ * ✓ Premium Hover Animation
+ * ✓ Gradient Background
+ * ✓ Better Typography
  * ✓ Responsive
- * ✓ Glassmorphism Styling
- * ✓ Hover Animation
- * ✓ Dark / Light Theme
- * ✓ Accessibility Friendly
+ * ✓ Accessible
+ * ✓ Reusable
  *
  * Used By
  * ----------
  * - ProjectCard.tsx
  * - ProjectModal.tsx
  * - FeaturedProjects.tsx
- *
  * ==========================================================
  */
 
@@ -35,38 +34,58 @@ interface TechBadgeProps {
   className?: string;
 }
 
-const TechBadge: FC<TechBadgeProps> = ({ technology, className = "" }) => {
+const TechBadge: FC<TechBadgeProps> = ({
+  technology,
+  className = "",
+}) => {
   return (
     <span
       className={`
-                inline-flex
-                items-center
-                gap-2
-                rounded-full
-                border
-                border-primary/20
-                bg-primary/10
-                px-3
-                py-1.5
-                text-xs
-                font-medium
-                text-primary
-                backdrop-blur-md
-                transition-all
-                duration-300
-                hover:-translate-y-0.5
-                hover:border-primary/40
-                hover:bg-primary/15
-                hover:shadow-lg
-                hover:shadow-primary/10
-                dark:border-primary/30
-                dark:bg-primary/10
-                ${className}
-            `}
+        group
+        inline-flex
+        items-center
+        gap-2
+        rounded-full
+        border
+        border-white/10
+        bg-gradient-to-r
+        from-cyan-500/10
+        via-indigo-500/10
+        to-violet-500/10
+        px-3.5
+        py-2
+        text-xs
+        font-semibold
+        tracking-wide
+        text-slate-200
+        backdrop-blur-xl
+        transition-all
+        duration-300
+        hover:-translate-y-1
+        hover:border-cyan-400/30
+        hover:from-cyan-500/20
+        hover:to-violet-500/20
+        hover:shadow-lg
+        hover:shadow-cyan-500/15
+        ${className}
+      `}
     >
-      <Code2 size={14} strokeWidth={2} className="shrink-0" />
+      <Code2
+        size={14}
+        strokeWidth={2}
+        className="
+          shrink-0
+          text-cyan-300
+          transition-transform
+          duration-300
+          group-hover:rotate-12
+          group-hover:scale-110
+        "
+      />
 
-      <span>{technology.name}</span>
+      <span className="whitespace-nowrap">
+        {technology.name}
+      </span>
     </span>
   );
 };

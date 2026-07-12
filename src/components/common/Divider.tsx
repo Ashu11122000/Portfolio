@@ -51,13 +51,9 @@ const spacingClasses = {
 
 function Divider({
   className,
-
   orientation = "horizontal",
-
   variant = "gradient",
-
   spacing = "md",
-
   ...props
 }: DividerProps) {
   const isHorizontal = orientation === "horizontal";
@@ -65,26 +61,54 @@ function Divider({
   return (
     <div
       className={cn(
-        "shrink-0",
+        "relative shrink-0 overflow-hidden",
 
         spacingClasses[spacing],
 
-        isHorizontal ? "w-full h-px" : "h-full w-px",
+        isHorizontal ? "h-px w-full" : "h-full w-px",
 
-        variant === "default" && ["bg-slate-200", "dark:bg-slate-700"],
+        variant === "default" && [
+          "bg-slate-200 dark:bg-slate-700",
+        ],
 
-        variant === "subtle" && ["bg-slate-100", "dark:bg-slate-800"],
+        variant === "subtle" && [
+          "bg-slate-200/50 dark:bg-slate-700/40",
+        ],
 
         variant === "gradient" &&
           (isHorizontal
-            ? "bg-linear-to-r from-transparent via-indigo-500/40 to-transparent"
-            : "bg-linear-to-b from-transparent via-indigo-500/40 to-transparent"),
+            ? [
+                "bg-gradient-to-r",
+                "from-transparent",
+                "via-violet-500/40",
+                "to-transparent",
+                "shadow-[0_0_18px_rgba(139,92,246,0.18)]",
+              ]
+            : [
+                "bg-gradient-to-b",
+                "from-transparent",
+                "via-violet-500/40",
+                "to-transparent",
+                "shadow-[0_0_18px_rgba(139,92,246,0.18)]",
+              ]),
 
-        className,
+        className
       )}
       aria-hidden="true"
       {...props}
-    />
+    >
+      {variant === "gradient" && (
+        <div
+          className={cn(
+            "absolute inset-0 opacity-70",
+
+            isHorizontal
+              ? "bg-gradient-to-r from-transparent via-white/25 to-transparent dark:via-white/10"
+              : "bg-gradient-to-b from-transparent via-white/25 to-transparent dark:via-white/10"
+          )}
+        />
+      )}
+    </div>
   );
 }
 

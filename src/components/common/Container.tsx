@@ -32,21 +32,24 @@ import { cn } from "../../utils/cn";
  */
 
 interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
-    children: ReactNode;
+  children: ReactNode;
 }
 
 function Container({ children, className, ...props }: ContainerProps) {
-    return (
-        <div
-            className={cn(
-                "mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-10",
-                className,
-            )}
-                {...props}
-        >
-            {children}
-        </div>
-    );
+  return (
+    <div
+      className={cn(
+        "relative mx-auto w-full",
+        "max-w-[90rem]",
+        "box-border",
+        "px-5 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16",
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </div>
+  );
 }
 
 export default Container;

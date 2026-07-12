@@ -1,6 +1,11 @@
 import Hero from "../components/hero/Hero";
+
 import AboutPreview from "../components/about/AboutPreview";
+
 import FeaturedExperience from "../components/experience/FeaturedExperience";
+
+import FeaturedProjects from "../components/projects/FeaturedProjects";
+
 import FeaturedCertifications from "../components/certifications/FeaturedCertifications";
 
 /**
@@ -8,68 +13,45 @@ import FeaturedCertifications from "../components/certifications/FeaturedCertifi
  * Home Page
  * ==========================================================
  *
- * Landing page of the portfolio.
+ * Ultra Premium Portfolio Landing Page
  *
- * Purpose
- * -------
- * Welcome visitors and provide a concise overview
- * of your profile through featured sections while
- * directing visitors to dedicated pages for full details.
- *
- * Home Sections
- * -------------
+ * Sections
+ * ----------
  * ✓ Hero
  * ✓ About Preview
  * ✓ Featured Experience
+ * ✓ Featured Projects
  * ✓ Featured Certifications
- * ✓ Contact Section (Coming Next)
- *
- * Dedicated Pages
- * ---------------
- * • About
- * • Skills
- * • Experience
- * • Projects
- * • Certifications
- * • Contact
+ * ✓ Contact CTA
  *
  * ==========================================================
  */
 
 function Home() {
   return (
-    <>
-      {/* ======================================================
-          Hero Section
-      ======================================================= */}
+    <main className="overflow-x-hidden">
+      {/* Hero */}
 
       <Hero />
 
-      {/* ======================================================
-          About Preview
-      ======================================================= */}
+      {/* About */}
 
       <AboutPreview />
 
-      {/* ======================================================
-          Featured Experience
-      ======================================================= */}
+      {/* Experience */}
 
       <FeaturedExperience />
 
-      {/* ======================================================
-          Featured Certifications
-      ======================================================= */}
+      {/* Featured Projects */}
+
+      <FeaturedProjects />
+
+      {/* Certifications */}
 
       <FeaturedCertifications />
 
-      {/* ======================================================
-          Contact Section
-          (Coming Next)
-      ======================================================= */}
-
-      {/* <HomeContactSection /> */}
-    </>
+      {/* Contact CTA */}
+    </main>
   );
 }
 

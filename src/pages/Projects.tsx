@@ -3,17 +3,17 @@
  * Projects Page
  * ==========================================================
  *
- * Displays all portfolio projects with search
- * and category filtering.
+ * Ultra Premium Projects Showcase
  *
- * Responsibilities
- * ----------------
- * ✓ Manage Search State
- * ✓ Manage Filter State
- * ✓ Filter Projects
- * ✓ Render Reusable Components
- *
- * No UI business logic exists inside child components.
+ * Features
+ * ----------
+ * ✓ Search
+ * ✓ Category Filtering
+ * ✓ Live Project Counter
+ * ✓ Premium Layout
+ * ✓ Glassmorphism Background
+ * ✓ Responsive
+ * ✓ Optimized Filtering
  *
  * ==========================================================
  */
@@ -34,57 +34,120 @@ import projects from "../data/projects";
 function Projects() {
   const [search, setSearch] = useState("");
 
-  const [filter, setFilter] = useState<ProjectFilter>("All");
+  const [filter, setFilter] =
+    useState<ProjectFilter>("All");
 
   const filteredProjects = useMemo(() => {
-    return projects.filter((project) => {
-      const matchesCategory = filter === "All" || project.category === filter;
+    const keyword = search.trim().toLowerCase();
 
-      const keyword = search.trim().toLowerCase();
+    return projects.filter((project) => {
+      const matchesCategory =
+        filter === "All" ||
+        project.category === filter;
 
       const matchesSearch =
         keyword.length === 0 ||
-        project.name.toLowerCase().includes(keyword) ||
-        project.description.toLowerCase().includes(keyword) ||
+        project.name
+          .toLowerCase()
+          .includes(keyword) ||
+        project.description
+          .toLowerCase()
+          .includes(keyword) ||
         project.technologies.some((technology) =>
-          technology.name.toLowerCase().includes(keyword),
+          technology.name
+            .toLowerCase()
+            .includes(keyword)
         );
 
-      return matchesCategory && matchesSearch;
+      return (
+        matchesCategory &&
+        matchesSearch
+      );
     });
-  }, [search, filter]);
+  }, [filter, search]);
 
   return (
-    <main className="min-h-screen py-24">
+    <main
+      className="
+        relative
+        min-h-screen
+        overflow-hidden
+        py-28
+      "
+    >
+      {/* Background Glow */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          -z-10
+          bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.10),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(99,102,241,0.12),transparent_40%)]
+        "
+      />
+
       <Container>
+        {/* Heading */}
+
         <SectionTitle
           title="Projects"
-          subtitle="
-                        Explore a collection of my frontend,
-                        backend, and full-stack applications
-                        built with modern technologies,
-                        scalable architectures, and
-                        production-ready development
-                        practices.
-                    "
+          subtitle="Explore a curated collection of frontend, backend, and full-stack applications showcasing scalable architecture, clean code, modern UI design, and real-world software engineering practices."
+          center
         />
 
         {/* Search */}
 
-        <div className="mt-14">
-          <SearchBar value={search} onChange={setSearch} />
+        <div className="mx-auto mt-16 max-w-3xl">
+          <SearchBar
+            value={search}
+            onChange={setSearch}
+          />
         </div>
 
         {/* Filter */}
 
-        <div className="mt-8">
-          <FilterBar activeFilter={filter} onFilterChange={setFilter} />
+        <div className="mt-10">
+          <FilterBar
+            activeFilter={filter}
+            onFilterChange={setFilter}
+          />
         </div>
 
-        {/* Grid */}
+        {/* Result Counter */}
 
-        <div className="mt-14">
-          <ProjectGrid projects={filteredProjects} />
+        <div
+          className="
+            mt-10
+            flex
+            items-center
+            justify-between
+          "
+        >
+          <p
+            className="
+              text-sm
+              font-medium
+              tracking-wide
+              text-slate-400
+            "
+          >
+            Showing{" "}
+            <span className="font-semibold text-cyan-400">
+              {filteredProjects.length}
+            </span>{" "}
+            {filteredProjects.length === 1
+              ? "project"
+              : "projects"}
+          </p>
+        </div>
+
+        {/* Projects */}
+
+        <div className="mt-10">
+          <ProjectGrid
+            projects={filteredProjects}
+          />
         </div>
       </Container>
     </main>

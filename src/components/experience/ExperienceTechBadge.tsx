@@ -1,25 +1,19 @@
 /**
  * ==========================================================
- * ExperienceTechBadge Component
+ * Ultra Premium Experience Tech Badge
  * ==========================================================
  *
- * Reusable technology badge for the Experience module.
+ * Premium reusable technology badge used across
+ * the Experience module.
  *
  * Features
  * ----------
- * ✓ Strongly Typed
- * ✓ Experience Module Specific
+ * ✓ Glassmorphism
+ * ✓ Gradient Accent
+ * ✓ Smooth Hover Animation
  * ✓ Responsive
- * ✓ Glassmorphism Styling
- * ✓ Hover Animation
- * ✓ Dark / Light Theme
- * ✓ Accessibility Friendly
- *
- * Used By
- * ----------
- * - ExperienceCard.tsx
- * - FeaturedExperience.tsx
- *
+ * ✓ Accessible
+ * ✓ TypeScript
  * ==========================================================
  */
 
@@ -41,34 +35,69 @@ const ExperienceTechBadge: FC<ExperienceTechBadgeProps> = ({
   return (
     <span
       className={`
+        group
         inline-flex
         items-center
-        gap-2
-        rounded-full
+        gap-2.5
+        rounded-2xl
         border
-        border-primary/20
-        bg-primary/10
-        px-3
-        py-1.5
-        text-xs
+        border-white/10
+        bg-gradient-to-r
+        from-indigo-500/10
+        via-violet-500/10
+        to-cyan-500/10
+        px-4
+        py-2
+        text-sm
         font-medium
-        text-primary
-        backdrop-blur-md
+        text-slate-700
+        backdrop-blur-xl
         transition-all
         duration-300
-        hover:-translate-y-0.5
-        hover:border-primary/40
-        hover:bg-primary/15
-        hover:shadow-lg
-        hover:shadow-primary/10
-        dark:border-primary/30
-        dark:bg-primary/10
+        hover:-translate-y-1
+        hover:border-indigo-500/40
+        hover:from-indigo-500/20
+        hover:via-violet-500/20
+        hover:to-cyan-500/20
+        hover:shadow-[0_12px_30px_rgba(99,102,241,0.18)]
+        dark:border-white/10
+        dark:text-slate-200
         ${className}
       `}
     >
-      <Code2 size={14} strokeWidth={2} className="shrink-0" />
+      <div
+        className="
+          flex
+          h-7
+          w-7
+          items-center
+          justify-center
+          rounded-xl
+          bg-gradient-to-br
+          from-indigo-500
+          via-violet-500
+          to-cyan-500
+          text-white
+          transition-transform
+          duration-300
+          group-hover:rotate-6
+          group-hover:scale-110
+        "
+      >
+        <Code2
+          size={14}
+          strokeWidth={2.2}
+        />
+      </div>
 
-      <span>{technology.name}</span>
+      <span
+        className="
+          whitespace-nowrap
+          leading-none
+        "
+      >
+        {technology.name}
+      </span>
     </span>
   );
 };

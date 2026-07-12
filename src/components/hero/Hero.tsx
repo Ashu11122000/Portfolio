@@ -7,41 +7,72 @@ import HeroContent from "./HeroContent";
 import HeroCodeCard from "./HeroCodeCard";
 import HeroStats from "./HeroStats";
 
+/**
+ * ==========================================================
+ * Hero Section
+ * ==========================================================
+ *
+ * Ultra Premium Landing Section
+ *
+ * Features
+ * ----------
+ * ✓ Full Screen Layout
+ * ✓ Glassmorphism Ready
+ * ✓ Animated Background
+ * ✓ Floating Shapes
+ * ✓ Responsive Two Column Layout
+ * ✓ Premium Spacing
+ * ✓ Hero Statistics
+ */
+
 function Hero() {
   return (
     <section
       className="
-      relative
-      overflow-hidden
-      pt-32
-      pb-20
+        relative
+        flex
+        min-h-screen
+        items-center
+        overflow-hidden
+        pt-28
+        pb-20
       "
     >
+      {/* Animated Background */}
       <AnimatedBackground />
 
+      {/* Floating Decorative Shapes */}
       <FloatingShapes />
 
-      <Container>
+      {/* Soft Gradient Overlay */}
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          -z-10
+          bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.18),transparent_45%),radial-gradient(circle_at_bottom_right,rgba(14,165,233,0.12),transparent_40%)]
+        "
+      />
+
+      <Container className="relative z-10">
         <div
           className="
-          grid
-          items-center
-          gap-12
-          lg:grid-cols-2
+            grid
+            items-center
+            gap-16
+            lg:grid-cols-[1.15fr_0.85fr]
           "
         >
-          {/* Left */}
-
+          {/* Left Content */}
           <HeroContent />
 
-          {/* Right */}
-
+          {/* Right Showcase */}
           <HeroCodeCard />
         </div>
 
-        {/* Stats */}
-
-        <div className="mt-20">
+        {/* Statistics */}
+        <div className="mt-24">
           <HeroStats />
         </div>
       </Container>

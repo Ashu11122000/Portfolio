@@ -55,37 +55,46 @@ function CertificationCard({ certification, onView }: CertificationCardProps) {
   return (
     <GlassCard
       className="
-                group
-                relative
-                h-full
-                overflow-hidden
-                rounded-3xl
-                border
-                border-white/10
-                bg-white/5
-                backdrop-blur-xl
-                transition-all
-                duration-300
-                hover:-translate-y-2
-                hover:border-violet-500/40
-                hover:shadow-[0_20px_60px_rgba(124,58,237,0.25)]
-            "
+group
+relative
+h-full
+overflow-hidden
+rounded-[28px]
+border
+border-white/10
+bg-white/[0.04]
+backdrop-blur-2xl
+transition-all
+duration-500
+hover:-translate-y-2
+hover:border-violet-500/30
+hover:shadow-[0_35px_90px_rgba(124,58,237,0.22)]
+before:absolute
+before:inset-0
+before:rounded-[28px]
+before:bg-gradient-to-br
+before:from-white/5
+before:to-transparent
+before:opacity-70
+"
     >
       {/* Gradient Glow */}
 
       <div
         className="
-                    absolute
-                    inset-0
-                    opacity-0
-                    transition-opacity
-                    duration-300
-                    group-hover:opacity-100
-                    bg-linear-to-br
-                    from-violet-500/10
-                    via-fuchsia-500/5
-                    to-cyan-500/10
-                "
+        absolute
+        -right-24
+        -top-24
+        h-72
+        w-72
+        rounded-full
+        bg-violet-500/15
+        blur-3xl
+        transition-all
+        duration-700
+        group-hover:scale-125
+        group-hover:opacity-100
+    "
       />
 
       <div className="relative flex h-full flex-col p-6">
@@ -94,20 +103,25 @@ function CertificationCard({ certification, onView }: CertificationCardProps) {
         <div className="mb-5 flex items-start justify-between gap-4">
           <div
             className="
-                            flex
-                            h-14
-                            w-14
-                            items-center
-                            justify-center
-                            rounded-2xl
-                            bg-linear-to-br
-                            from-violet-500
-                            to-fuchsia-500
-                            text-white
-                            shadow-lg
-                        "
+        flex
+        h-16
+        w-16
+        items-center
+        justify-center
+        rounded-2xl
+        bg-gradient-to-br
+        from-violet-500
+        via-fuchsia-500
+        to-cyan-500
+        text-white
+        shadow-xl
+        transition-all
+        duration-500
+        group-hover:scale-110
+        group-hover:rotate-6
+    "
           >
-            <Award size={28} />
+            <Award size={30} />
           </div>
 
           <Badge>{category}</Badge>
@@ -117,11 +131,17 @@ function CertificationCard({ certification, onView }: CertificationCardProps) {
 
         <h3
           className="
-                        text-xl
-                        font-bold
-                        leading-snug
-                        text-white
-                    "
+mt-1
+text-2xl
+font-bold
+leading-tight
+tracking-tight
+text-slate-900
+transition-all
+duration-300
+group-hover:text-violet-500
+dark:text-white
+"
         >
           {title}
         </h3>

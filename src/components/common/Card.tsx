@@ -49,57 +49,51 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
       <div
         ref={ref}
         className={cn(
-          // Base
-          "relative overflow-hidden rounded-3xl",
+          "group relative overflow-hidden rounded-3xl",
 
-          // Padding
           "p-6",
 
-          // Border
-          "border border-slate-200/70 dark:border-slate-700/60",
+          "border border-white/20 dark:border-white/10",
 
-          // Background
           glass
-            ? "bg-white/70 backdrop-blur-xl dark:bg-slate-900/60"
+            ? "bg-white/70 backdrop-blur-2xl dark:bg-slate-900/60"
             : "bg-white dark:bg-slate-900",
 
-          // Shadow
-          "shadow-lg shadow-slate-200/20",
-          "dark:shadow-black/30",
+          "shadow-xl shadow-slate-300/10 dark:shadow-black/30",
 
-          // Transition
           "transition-all duration-500 ease-out",
 
-          // Hover
           hover && [
             "hover:-translate-y-2",
-            "hover:shadow-2xl",
-            "hover:shadow-violet-500/10",
+            "hover:scale-[1.015]",
             "hover:border-violet-400/40",
+            "hover:shadow-2xl",
+            "hover:shadow-violet-500/15",
           ],
 
-          className,
+          className
         )}
         {...props}
       >
-        {/* Decorative Glow */}
+        {/* Premium Border Highlight */}
+        <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-60" />
 
+        {/* Ambient Glow */}
         <div
           className={cn(
             "pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500",
-
-            hover && "group-hover:opacity-100",
+            hover && "group-hover:opacity-100"
           )}
         >
           <div
             className="
               absolute
-              -top-20
+              -top-24
               right-0
-              h-40
-              w-40
+              h-52
+              w-52
               rounded-full
-              bg-violet-500/10
+              bg-violet-500/15
               blur-3xl
             "
           />
@@ -107,23 +101,39 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
           <div
             className="
               absolute
-              -bottom-20
-              -left-10
-              h-40
-              w-40
+              -bottom-24
+              -left-12
+              h-52
+              w-52
               rounded-full
-              bg-cyan-500/10
+              bg-cyan-500/15
               blur-3xl
             "
           />
         </div>
 
-        {/* Content */}
+        {/* Soft Shine */}
+        <div
+          className="
+            pointer-events-none
+            absolute
+            inset-0
+            opacity-0
+            transition-opacity
+            duration-500
+            group-hover:opacity-100
+            bg-gradient-to-br
+            from-white/10
+            via-transparent
+            to-transparent
+          "
+        />
 
+        {/* Content */}
         <div className="relative z-10">{children}</div>
       </div>
     );
-  },
+  }
 );
 
 Card.displayName = "Card";
