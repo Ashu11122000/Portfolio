@@ -428,38 +428,6 @@ function FeaturedCertifications() {
                   architecture to stay aligned with industry best practices.
                 </p>
               </div>
-
-              {/* CTA */}
-
-              <Link
-                to="/certifications"
-                className="lg:ml-auto"
-              >
-                <Button
-                  className="
-                    group
-                    rounded-2xl
-                    px-7
-                    py-6
-                    transition-all
-                    duration-300
-                    hover:-translate-y-1
-                    hover:shadow-[0_20px_60px_rgba(139,92,246,0.35)]
-                  "
-                >
-                  Explore All
-
-                  <ArrowRight
-                    size={18}
-                    className="
-                      ml-2
-                      transition-transform
-                      duration-300
-                      group-hover:translate-x-1.5
-                    "
-                  />
-                </Button>
-              </Link>
             </div>
           </div>
         </div>
