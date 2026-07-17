@@ -4,45 +4,55 @@ import { cn } from "../../utils/cn";
 
 /**
  * ==========================================================
- * Container Component
+ * Ultra Premium Container Component
  * ==========================================================
  *
- * A reusable responsive wrapper used throughout the
- * portfolio to keep all sections aligned.
+ * A reusable responsive wrapper that keeps every section
+ * perfectly aligned across the portfolio.
  *
  * Features
- * ----------
- * ✓ Responsive Width
- * ✓ Max Width
- * ✓ Horizontal Padding
- * ✓ Custom Class Support
+ * ----------------------------------------------------------
+ * ✓ Responsive Layout
+ * ✓ Large Screen Optimized
+ * ✓ Comfortable Side Padding
+ * ✓ Ultra-wide Display Support
  * ✓ TypeScript
- *
- * Example
- * ----------
- * <Container>
- *   <Hero />
- * </Container>
- *
- * <Container className="py-20">
- *   <AboutSection />
- * </Container>
- *
+ * ✓ Reusable
  * ==========================================================
  */
 
-interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
+export interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
 }
 
-function Container({ children, className, ...props }: ContainerProps) {
+function Container({
+  children,
+  className,
+  ...props
+}: ContainerProps) {
   return (
     <div
       className={cn(
+        // Layout
         "relative mx-auto w-full",
-        "max-w-[90rem]",
+
+        // Maximum content width
+        "max-w-screen-2xl",
+
+        // Better box model
         "box-border",
-        "px-5 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16",
+
+        // Responsive horizontal padding
+        "px-4",
+        "sm:px-6",
+        "md:px-8",
+        "lg:px-10",
+        "xl:px-12",
+        "2xl:px-16",
+
+        // Optional support if Tailwind config includes 3xl
+        "3xl:px-20",
+
         className
       )}
       {...props}

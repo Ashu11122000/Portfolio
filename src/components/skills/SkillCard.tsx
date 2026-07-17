@@ -9,24 +9,23 @@ import { cn } from "../../utils/cn";
 import type { SkillCardProps } from "../../types/skill";
 
 /**
- * ==========================================================
+ * =============================================================================
  * SkillCard Component
- * ==========================================================
+ * =============================================================================
  *
  * Ultra Premium Skill Category Card
  *
  * Features
- * ----------
+ * -----------------------------------------------------------------------------
  * ✓ Premium Glassmorphism
- * ✓ Animated Gradient Glow
- * ✓ Floating Background Effects
- * ✓ Modern Icon Container
- * ✓ Premium Typography
- * ✓ Responsive Layout
- * ✓ Hover Elevation
+ * ✓ Aurora Gradient Background
+ * ✓ Animated Gradient Border
+ * ✓ Theme Aware
+ * ✓ Responsive
+ * ✓ Premium Hover Effects
+ * ✓ Smooth Animations
  * ✓ Tailwind CSS v4
- * ✓ TypeScript Strict
- * ==========================================================
+ * =============================================================================
  */
 
 const SkillCard = ({ category }: SkillCardProps) => {
@@ -35,82 +34,153 @@ const SkillCard = ({ category }: SkillCardProps) => {
   return (
     <Card
       className={cn(
-        "group relative flex h-full flex-col overflow-hidden rounded-[30px]",
-        "border border-white/30 dark:border-white/10",
+        "group relative flex h-full flex-col overflow-hidden rounded-4xl",
 
-        // Glass Effect
-        "bg-white/65 backdrop-blur-2xl",
-        "dark:bg-slate-900/60",
+        /* Glass */
 
-        // Shadow
-        "shadow-[0_10px_50px_rgba(15,23,42,0.08)]",
-        "dark:shadow-[0_12px_60px_rgba(0,0,0,0.45)]",
+        "border border-zinc-200/70 dark:border-white/10",
 
-        // Animation
-        "transition-all duration-700",
+        "bg-white/80 dark:bg-zinc-900/70",
+
+        "backdrop-blur-3xl",
+
+        /* Shadow */
+
+        "shadow-[0_15px_60px_rgba(15,23,42,0.08)]",
+        "dark:shadow-[0_20px_80px_rgba(0,0,0,.45)]",
+
+        /* Animation */
+
+        "transition-all duration-700 ease-out",
+
         "hover:-translate-y-3",
-        "hover:shadow-[0_25px_80px_rgba(139,92,246,0.18)]",
-        "hover:border-violet-400/40",
+
+        "hover:border-violet-500/40",
+
+        "hover:shadow-[0_30px_90px_rgba(139,92,246,.20)]",
       )}
     >
-      {/* ========================================= */}
-      {/* Decorative Background */}
-      {/* ========================================= */}
+      {/* ========================================================= */}
+      {/* Top Border Glow */}
+      {/* ========================================================= */}
+
+      <div
+        className="
+          absolute
+          inset-x-0
+          top-0
+
+          h-px
+
+          bg-linear-to-r
+          from-transparent
+          via-violet-500/70
+          to-transparent
+
+          opacity-0
+
+          transition-opacity
+          duration-700
+
+          group-hover:opacity-100
+        "
+      />
+
+      {/* ========================================================= */}
+      {/* Aurora Background */}
+      {/* ========================================================= */}
 
       <div
         className={cn(
-          "absolute -right-14 -top-14 h-44 w-44 rounded-full blur-3xl",
-          "opacity-0 transition-all duration-700",
-          "group-hover:opacity-30",
-          "bg-gradient-to-br",
+          "absolute -right-16 -top-16 h-52 w-52 rounded-full",
+
+          "bg-linear-to-br",
+
           category.color,
+
+          "opacity-20",
+
+          "blur-[110px]",
+
+          "transition-all duration-700",
+
+          "group-hover:scale-125",
+
+          "group-hover:opacity-40",
         )}
       />
 
       <div
-        className={cn(
-          "absolute -bottom-20 -left-16 h-52 w-52 rounded-full",
-          "bg-violet-500/10 blur-3xl",
-          "opacity-60",
-        )}
-      />
+        className="
+          absolute
+          -bottom-20
+          -left-20
 
-      {/* Animated Gradient Border */}
+          h-64
+          w-64
+
+          rounded-full
+
+          bg-cyan-500/10
+
+          blur-[120px]
+        "
+      />
 
       <div
-        className={cn(
-          "absolute inset-0 rounded-[30px]",
-          "opacity-0 transition-opacity duration-700",
-          "group-hover:opacity-100",
-          "bg-gradient-to-br from-violet-500/10 via-fuchsia-500/5 to-cyan-500/10",
-          "pointer-events-none",
-        )}
+        className="
+          absolute
+          inset-0
+
+          rounded-4xl
+
+          bg-linear-to-br
+          from-white/40
+          via-transparent
+          to-transparent
+
+          dark:from-white/5
+
+          pointer-events-none
+        "
       />
 
-      {/* ========================================= */}
+      {/* ========================================================= */}
       {/* Card Content */}
-      {/* ========================================= */}
+      {/* ========================================================= */}
 
-      <div className="relative z-10 flex h-full flex-col">
-        {/* =============================== */}
+      <div className="relative z-10 flex h-full flex-col p-7">
+        {/* ========================================================= */}
         {/* Header */}
-        {/* =============================== */}
+        {/* ========================================================= */}
 
-        <div className="mb-8 flex items-start justify-between">
-          {/* Left */}
+        <div className="mb-8 flex items-start justify-between gap-5">
+          {/* Icon */}
 
           <div className="relative">
             {/* Glow */}
 
             <div
               className={cn(
-                "absolute inset-0 rounded-3xl blur-2xl",
-                "scale-125 opacity-40",
-                "transition-all duration-700",
-                "group-hover:scale-150",
-                "group-hover:opacity-70",
-                "bg-gradient-to-br",
+                "absolute inset-0",
+
+                "scale-125",
+
+                "rounded-3xl",
+
+                "bg-linear-to-br",
+
                 category.color,
+
+                "opacity-40",
+
+                "blur-2xl",
+
+                "transition-all duration-700",
+
+                "group-hover:scale-150",
+
+                "group-hover:opacity-70",
               )}
             />
 
@@ -118,182 +188,278 @@ const SkillCard = ({ category }: SkillCardProps) => {
 
             <div
               className={cn(
-                "relative flex h-16 w-16 items-center justify-center",
+                "relative",
+
+                "flex h-16 w-16 items-center justify-center",
+
                 "rounded-3xl",
-                "bg-gradient-to-br",
+
+                "border border-white/20 dark:border-white/10",
+
+                "bg-linear-to-br",
+
                 category.color,
-                "shadow-xl",
-                "transition-all duration-500",
+
+                "text-white",
+
+                "shadow-[0_20px_45px_rgba(139,92,246,.30)]",
+
+                "transition-all duration-700",
+
                 "group-hover:rotate-6",
+
                 "group-hover:scale-110",
               )}
             >
-              <Icon
-                size={30}
-                className="text-slate-900 dark:text-white drop-shadow-md"
-              />
+              <Icon size={30} strokeWidth={2.2} />
             </div>
           </div>
 
-          {/* Right */}
+          {/* Category Info */}
 
           <div className="text-right">
             <p
-              className={cn(
-                "text-[11px]",
-                "font-semibold uppercase tracking-[0.35em]",
-                "text-slate-500",
-                "dark:text-slate-600 dark:text-slate-400",
-              )}
+              className="
+                text-[11px]
+                font-semibold
+                uppercase
+                tracking-[0.35em]
+
+                text-zinc-500
+                dark:text-zinc-400
+              "
             >
               Skill Category
             </p>
 
             <h3
-              className={cn(
-                "mt-2 text-2xl font-extrabold",
-                "tracking-tight",
-                "text-slate-900",
-                "dark:text-slate-900 dark:text-white",
-              )}
+              className="
+                mt-2
+
+                text-2xl
+                font-black
+                tracking-tight
+
+                text-zinc-900
+                dark:text-white
+              "
             >
               {category.title}
             </h3>
 
-            <p className="mt-2 text-sm text-slate-500 dark:text-slate-600 dark:text-slate-400">
+            <p
+              className="
+                mt-2
+
+                text-sm
+                font-medium
+
+                text-zinc-600
+                dark:text-zinc-400
+              "
+            >
               {category.skills.length} Technologies
             </p>
           </div>
         </div>
 
-        {/* ========================================= */}
+        {/* ========================================================= */}
         {/* Technologies */}
-        {/* ========================================= */}
+        {/* ========================================================= */}
 
-        <div className="mb-8">
+                <div className="mb-8">
+          {/* ========================================================= */}
           {/* Section Header */}
+          {/* ========================================================= */}
 
-          <div className="mb-5 flex items-center justify-between">
+          <div className="mb-6 flex items-center justify-between gap-4">
             <div>
-              <h4 className="text-sm font-semibold uppercase tracking-wide text-slate-700 dark:text-slate-700 dark:text-slate-300">
+              <h4
+                className="
+                  text-sm
+                  font-semibold
+                  uppercase
+                  tracking-[0.18em]
+
+                  text-zinc-700
+                  dark:text-zinc-300
+                "
+              >
                 Technologies
               </h4>
 
-              <p className="mt-1 text-xs text-slate-500 dark:text-slate-600 dark:text-slate-400">
-                Core tools & frameworks I work with
+              <p
+                className="
+                  mt-1
+
+                  text-xs
+                  leading-6
+
+                  text-zinc-500
+                  dark:text-zinc-400
+                "
+              >
+                Core technologies, frameworks and tools I use regularly.
               </p>
             </div>
+
+            {/* Counter */}
 
             <div
               className={cn(
                 "inline-flex items-center justify-center",
+
                 "rounded-full",
-                "border border-violet-300/30",
-                "bg-gradient-to-r from-violet-500/15 to-fuchsia-500/15",
-                "px-4 py-1.5",
-                "text-xs font-bold",
-                "text-violet-700",
-                "shadow-sm",
-                "dark:border-violet-400/20",
-                "dark:text-violet-300",
+
+                "border border-violet-500/20",
+
+                "bg-linear-to-r",
+                "from-violet-500/10",
+                "via-fuchsia-500/10",
+                "to-cyan-500/10",
+
+                "px-4 py-2",
+
+                "backdrop-blur-xl",
+
+                "shadow-lg shadow-violet-500/10",
+
+                "transition-all duration-500",
+
+                "group-hover:border-violet-500/40",
               )}
             >
-              {category.skills.length}
+              <span
+                className="
+                  text-sm
+                  font-bold
+
+                  text-violet-700
+                  dark:text-violet-300
+                "
+              >
+                {category.skills.length}
+              </span>
             </div>
           </div>
 
+          {/* ========================================================= */}
           {/* Skill Pills */}
+          {/* ========================================================= */}
 
           <div className="flex flex-wrap gap-3">
             {category.skills.map((skill) => (
               <div
                 key={skill.id}
                 className={cn(
-                  "group/item relative overflow-hidden",
+                  "group/item",
 
-                  "inline-flex items-center gap-2.5",
+                  "relative overflow-hidden",
+
+                  "inline-flex items-center gap-3",
 
                   "rounded-2xl",
 
-                  "border border-slate-200/70",
-                  "dark:border-slate-700/70",
+                  "border border-zinc-200/80",
+                  "dark:border-zinc-700/70",
 
-                  "bg-white/70",
-                  "dark:bg-slate-800/60",
+                  "bg-white/75",
+                  "dark:bg-zinc-800/60",
 
-                  "px-4 py-2.5",
+                  "px-4 py-3",
 
                   "backdrop-blur-xl",
 
-                  "transition-all duration-300",
+                  "transition-all duration-500 ease-out",
 
                   "hover:-translate-y-1",
+
                   "hover:scale-[1.03]",
 
-                  "hover:border-violet-400/40",
+                  "hover:border-violet-500/40",
 
                   "hover:shadow-lg",
-                  "hover:shadow-violet-500/10",
+
+                  "hover:shadow-violet-500/15",
                 )}
               >
-                {/* Hover Shine */}
+                {/* Animated Shine */}
 
                 <div
-                  className={cn(
-                    "absolute inset-0",
+                  className="
+                    pointer-events-none
+                    absolute
+                    inset-0
 
-                    "-translate-x-full",
+                    -translate-x-full
 
-                    "bg-gradient-to-r",
-                    "from-transparent",
-                    "via-white/40",
-                    "to-transparent",
+                    bg-linear-to-r
+                    from-transparent
+                    via-white/50
+                    to-transparent
 
-                    "transition-transform",
-                    "duration-700",
+                    transition-transform
+                    duration-700
 
-                    "group-hover/item:translate-x-full",
+                    group-hover/item:translate-x-full
 
-                    "dark:via-white/10",
-                  )}
+                    dark:via-white/10
+                  "
                 />
 
                 {/* Icon */}
 
                 <div
-                  className={cn(
-                    "relative z-10",
+                  className="
+                    relative
+                    z-10
 
-                    "flex h-6 w-6 items-center justify-center",
+                    flex
+                    h-7
+                    w-7
 
-                    "rounded-full",
+                    items-center
+                    justify-center
 
-                    "bg-violet-500/10",
+                    rounded-full
 
-                    "transition-all duration-300",
+                    bg-violet-500/10
+                    dark:bg-violet-500/20
 
-                    "group-hover/item:bg-violet-500/20",
-                  )}
+                    transition-all
+                    duration-300
+
+                    group-hover/item:bg-violet-500/20
+                    dark:group-hover/item:bg-violet-500/30
+                  "
                 >
-                  <CheckCircle2 size={14} className="text-violet-500" />
+                  <CheckCircle2
+                    size={15}
+                    className="
+                      text-violet-600
+                      dark:text-violet-300
+                    "
+                  />
                 </div>
 
                 {/* Skill Name */}
 
                 <span
-                  className={cn(
-                    "relative z-10",
+                  className="
+                    relative
+                    z-10
 
-                    "font-medium",
+                    font-medium
 
-                    "text-slate-700",
-                    "dark:text-slate-200",
+                    text-zinc-700
+                    dark:text-zinc-200
 
-                    "transition-colors duration-300",
+                    transition-colors
+                    duration-300
 
-                    "group-hover/item:text-violet-700",
-                    "dark:group-hover/item:text-violet-300",
-                  )}
+                    group-hover/item:text-violet-700
+                    dark:group-hover/item:text-violet-300
+                  "
                 >
                   {skill.name}
                 </span>
@@ -302,78 +468,196 @@ const SkillCard = ({ category }: SkillCardProps) => {
           </div>
         </div>
 
-        {/* ========================================= */}
+        {/* ========================================================= */}
         {/* Footer */}
-        {/* ========================================= */}
+        {/* ========================================================= */}
+                <div className="mt-auto">
+          {/* ========================================================= */}
+          {/* Premium Divider */}
+          {/* ========================================================= */}
 
-        <div className="mt-auto">
-          {/* Divider */}
+          <div className="relative mb-7 h-px overflow-hidden">
+            <div
+              className="
+                absolute
+                inset-0
 
-          <div className="mb-6 h-px w-full bg-gradient-to-r from-transparent via-slate-300/70 to-transparent dark:via-slate-700/70" />
+                bg-linear-to-r
+                from-transparent
+                via-zinc-300/80
+                to-transparent
 
-          {/* Proficiency Header */}
+                dark:via-white/10
+              "
+            />
 
-          <div className="mb-5 flex items-center justify-between">
+            <div
+              className="
+                absolute
+                left-1/2
+                top-1/2
+
+                h-12
+                w-12
+
+                -translate-x-1/2
+                -translate-y-1/2
+
+                rounded-full
+
+                bg-violet-500/20
+
+                blur-2xl
+              "
+            />
+          </div>
+
+          {/* ========================================================= */}
+          {/* Overall Proficiency */}
+          {/* ========================================================= */}
+
+          <div className="mb-6 flex items-center justify-between gap-5">
             <div>
-              <p className="text-sm font-semibold text-slate-700 dark:text-slate-700 dark:text-slate-300">
+              <p
+                className="
+                  text-sm
+                  font-semibold
+
+                  text-zinc-800
+                  dark:text-zinc-200
+                "
+              >
                 Overall Proficiency
               </p>
 
-              <p className="mt-1 text-xs text-slate-500 dark:text-slate-600 dark:text-slate-400">
-                Experience across this technology stack
+              <p
+                className="
+                  mt-1
+
+                  text-xs
+                  leading-6
+
+                  text-zinc-500
+                  dark:text-zinc-400
+                "
+              >
+                Experience across this technology ecosystem
               </p>
             </div>
+
+            {/* Percentage Badge */}
 
             <div
               className={cn(
                 "rounded-2xl",
-                "bg-gradient-to-r",
+
+                "bg-linear-to-r",
+
                 category.color,
-                "px-4 py-2",
-                "shadow-lg",
+
+                "px-5 py-2.5",
+
+                "text-white",
+
+                "shadow-[0_15px_40px_rgba(139,92,246,.28)]",
+
+                "transition-all duration-500",
+
+                "group-hover:scale-105",
               )}
             >
-              <span className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
+              <span className="text-lg font-bold tracking-tight">
                 {category.percentage}%
               </span>
             </div>
           </div>
 
-          {/* Progress Bar */}
+          {/* ========================================================= */}
+          {/* Progress */}
+          {/* ========================================================= */}
 
-          <div className="space-y-3">
+          <div className="space-y-4">
             <SkillProgress value={category.percentage} />
 
-            {/* Scale Labels */}
+            {/* Labels */}
 
-            <div className="flex items-center justify-between text-[11px] font-medium uppercase tracking-wider text-slate-600 dark:text-slate-400 dark:text-slate-500">
+            <div
+              className="
+                flex
+                items-center
+                justify-between
+
+                text-[11px]
+                font-semibold
+                uppercase
+                tracking-[0.18em]
+
+                text-zinc-500
+                dark:text-zinc-400
+              "
+            >
               <span>Beginner</span>
+
               <span>Intermediate</span>
+
               <span>Advanced</span>
+
               <span>Expert</span>
             </div>
           </div>
         </div>
+
       </div>
 
-      {/* ========================================= */}
-      {/* Bottom Accent Line */}
-      {/* ========================================= */}
-
-      <div
+      {/* ========================================================= */}
+      {/* Bottom Accent */}
+      {/* ========================================================= */}
+            <div
         className={cn(
-          "absolute inset-x-0 bottom-0 h-1",
+          "absolute inset-x-0 bottom-0 h-1.5",
 
           "origin-left scale-x-0",
 
-          "bg-gradient-to-r",
+          "bg-linear-to-r",
 
           category.color,
 
-          "transition-transform duration-700",
+          "shadow-[0_0_25px_rgba(139,92,246,.35)]",
+
+          "transition-transform duration-700 ease-out",
 
           "group-hover:scale-x-100",
         )}
+      />
+
+      {/* Bottom Glow */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+
+          bottom-0
+          left-1/2
+
+          h-24
+          w-48
+
+          -translate-x-1/2
+
+          rounded-full
+
+          bg-violet-500/15
+
+          blur-3xl
+
+          opacity-0
+
+          transition-opacity
+          duration-700
+
+          group-hover:opacity-100
+        "
       />
     </Card>
   );

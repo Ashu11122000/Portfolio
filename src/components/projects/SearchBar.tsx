@@ -8,17 +8,14 @@
  * Features
  * ----------
  * ✓ Premium Glassmorphism
+ * ✓ Better Light/Dark Mode
  * ✓ Animated Search Icon
  * ✓ Premium Focus Ring
+ * ✓ Gradient Glow
  * ✓ Smooth Hover Effects
  * ✓ Clear Button Animation
- * ✓ Fully Responsive
+ * ✓ Responsive
  * ✓ Accessible
- *
- * Used By
- * ----------
- * - Projects.tsx
- * - ProjectGrid.tsx
  * ==========================================================
  */
 
@@ -47,54 +44,76 @@ const SearchBar: FC<SearchBarProps> = ({
 
   return (
     <div className="relative mx-auto w-full max-w-3xl">
-      {/* Background Glow */}
+      {/* ======================================================
+          Premium Background Glow
+      ======================================================= */}
 
       <div
         className="
           pointer-events-none
           absolute
           inset-0
-          rounded-3xl
-          bg-gradient-to-r
+
+          rounded-[28px]
+
+          bg-linear-to-r
           from-cyan-500/10
-          via-indigo-500/10
+          via-sky-500/10
           to-violet-500/10
-          blur-xl
+
+          blur-2xl
         "
       />
 
-      {/* Search Container */}
+      {/* ======================================================
+          Search Container
+      ======================================================= */}
 
       <div
         className="
           group
           relative
           overflow-hidden
-          rounded-3xl
+
+          rounded-[28px]
+
           border
-          border-white/10
-          bg-white/5
+          border-zinc-200/70
+          dark:border-white/10
+
+          bg-white/80
+          dark:bg-white/5
+
           backdrop-blur-2xl
+
+          shadow-lg
+          shadow-zinc-900/5
+          dark:shadow-black/20
+
           transition-all
           duration-300
-          focus-within:border-cyan-400/40
-          focus-within:shadow-[0_0_40px_rgba(34,211,238,0.15)]
+
+          hover:border-cyan-400/30
+
+          focus-within:border-cyan-400/50
+          focus-within:shadow-[0_0_45px_rgba(34,211,238,0.18)]
         "
       >
-        {/* Decorative Gradient */}
+        {/* Gradient Overlay */}
 
         <div
           className="
             pointer-events-none
             absolute
             inset-0
-            bg-gradient-to-r
-            from-cyan-500/5
-            via-transparent
-            to-violet-500/5
+
+            bg-[linear-gradient(90deg,rgba(34,211,238,0.08),transparent,rgba(139,92,246,0.08))]
+
             opacity-0
+
             transition-opacity
             duration-500
+
             group-focus-within:opacity-100
           "
         />
@@ -105,14 +124,23 @@ const SearchBar: FC<SearchBarProps> = ({
           size={20}
           className="
             pointer-events-none
+
             absolute
             left-5
             top-1/2
+
             -translate-y-1/2
-            text-slate-500
+
+            text-zinc-500
+            dark:text-zinc-400
+
             transition-all
             duration-300
-            group-focus-within:text-cyan-400
+
+            group-hover:text-cyan-500
+            group-focus-within:text-cyan-500
+
+            group-hover:scale-110
             group-focus-within:scale-110
           "
         />
@@ -129,15 +157,25 @@ const SearchBar: FC<SearchBarProps> = ({
           spellCheck={false}
           className="
             relative
+
             h-16
             w-full
+
             bg-transparent
+
             pl-14
             pr-14
+
             text-base
-            text-slate-900 dark:text-white
+            font-medium
+
+            text-zinc-900
+            dark:text-zinc-100
+
+            placeholder:text-zinc-500
+            dark:placeholder:text-zinc-500
+
             outline-none
-            placeholder:text-slate-500
           "
         />
 
@@ -152,23 +190,42 @@ const SearchBar: FC<SearchBarProps> = ({
               absolute
               right-5
               top-1/2
+
               flex
               h-9
               w-9
+
               -translate-y-1/2
+
               items-center
               justify-center
+
               rounded-full
-              bg-white/5
-              text-slate-600 dark:text-slate-400
+
+              border
+              border-zinc-200/70
+              dark:border-white/10
+
+              bg-white/80
+              dark:bg-white/5
+
+              text-zinc-600
+              dark:text-zinc-400
+
+              backdrop-blur
+
               transition-all
               duration-300
+
               hover:rotate-90
-              hover:bg-red-500/15
-              hover:text-red-400
+              hover:scale-110
+
+              hover:border-red-400/40
+              hover:bg-red-500/10
+              hover:text-red-500
             "
           >
-            <X size={18} />
+            <X size={17} />
           </button>
         )}
       </div>

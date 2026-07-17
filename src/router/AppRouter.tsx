@@ -1,60 +1,117 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+} from "react-router-dom";
 
 import Layout from "../components/layout/Layout";
 
-import Home from "../pages/Home";
 import About from "../pages/About";
-import Skills from "../pages/Skills";
 import Experience from "../pages/Experience";
-import Projects from "../pages/Projects";
-// import Contact from "../pages/Contact";
+import Home from "../pages/Home";
 import NotFound from "../pages/NotFound";
+import Projects from "../pages/Projects";
+import Skills from "../pages/Skills";
+// import Contact from "../pages/Contact";
+
+/**
+ * ==========================================================
+ * Application Routes
+ * ==========================================================
+ */
+
+const ROUTES = {
+  home: "/",
+  about: "/about",
+  skills: "/skills",
+  experience: "/experience",
+  projects: "/projects",
+  // contact: "/contact",
+} as const;
 
 /**
  * ==========================================================
  * App Router
  * ==========================================================
  *
- * Handles all application routes.
- *
  * Features
  * ----------
- * ✓ Browser Router
+ * ✓ React Router v7 Ready
  * ✓ Shared Layout
- * ✓ Individual Pages
- * ✓ 404 Page
- * ✓ Easily Extendable
+ * ✓ Route Constants
+ * ✓ Redirect Support
+ * ✓ 404 Handling
+ * ✓ Easy Scalability
  *
  * ==========================================================
  */
 
 function AppRouter() {
-    return (
-        <BrowserRouter>
-            <Routes>
-            {/* Shared Layout */}
-                <Route element={<Layout />}>
-                    <Route path="/" element={<Home />} />
+  return (
+    <BrowserRouter>
+      <Routes>
+        {/* ===================================================
+            Shared Layout
+        =================================================== */}
 
-                    <Route path="/about" element={<About />} />
+        <Route element={<Layout />}>
+          <Route
+            path={ROUTES.home}
+            element={<Home />}
+          />
 
-                    <Route path="/skills" element={<Skills />} />
+          <Route
+            path={ROUTES.about}
+            element={<About />}
+          />
 
-                    <Route path="/experience" element={<Experience />} />
+          <Route
+            path={ROUTES.skills}
+            element={<Skills />}
+          />
 
-                    <Route path="/projects" element={<Projects />} />
+          <Route
+            path={ROUTES.experience}
+            element={<Experience />}
+          />
 
-                    { /*<Route path="/contact" element={<Contact />} />*/ }
+          <Route
+            path={ROUTES.projects}
+            element={<Projects />}
+          />
 
-                    {/* Redirect Example */}
-                    <Route path="/home" element={<Navigate to="/" replace />} />
-                </Route>
+          {/*
+          <Route
+            path={ROUTES.contact}
+            element={<Contact />}
+          />
+          */}
 
-                {/* 404 */}
-                <Route path="*" element={<NotFound />} />
-            </Routes>
-        </BrowserRouter>
-    );
+          {/* Legacy Redirect */}
+
+          <Route
+            path="/home"
+            element={
+              <Navigate
+                to={ROUTES.home}
+                replace
+              />
+            }
+          />
+        </Route>
+
+        {/* ===================================================
+            404
+        =================================================== */}
+
+        <Route
+          path="*"
+          element={<NotFound />}
+        />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default AppRouter;

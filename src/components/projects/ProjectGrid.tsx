@@ -7,17 +7,13 @@
  *
  * Features
  * ----------
- * ✓ Responsive Grid
- * ✓ Premium Empty State
- * ✓ Glassmorphism Ready
- * ✓ Smooth Layout
- * ✓ Strongly Typed
+ * ✓ Premium Glass Empty State
+ * ✓ Better Light/Dark Mode
+ * ✓ Modern Responsive Grid
+ * ✓ Enhanced Hover Effects
+ * ✓ Improved Typography
  * ✓ Accessible
- *
- * Used By
- * ----------
- * - Projects.tsx
- * - FeaturedProjects.tsx
+ * ✓ Reusable
  * ==========================================================
  */
 
@@ -42,61 +38,115 @@ const ProjectGrid: FC<ProjectGridProps> = ({ projects }) => {
           group
           relative
           overflow-hidden
-          rounded-3xl
+
+          rounded-4xl
+
           border
           border-dashed
-          border-white/10
+          border-zinc-300/70
+          dark:border-white/10
+
+          bg-white/80
+          dark:bg-white/4
+
+          backdrop-blur-2xl
+
           px-8
-          py-20
-          text-center
+          py-24
+
+          shadow-xl
+          shadow-zinc-900/5
+          dark:shadow-black/20
         "
       >
-        {/* Background Glow */}
+        {/* ======================================================
+            Premium Background
+        ======================================================= */}
 
         <div
           className="
             absolute
             inset-0
-            bg-gradient-to-br
-            from-cyan-500/5
-            via-transparent
-            to-violet-500/5
+
+            bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.12),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(139,92,246,0.10),transparent_45%)]
+
+            opacity-80
           "
         />
 
-        <div className="relative z-10 flex flex-col items-center">
+        <div className="relative z-10 flex flex-col items-center text-center">
+          {/* Icon */}
+
           <div
             className="
-              mb-6
+              mb-8
+
               flex
               h-24
               w-24
               items-center
               justify-center
+
               rounded-full
-              bg-gradient-to-br
+
+              bg-linear-to-br
               from-cyan-500/15
-              via-indigo-500/15
+              via-sky-500/10
               to-violet-500/15
+
               ring-1
-              ring-white/10
+              ring-cyan-500/20
+
+              shadow-lg
+
+              transition-all
+              duration-500
+
+              group-hover:scale-110
+              group-hover:rotate-6
             "
           >
-            <FolderOpen size={44} className="text-cyan-300" />
+            <FolderOpen
+              size={42}
+              className="
+                text-cyan-600
+                dark:text-cyan-300
+              "
+            />
           </div>
 
-          <h3 className="text-3xl font-bold">No Projects Found</h3>
+          {/* Heading */}
+
+          <h3
+            className="
+              text-3xl
+              font-bold
+              tracking-tight
+
+              text-zinc-900
+              dark:text-zinc-100
+            "
+          >
+            No Projects Found
+          </h3>
+
+          {/* Description */}
 
           <p
             className="
-              mt-4
-              max-w-lg
+              mt-5
+              max-w-xl
+
+              text-[15px]
               leading-8
-              text-slate-600 dark:text-slate-400
+
+              text-zinc-600
+              dark:text-zinc-400
             "
           >
-            No projects match your current filter or search. Try selecting
-            another category to explore more projects.
+            No projects match your current filter or search.
+            Try selecting another category to discover more
+            applications, case studies, and development work.
           </p>
         </div>
       </GlassCard>
@@ -107,14 +157,24 @@ const ProjectGrid: FC<ProjectGridProps> = ({ projects }) => {
     <div
       className="
         grid
+
         gap-8
-        sm:grid-cols-1
-        lg:grid-cols-2
+        xl:gap-10
+
+        grid-cols-1
+
+        md:grid-cols-2
+
         2xl:grid-cols-3
+
+        items-stretch
       "
     >
       {projects.map((project) => (
-        <ProjectCard key={project.id} project={project} />
+        <ProjectCard
+          key={project.id}
+          project={project}
+        />
       ))}
     </div>
   );

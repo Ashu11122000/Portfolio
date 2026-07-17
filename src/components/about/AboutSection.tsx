@@ -5,30 +5,19 @@ import EducationCard from "./EducationCard";
 
 /**
  * ==========================================================
- * About Section Component
+ * About Section
  * ==========================================================
  *
- * Main About section of the portfolio.
+ * Ultra Premium About Section
  *
- * Responsibilities
- * ----------------
- * ✓ Combines Personal Information
- * ✓ Displays Education Timeline
- * ✓ Responsive Two-Column Layout
- * ✓ Premium Spacing
- * ✓ Glassmorphism Ready
- *
- * Layout
- * ------
- *
- * ------------------------------
- * Personal Info | Education
- * ------------------------------
- *
- * Mobile
- * -------
- * Personal Info
- * Education
+ * Features
+ * ----------
+ * ✓ Aurora Background
+ * ✓ Premium Glass Atmosphere
+ * ✓ Grid Texture
+ * ✓ Responsive Layout
+ * ✓ Better Vertical Rhythm
+ * ✓ Light & Dark Mode Optimized
  *
  * ==========================================================
  */
@@ -37,89 +26,148 @@ function AboutSection() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden py-28 lg:py-36"
+      className="relative isolate overflow-hidden py-28 sm:py-32 lg:py-40"
     >
-      {/* ==========================
-          Premium Background Glow
-      =========================== */}
+      {/* ======================================================
+          Premium Background
+      ====================================================== */}
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+        className="pointer-events-none absolute inset-0 -z-20"
       >
-        {/* Left Glow */}
-        <div
-          className="
-            absolute
-            -left-32
-            top-16
-            h-[32rem]
-            w-[32rem]
-            rounded-full
-            bg-indigo-500/10
-            blur-[150px]
-          "
-        />
+        {/* Base Gradient */}
 
-        {/* Right Glow */}
-        <div
-          className="
-            absolute
-            -right-32
-            top-1/3
-            h-[30rem]
-            w-[30rem]
-            rounded-full
-            bg-fuchsia-500/10
-            blur-[150px]
-          "
-        />
+        <div className="absolute inset-0 bg-linear-to-b from-transparent via-slate-50/40 to-transparent dark:via-slate-950/30" />
 
-        {/* Bottom Center Glow */}
+        {/* Aurora Left */}
+
         <div
           className="
             absolute
-            bottom-[-10rem]
-            left-1/2
-            h-[40rem]
-            w-[40rem]
-            -translate-x-1/2
+            -left-40
+            top-10
+            h-136
+            w-136
             rounded-full
-            bg-cyan-500/10
+            bg-indigo-500/15
             blur-[180px]
           "
         />
 
-        {/* Accent Orb */}
+        {/* Aurora Right */}
+
         <div
           className="
             absolute
-            right-1/4
-            top-12
-            h-40
-            w-40
+            -right-40
+            top-1/3
+            h-128
+            w-lg
             rounded-full
-            bg-violet-500/8
+            bg-fuchsia-500/15
+            blur-[180px]
+          "
+        />
+
+        {/* Bottom Glow */}
+
+        <div
+          className="
+            absolute
+            -bottom-48
+            left-1/2
+            h-168
+            w-2xl
+            -translate-x-1/2
+            rounded-full
+            bg-cyan-500/15
+            blur-[220px]
+          "
+        />
+
+        {/* Floating Accent */}
+
+        <div
+          className="
+            absolute
+            left-1/3
+            top-20
+            h-44
+            w-44
+            rounded-full
+            bg-violet-500/10
+            blur-[120px]
+          "
+        />
+
+        {/* Extra Accent */}
+
+        <div
+          className="
+            absolute
+            bottom-24
+            right-1/4
+            h-36
+            w-36
+            rounded-full
+            bg-sky-500/10
             blur-[100px]
           "
         />
+
+        {/* Premium Grid Texture */}
+
+        <div
+          className="
+            absolute
+            inset-0
+
+            opacity-[0.04]
+            dark:opacity-[0.06]
+
+            bg-[linear-gradient(to_right,#94a3b81a_1px,transparent_1px),linear-gradient(to_bottom,#94a3b81a_1px,transparent_1px)]
+            bg-size-[64px_64px]
+          "
+        />
+
+        {/* Radial Fade */}
+
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_35%,rgba(255,255,255,0.65)_100%)] dark:bg-[radial-gradient(circle_at_center,transparent_35%,rgba(2,6,23,0.85)_100%)]" />
       </div>
+
+      {/* ======================================================
+          Content
+      ====================================================== */}
 
       <Container>
         <div
           className="
+            relative
+            z-10
+
             grid
             items-start
+
             gap-16
-            lg:grid-cols-2
-            lg:gap-20
+
+            lg:grid-cols-[1.05fr_0.95fr]
+            lg:gap-24
+
+            xl:gap-28
           "
         >
           {/* Left Column */}
-          <PersonalInfo />
+
+          <div className="relative">
+            <PersonalInfo />
+          </div>
 
           {/* Right Column */}
-          <EducationCard />
+
+          <div className="relative">
+            <EducationCard />
+          </div>
         </div>
       </Container>
     </section>

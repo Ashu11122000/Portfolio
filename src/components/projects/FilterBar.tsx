@@ -7,18 +7,14 @@
  *
  * Features
  * ----------
- * ✓ Glassmorphism Container
- * ✓ Gradient Active Button
- * ✓ Smooth Hover Animations
+ * ✓ Premium Glass Container
+ * ✓ Light/Dark Optimized
+ * ✓ Animated Active Button
+ * ✓ Premium Gradient
+ * ✓ Smooth Hover Effects
  * ✓ Responsive
- * ✓ Strongly Typed
  * ✓ Accessible
- * ✓ Reusable
- *
- * Used By
- * ----------
- * - Projects.tsx
- * - ProjectGrid.tsx
+ * ✓ TypeScript
  * ==========================================================
  */
 
@@ -35,29 +31,46 @@ interface FilterBarProps {
   onFilterChange: (filter: ProjectFilter) => void;
 }
 
-const filters: ProjectFilter[] = ["All", "Frontend", "Backend", "Full Stack"];
+const filters: ProjectFilter[] = [
+  "All",
+  "Frontend",
+  "Backend",
+  "Full Stack",
+];
 
-const FilterBar: FC<FilterBarProps> = ({ activeFilter, onFilterChange }) => {
+const FilterBar: FC<FilterBarProps> = ({
+  activeFilter,
+  onFilterChange,
+}) => {
   return (
     <div className="flex justify-center">
       <div
+        role="tablist"
+        aria-label="Project Categories"
         className="
           inline-flex
           flex-wrap
           items-center
           justify-center
           gap-3
+
           rounded-full
+
           border
-          border-white/10
-          bg-white/5
+          border-zinc-200/80
+          dark:border-white/10
+
+          bg-white/80
+          dark:bg-white/5
+
           p-2
-          shadow-xl
-          shadow-black/20
+
           backdrop-blur-2xl
+
+          shadow-xl
+          shadow-zinc-900/5
+          dark:shadow-black/20
         "
-        role="tablist"
-        aria-label="Project Categories"
       >
         {filters.map((filter) => {
           const isActive = activeFilter === filter;
@@ -66,40 +79,77 @@ const FilterBar: FC<FilterBarProps> = ({ activeFilter, onFilterChange }) => {
             <Button
               key={filter}
               type="button"
-              onClick={() => onFilterChange(filter)}
               aria-pressed={isActive}
+              onClick={() => onFilterChange(filter)}
               className={`
                 relative
+                overflow-hidden
+
                 rounded-full
+
                 px-6
                 py-2.5
+
                 text-sm
                 font-semibold
+                tracking-wide
+
                 transition-all
                 duration-300
+
                 ${
                   isActive
                     ? `
-                      bg-gradient-to-r
+                      bg-linear-to-r
                       from-cyan-500
-                      via-indigo-500
+                      via-sky-500
                       to-violet-600
-                      text-slate-900 dark:text-white
+
+                      text-white
+
                       shadow-lg
                       shadow-cyan-500/30
+
                       hover:scale-105
+                      hover:shadow-cyan-500/40
                     `
                     : `
                       bg-transparent
-                      text-slate-600 dark:text-slate-400
-                      hover:bg-white/8
-                      hover:text-slate-900 dark:text-white
+
+                      text-zinc-700
+                      dark:text-zinc-400
+
+                      hover:bg-zinc-100
+                      dark:hover:bg-white/10
+
+                      hover:text-zinc-900
+                      dark:hover:text-white
+
                       hover:shadow-md
                     `
                 }
               `}
             >
-              {filter}
+              {/* Active Glow */}
+
+              {isActive && (
+                <span
+                  className="
+                    absolute
+                    inset-0
+
+                    rounded-full
+
+                    bg-white/10
+
+                    opacity-50
+                  "
+                />
+              )}
+
+              <span className="relative z-10">
+                {filter}
+              </span>
             </Button>
           );
         })}

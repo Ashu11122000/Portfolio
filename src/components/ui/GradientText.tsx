@@ -4,26 +4,20 @@ import { cn } from "../../utils/cn";
 
 /**
  * ==========================================================
- * Ultra Premium Gradient Text
+ * GradientText Component
  * ==========================================================
+ *
+ * Ultra Premium Gradient Typography
  *
  * Features
  * ----------
  * ✓ Apple / Linear Inspired
- * ✓ Ultra Premium Gradient
- * ✓ Light & Dark Theme Support
- * ✓ Smooth Gradient Animation
- * ✓ Soft Glow
- * ✓ Responsive
+ * ✓ Rich Multi-Color Gradient
+ * ✓ Premium Hover Shine
+ * ✓ Better Light & Dark Visibility
+ * ✓ Smooth GPU Animation
  * ✓ Reusable
  * ✓ Tailwind CSS v4
- *
- * Used By
- * ----------
- * - Hero
- * - Section Titles
- * - Featured Cards
- * - Anywhere Premium Text is Needed
  *
  * ==========================================================
  */
@@ -40,51 +34,74 @@ function GradientText({
   return (
     <span
       className={cn(
-        "relative inline-block",
+        "group relative inline-flex",
 
-        /* Premium Gradient */
+        // Typography
+        "font-inherit",
+        "tracking-inherit",
+        "leading-[inherit]",
+        "subpixel-antialiased",
 
-        "bg-[length:200%_200%]",
+        // Gradient
+        "bg-size-[250%_250%]",
+        "bg-linear-to-r",
 
-        "bg-gradient-to-r",
-
-        "from-violet-600",
-        "via-fuchsia-500",
+        // Light
+        "from-violet-700",
+        "via-fuchsia-600",
         "via-45%",
-        "to-cyan-500",
+        "to-cyan-600",
 
+        // Dark
         "dark:from-violet-300",
         "dark:via-fuchsia-300",
         "dark:to-cyan-300",
 
-        /* Gradient Text */
-
+        // Text
         "bg-clip-text",
         "text-transparent",
 
-        /* Premium Typography */
+        // GPU
+        "transform-gpu",
+        "will-change-transform",
 
-        "font-inherit",
-        "tracking-inherit",
-        "antialiased",
-
-        /* Smooth Animation */
-
+        // Animation
         "transition-all",
         "duration-500",
+        "ease-out",
 
-        "hover:scale-[1.015]",
+        "hover:scale-[1.02]",
 
-        /* Premium Glow */
-
-        "drop-shadow-[0_2px_10px_rgba(139,92,246,0.20)]",
-
-        "dark:drop-shadow-[0_4px_22px_rgba(139,92,246,0.40)]",
+        // Glow
+        "drop-shadow-[0_2px_10px_rgba(124,58,237,0.22)]",
+        "dark:drop-shadow-[0_5px_24px_rgba(168,85,247,0.38)]",
 
         className
       )}
     >
       {children}
+
+      {/* Hover Shine */}
+      <span
+        aria-hidden="true"
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          -left-full
+          bg-linear-to-r
+          from-transparent
+          via-white/45
+          to-transparent
+          opacity-0
+          skew-x-[-24deg]
+          transition-all
+          duration-1000
+          group-hover:left-[140%]
+          group-hover:opacity-100
+          dark:via-white/20
+        "
+      />
     </span>
   );
 }

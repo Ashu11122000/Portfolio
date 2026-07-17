@@ -2,22 +2,20 @@ import AppRouter from "./router/AppRouter";
 
 /**
  * ==========================================================
- * App Component
+ * App
  * ==========================================================
  *
- * Root component of the Portfolio application.
+ * Root application component.
  *
  * Responsibilities
  * ----------------
- * ✓ Render application router
- * ✓ Keep App clean
- * ✓ Delegate layouts/pages to the router
+ * ✓ Bootstrap the application
+ * ✓ Render the router
+ * ✓ Keep the root component minimal
  *
  * ==========================================================
  */
 
-function App() {
+export default function App() {
   return <AppRouter />;
 }
-
-export default App;

@@ -1,40 +1,25 @@
 import { forwardRef } from "react";
+import type { HTMLAttributes } from "react";
 
 import { cn } from "../../utils/cn";
 
-import type { HTMLAttributes } from "react";
-
 /**
  * ==========================================================
- * Card Component
+ * Ultra Premium Card Component
  * ==========================================================
  *
- * Premium reusable card component used throughout
- * the portfolio application.
- *
  * Features
- * ----------
- * ✓ Glassmorphism
- * ✓ Hover Animation
- * ✓ Border Glow
- * ✓ Responsive
- * ✓ Dark / Light Theme
- * ✓ Forward Ref Support
- * ✓ Custom className
- * ✓ Tailwind CSS v4
- * ✓ TypeScript Strict
- *
- * Used By
- * ----------
- * - Hero Stats
- * - About Cards
- * - Education Cards
- * - Skill Cards
- * - Experience Cards
- * - Project Cards
- * - Certification Cards
- * - Contact Cards
- *
+ * ----------------------------------------------------------
+ * ✓ Premium Glassmorphism
+ * ✓ Theme Aware
+ * ✓ Better Light/Dark Contrast
+ * ✓ Aurora Glow
+ * ✓ Gradient Border Highlight
+ * ✓ Animated Shine
+ * ✓ GPU Accelerated Hover
+ * ✓ Focus Within Support
+ * ✓ Forward Ref
+ * ✓ Production Ready
  * ==========================================================
  */
 
@@ -44,31 +29,69 @@ export interface CardProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ className, children, hover = true, glass = true, ...props }, ref) => {
+  (
+    {
+      className,
+      children,
+      hover = true,
+      glass = true,
+      ...props
+    },
+    ref
+  ) => {
     return (
       <div
         ref={ref}
         className={cn(
+          // Base
           "group relative overflow-hidden rounded-3xl",
 
+          // Spacing
           "p-6",
 
-          "border border-white/20 dark:border-white/10",
-
+          // Theme
           glass
-            ? "bg-white/70 backdrop-blur-2xl dark:bg-slate-900/60"
-            : "bg-white dark:bg-slate-900",
+            ? [
+                "bg-white/80",
+                "dark:bg-slate-900/70",
+                "backdrop-blur-3xl",
+              ]
+            : [
+                "bg-white",
+                "dark:bg-slate-900",
+              ],
 
-          "shadow-xl shadow-slate-300/10 dark:shadow-black/30",
+          // Border
+          "border",
+          "border-slate-200/70",
+          "dark:border-white/10",
 
+          // Shadow
+          "shadow-xl",
+          "shadow-slate-300/15",
+          "dark:shadow-black/40",
+
+          // Performance
+          "transform-gpu",
+          "will-change-transform",
+
+          // Transition
           "transition-all duration-500 ease-out",
+
+          // Accessibility
+          "focus-within:ring-2",
+          "focus-within:ring-violet-500/30",
 
           hover && [
             "hover:-translate-y-2",
-            "hover:scale-[1.015]",
+            "hover:scale-[1.02]",
+
             "hover:border-violet-400/40",
+
             "hover:shadow-2xl",
-            "hover:shadow-violet-500/15",
+            "hover:shadow-violet-500/20",
+
+            "hover:brightness-[1.02]",
           ],
 
           className
@@ -76,9 +99,21 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
         {...props}
       >
         {/* Premium Border Highlight */}
-        <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-60" />
+        <div
+          className="
+            pointer-events-none
+            absolute
+            inset-0
+            rounded-[inherit]
+            bg-linear-to-br
+            from-white/40
+            via-transparent
+            to-transparent
+            dark:from-white/10
+          "
+        />
 
-        {/* Ambient Glow */}
+        {/* Aurora Glow */}
         <div
           className={cn(
             "pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500",
@@ -88,10 +123,10 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
           <div
             className="
               absolute
-              -top-24
-              right-0
-              h-52
-              w-52
+              -top-28
+              -right-20
+              h-72
+              w-72
               rounded-full
               bg-violet-500/15
               blur-3xl
@@ -101,36 +136,63 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
           <div
             className="
               absolute
-              -bottom-24
-              -left-12
-              h-52
-              w-52
+              -bottom-32
+              -left-20
+              h-72
+              w-72
               rounded-full
-              bg-cyan-500/15
+              bg-cyan-400/15
               blur-3xl
             "
           />
         </div>
 
-        {/* Soft Shine */}
+        {/* Animated Shine */}
         <div
           className="
             pointer-events-none
             absolute
             inset-0
-            opacity-0
-            transition-opacity
-            duration-500
-            group-hover:opacity-100
-            bg-gradient-to-br
-            from-white/10
-            via-transparent
-            to-transparent
+            overflow-hidden
+            rounded-[inherit]
+          "
+        >
+          <div
+            className="
+              absolute
+              inset-y-0
+              -left-1/2
+              w-1/2
+              skew-x-[-20deg]
+              bg-linear-to-r
+              from-transparent
+              via-white/20
+              to-transparent
+              opacity-0
+              transition-all
+              duration-700
+              group-hover:left-[125%]
+              group-hover:opacity-100
+              dark:via-white/10
+            "
+          />
+        </div>
+
+        {/* Noise Overlay */}
+        <div
+          className="
+            pointer-events-none
+            absolute
+            inset-0
+            opacity-[0.03]
+            mix-blend-overlay
           "
         />
 
         {/* Content */}
-        <div className="relative z-10">{children}</div>
+        <div className="relative z-10">
+          {children}
+        </div>
       </div>
     );
   }

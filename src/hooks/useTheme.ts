@@ -7,28 +7,18 @@ import { ThemeContext } from "../context/ThemeContext";
  * useTheme Hook
  * ==========================================================
  *
- * Custom hook for accessing the global Theme Context.
+ * Access the global theme state.
  *
  * Features
  * ----------
- * ✓ Access Current Theme
- * ✓ Toggle Light / Dark Mode
  * ✓ Type Safe
- * ✓ Prevents Usage Outside ThemeProvider
+ * ✓ React 19 Ready
+ * ✓ Lightweight
+ * ✓ Memo Friendly
  *
  * ==========================================================
  */
 
-const useTheme = () => {
-  const context = useContext(ThemeContext);
-
-  if (!context) {
-    throw new Error(
-      "useTheme must be used within a ThemeProvider."
-    );
-  }
-
-  return context;
-};
-
-export default useTheme;
+export default function useTheme() {
+  return useContext(ThemeContext);
+}

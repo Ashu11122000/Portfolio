@@ -1,4 +1,7 @@
-import { BriefcaseBusiness, Sparkles } from "lucide-react";
+import {
+  BriefcaseBusiness,
+  Sparkles,
+} from "lucide-react";
 
 import ExperienceCard from "./ExperienceCard";
 
@@ -13,10 +16,10 @@ import type { Experience } from "../../types/experience";
  *
  * Features
  * ----------
- * ✓ Glassmorphism Timeline
- * ✓ Aurora Glow
+ * ✓ Ultra Premium Glass Timeline
+ * ✓ Aurora Background
+ * ✓ Better Light / Dark Mode
  * ✓ Premium Timeline Node
- * ✓ Better Spacing
  * ✓ Responsive
  * ✓ Production Ready
  * ==========================================================
@@ -27,76 +30,97 @@ interface TimelineItemProps {
   isLast: boolean;
 }
 
-function TimelineItem({ experience, isLast }: TimelineItemProps) {
+function TimelineItem({
+  experience,
+  isLast,
+}: TimelineItemProps) {
   return (
     <div
       className="
         group
         relative
+
         grid
         gap-10
-        md:grid-cols-[96px_1fr]
-        lg:gap-12
+
+        md:grid-cols-[110px_1fr]
+
+        lg:gap-14
       "
     >
-      {/* ====================================== */}
-
-      {/* Desktop Timeline */}
-
-      {/* ====================================== */}
+      {/* ======================================================
+          Desktop Timeline
+      ======================================================= */}
 
       <div
         className="
           relative
+
           hidden
-          md:flex
+
           justify-center
+
+          md:flex
         "
       >
-        {/* Vertical Timeline */}
+        {/* Timeline Line */}
 
         {!isLast && (
           <>
-            {/* Glow */}
+            {/* Aurora Glow */}
 
             <div
               className="
                 absolute
-                top-20
+
+                top-24
                 bottom-0
-                w-4
+
+                w-5
+
                 rounded-full
-                bg-violet-500/10
-                blur-xl
+
+                bg-cyan-500/10
+
+                blur-2xl
               "
             />
 
-            {/* Line */}
+            {/* Main Line */}
 
             <div
               className="
                 absolute
-                top-20
+
+                top-24
                 bottom-0
-                w-[2px]
-                bg-gradient-to-b
-                from-indigo-500
-                via-violet-500/70
-                to-cyan-500/20
+
+                w-0.75
+
+                rounded-full
+
+                bg-linear-to-b
+                from-cyan-500
+                via-violet-500
+                to-indigo-500/20
               "
             />
           </>
         )}
 
-        {/* Timeline Node */}
+        {/* ======================================================
+            Timeline Node
+        ======================================================= */}
 
         <div
           className="
             relative
             z-20
+
             flex
-            h-16
-            w-16
+            h-20
+            w-20
+
             items-center
             justify-center
           "
@@ -107,12 +131,211 @@ function TimelineItem({ experience, isLast }: TimelineItemProps) {
             className="
               absolute
               inset-0
+
               rounded-full
-              bg-violet-500/15
-              blur-xl
+
+              bg-cyan-500/15
+
+              blur-2xl
+
               opacity-0
+
               transition-opacity
               duration-500
+
+              group-hover:opacity-100
+            "
+          />
+
+          {/* Animated Pulse */}
+
+          <div
+            className="
+              absolute
+              inset-0
+
+              animate-[ping_3.5s_linear_infinite]
+
+              rounded-full
+
+              bg-cyan-500/15
+            "
+          />
+
+          {/* Glass Ring */}
+
+          <div
+            className="
+              absolute
+              inset-0
+
+              rounded-full
+
+              border
+              border-zinc-200/70
+              dark:border-white/10
+
+              bg-white/70
+              dark:bg-white/5
+
+              backdrop-blur-2xl
+
+              shadow-lg
+              shadow-zinc-900/5
+              dark:shadow-black/20
+            "
+          />
+
+          {/* Gradient Circle */}
+
+          <div
+            className="
+              relative
+
+              flex
+              h-14
+              w-14
+
+              items-center
+              justify-center
+
+              rounded-full
+
+              bg-linear-to-br
+              from-cyan-500
+              via-violet-500
+              to-indigo-600
+
+              shadow-[0_20px_45px_rgba(34,211,238,0.30)]
+
+              transition-all
+              duration-500
+
+              group-hover:scale-110
+              group-hover:rotate-6
+            "
+          >
+            <BriefcaseBusiness
+              className="
+                h-6
+                w-6
+
+                text-white
+              "
+            />
+
+            {/* Floating Sparkle */}
+
+            <div
+              className="
+                absolute
+
+                -right-1.5
+                -top-1.5
+
+                flex
+                h-6
+                w-6
+
+                items-center
+                justify-center
+
+                rounded-full
+
+                border
+                border-zinc-200/70
+                dark:border-white/10
+
+                bg-white
+                dark:bg-zinc-900
+
+                shadow-lg
+              "
+            >
+              <Sparkles
+                size={11}
+                className="
+                  text-violet-600
+                  dark:text-violet-400
+                "
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+            {/* ======================================================
+          Mobile Timeline
+      ======================================================= */}
+
+      <div
+        className="
+          relative
+
+          flex
+          items-center
+          gap-5
+
+          md:hidden
+        "
+      >
+        {/* Aurora Glow */}
+
+        <div
+          className="
+            pointer-events-none
+
+            absolute
+            -left-6
+
+            h-20
+            w-20
+
+            rounded-full
+
+            bg-cyan-500/10
+
+            blur-[50px]
+          "
+        />
+
+        {/* ======================================================
+            Timeline Node
+        ======================================================= */}
+
+        <div
+          className="
+            relative
+            z-10
+
+            flex
+            h-16
+            w-16
+
+            shrink-0
+
+            items-center
+            justify-center
+          "
+        >
+          {/* Outer Glow */}
+
+          <div
+            className="
+              absolute
+              inset-0
+
+              rounded-full
+
+              bg-cyan-500/15
+
+              blur-xl
+
+              opacity-0
+
+              transition-opacity
+              duration-500
+
               group-hover:opacity-100
             "
           />
@@ -123,9 +346,12 @@ function TimelineItem({ experience, isLast }: TimelineItemProps) {
             className="
               absolute
               inset-0
-              animate-[ping_3s_linear_infinite]
+
+              animate-[ping_3.5s_linear_infinite]
+
               rounded-full
-              bg-indigo-500/15
+
+              bg-cyan-500/15
             "
           />
 
@@ -135,11 +361,21 @@ function TimelineItem({ experience, isLast }: TimelineItemProps) {
             className="
               absolute
               inset-0
+
               rounded-full
+
               border
-              border-white/10
-              bg-white/10
-              backdrop-blur-xl
+              border-zinc-200/70
+              dark:border-white/10
+
+              bg-white/70
+              dark:bg-white/5
+
+              backdrop-blur-2xl
+
+              shadow-lg
+              shadow-zinc-900/5
+              dark:shadow-black/20
             "
           />
 
@@ -148,264 +384,286 @@ function TimelineItem({ experience, isLast }: TimelineItemProps) {
           <div
             className="
               relative
+
               flex
               h-12
               w-12
+
               items-center
               justify-center
+
               rounded-full
-              bg-gradient-to-br
-              from-indigo-500
+
+              bg-linear-to-br
+              from-cyan-500
               via-violet-500
-              to-cyan-500
-              shadow-[0_15px_40px_rgba(99,102,241,0.35)]
+              to-indigo-600
+
+              shadow-[0_18px_40px_rgba(34,211,238,0.28)]
+
+              transition-all
+              duration-500
+
+              group-hover:scale-110
+              group-hover:rotate-6
             "
           >
             <BriefcaseBusiness
               className="
                 h-5
                 w-5
-                text-slate-900 dark:text-white
+
+                text-white
               "
             />
+
+            {/* Sparkle */}
 
             <div
               className="
                 absolute
+
                 -right-1
                 -top-1
+
                 flex
                 h-5
                 w-5
+
                 items-center
                 justify-center
+
                 rounded-full
+
+                border
+                border-zinc-200/70
+                dark:border-white/10
+
                 bg-white
-                shadow-lg
+                dark:bg-zinc-900
+
+                shadow-md
               "
             >
-              <Sparkles size={10} className="text-violet-600" />
+              <Sparkles
+                size={9}
+                className="
+                  text-violet-600
+                  dark:text-violet-400
+                "
+              />
             </div>
           </div>
         </div>
-      </div>
 
-      {/* ====================================== */}
-
-      {/* Mobile Timeline */}
-      {/* ====================================== */}
-
-      {/* Mobile Timeline */}
-
-      {/* ====================================== */}
-
-      <div
-        className="
-            relative
-            flex
-            items-center
-            gap-5
-            md:hidden
-          "
-      >
-        {/* Background Glow */}
-
-        <div
-          className="
-              absolute
-              -left-4
-              h-16
-              w-16
-              rounded-full
-              bg-violet-500/10
-              blur-2xl
-            "
-        />
-
-        {/* Timeline Node */}
-
-        <div
-          className="
-              relative
-              z-10
-              flex
-              h-14
-              w-14
-              shrink-0
-              items-center
-              justify-center
-            "
-        >
-          {/* Pulse */}
-
-          <div
-            className="
-                absolute
-                inset-0
-                animate-[ping_3s_linear_infinite]
-                rounded-full
-                bg-indigo-500/15
-              "
-          />
-
-          {/* Glass Ring */}
-
-          <div
-            className="
-                absolute
-                inset-0
-                rounded-full
-                border
-                border-white/10
-                bg-white/10
-                backdrop-blur-xl
-              "
-          />
-
-          {/* Gradient Circle */}
-
-          <div
-            className="
-                relative
-                flex
-                h-10
-                w-10
-                items-center
-                justify-center
-                rounded-full
-                bg-gradient-to-br
-                from-indigo-500
-                via-violet-500
-                to-cyan-500
-                shadow-[0_12px_30px_rgba(99,102,241,0.30)]
-              "
-          >
-            <BriefcaseBusiness
-              className="
-                  h-4
-                  w-4
-                  text-slate-900 dark:text-white
-                "
-            />
-          </div>
-        </div>
-
-        {/* Decorative Line */}
+        {/* ======================================================
+            Decorative Timeline Line
+        ======================================================= */}
 
         <div className="relative flex-1">
           {/* Glow */}
 
           <div
             className="
-                absolute
-                inset-y-0
-                left-0
-                h-full
-                w-full
-                bg-gradient-to-r
-                from-violet-500/10
-                to-transparent
-                blur-lg
-              "
+              absolute
+              inset-y-0
+              left-0
+
+              w-full
+
+              bg-linear-to-r
+              from-cyan-500/10
+              via-violet-500/5
+              to-transparent
+
+              blur-lg
+            "
           />
 
-          {/* Line */}
+          {/* Main Line */}
 
           <div
             className="
-                relative
-                h-[2px]
-                w-full
-                bg-gradient-to-r
-                from-indigo-500
-                via-violet-500/60
-                to-transparent
-              "
+              relative
+
+              h-0.75
+              w-full
+
+              rounded-full
+
+              bg-linear-to-r
+              from-cyan-500
+              via-violet-500
+              to-transparent
+            "
           />
         </div>
       </div>
 
-      {/* ====================================== */}
-
-      {/* Experience Card */}
-      {/* ====================================== */}
-
-      {/* Experience Card */}
-
-      {/* ====================================== */}
+            {/* ======================================================
+          Experience Card
+      ======================================================= */}
 
       <div
         className="
-            relative
-            min-w-0
-          "
+          relative
+          min-w-0
+        "
       >
-        {/* Ambient Background */}
+        {/* Premium Aurora Background */}
 
         <div
           className="
-              pointer-events-none
-              absolute
-              inset-0
-              -z-10
-              rounded-[36px]
-              bg-gradient-to-br
-              from-indigo-500/5
-              via-violet-500/5
-              to-cyan-500/5
-              opacity-0
-              blur-2xl
-              transition-all
-              duration-500
-              group-hover:opacity-100
-            "
+            pointer-events-none
+
+            absolute
+            inset-0
+            -z-10
+
+            rounded-[40px]
+
+            opacity-0
+
+            blur-3xl
+
+            transition-all
+            duration-500
+
+            group-hover:opacity-100
+
+            bg-[radial-gradient(circle_at_top_right,rgba(34,211,238,0.12),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(139,92,246,0.12),transparent_45%)]
+          "
         />
 
-        {/* Card */}
+        {/* Soft Border Glow */}
 
-        <ExperienceCard experience={experience} />
+        <div
+          className="
+            pointer-events-none
+
+            absolute
+            inset-0
+            -z-10
+
+            rounded-[40px]
+
+            border
+            border-cyan-400/0
+
+            transition-all
+            duration-500
+
+            group-hover:border-cyan-400/10
+          "
+        />
+
+        {/* Experience Card */}
+
+        <ExperienceCard
+          experience={experience}
+        />
       </div>
 
-      {/* Floating Accent */}
+      {/* ======================================================
+          Floating Right Aurora
+      ======================================================= */}
 
       <div
         className="
-            pointer-events-none
-            absolute
-            -right-16
-            top-20
-            hidden
-            h-40
-            w-40
-            rounded-full
-            bg-cyan-500/8
-            blur-[100px]
-            opacity-0
-            transition-all
-            duration-700
-            group-hover:opacity-100
-            lg:block
-          "
+          pointer-events-none
+
+          absolute
+          -right-24
+          top-20
+
+          hidden
+
+          h-56
+          w-56
+
+          rounded-full
+
+          bg-cyan-500/10
+
+          blur-[140px]
+
+          opacity-0
+
+          transition-all
+          duration-700
+
+          group-hover:opacity-100
+
+          xl:block
+        "
       />
 
-      {/* Bottom Glow */}
+      {/* ======================================================
+          Floating Left Aurora
+      ======================================================= */}
+
+      <div
+        className="
+          pointer-events-none
+
+          absolute
+          -left-20
+          bottom-16
+
+          hidden
+
+          h-48
+          w-48
+
+          rounded-full
+
+          bg-violet-500/10
+
+          blur-[120px]
+
+          opacity-0
+
+          transition-all
+          duration-700
+
+          group-hover:opacity-100
+
+          xl:block
+        "
+      />
+
+      {/* ======================================================
+          Bottom Timeline Glow
+      ======================================================= */}
 
       {!isLast && (
         <div
           className="
-              pointer-events-none
-              absolute
-              bottom-[-40px]
-              left-[46px]
-              hidden
-              h-20
-              w-20
-              -translate-x-1/2
-              rounded-full
-              bg-violet-500/10
-              blur-3xl
-              md:block
-            "
+            pointer-events-none
+
+            absolute
+
+            -bottom-11
+            left-13.5
+
+            hidden
+
+            h-24
+            w-24
+
+            -translate-x-1/2
+
+            rounded-full
+
+            bg-linear-to-br
+            from-cyan-500/12
+            via-violet-500/12
+            to-indigo-500/10
+
+            blur-[70px]
+
+            md:block
+          "
         />
       )}
     </div>

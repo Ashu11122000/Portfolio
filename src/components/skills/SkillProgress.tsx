@@ -3,96 +3,174 @@ import { cn } from "../../utils/cn";
 import type { SkillProgressProps } from "../../types/skill";
 
 /**
- * ==========================================================
+ * =============================================================================
  * SkillProgress Component
- * ==========================================================
+ * =============================================================================
  *
  * Ultra Premium Animated Progress Bar
  *
  * Features
- * ----------
- * ✓ Glassmorphism Track
- * ✓ Premium Gradient Fill
+ * -----------------------------------------------------------------------------
+ * ✓ Premium Glass Track
+ * ✓ Aurora Gradient Fill
  * ✓ Animated Shine
- * ✓ Soft Glow
+ * ✓ Soft Ambient Glow
  * ✓ Tick Marks
- * ✓ Responsive
+ * ✓ Smooth Animation
+ * ✓ Theme Aware
  * ✓ Accessible
  * ✓ Tailwind CSS v4
- * ✓ TypeScript Strict
- * ==========================================================
+ * =============================================================================
  */
 
-const SkillProgress = ({ value, className }: SkillProgressProps) => {
+const SkillProgress = ({
+  value,
+  className,
+}: SkillProgressProps) => {
   const progress = Math.min(Math.max(value, 0), 100);
 
   return (
-    <div className={cn("space-y-3", className)}>
+    <div className={cn("space-y-4", className)}>
+      {/* ========================================================= */}
       {/* Header */}
+      {/* ========================================================= */}
 
       <div className="flex items-center justify-between">
-        <span className="text-sm font-semibold text-slate-600 dark:text-slate-700 dark:text-slate-300">
+        <span
+          className="
+            text-sm
+            font-semibold
+
+            text-zinc-700
+            dark:text-zinc-300
+          "
+        >
           Proficiency
         </span>
 
         <span
-          className={cn(
-            "rounded-full",
-            "border border-violet-400/20",
-            "bg-violet-500/10",
-            "px-3 py-1",
-            "text-xs font-bold",
-            "text-violet-700",
-            "dark:text-violet-300",
-          )}
+          className="
+            rounded-full
+
+            border
+            border-violet-500/20
+
+            bg-violet-500/10
+
+            px-3
+            py-1
+
+            text-xs
+            font-bold
+
+            text-violet-700
+            dark:text-violet-300
+
+            backdrop-blur-xl
+          "
         >
           {progress}%
         </span>
       </div>
 
+      {/* ========================================================= */}
       {/* Progress Track */}
+      {/* ========================================================= */}
 
       <div
-        className={cn(
-          "relative h-3.5 w-full overflow-hidden rounded-full",
+        className="
+          group
+          relative
 
-          "border border-white/20",
+          h-4
+          w-full
 
-          "bg-slate-200/70",
+          overflow-hidden
 
-          "backdrop-blur-xl",
+          rounded-full
 
-          "dark:border-white/10",
-          "dark:bg-slate-800/70",
-        )}
+          border
+          border-zinc-200/70
+          dark:border-white/10
+
+          bg-zinc-200/70
+          dark:bg-zinc-800/70
+
+          backdrop-blur-xl
+        "
         role="progressbar"
         aria-label="Skill proficiency"
         aria-valuemin={0}
         aria-valuemax={100}
         aria-valuenow={progress}
       >
+        {/* Glass Overlay */}
+
+        <div
+          className="
+            absolute
+            inset-0
+
+            bg-linear-to-b
+            from-white/40
+            to-transparent
+
+            dark:from-white/5
+          "
+        />
+
         {/* Tick Marks */}
 
-        <div className="pointer-events-none absolute inset-0 flex justify-between px-2 opacity-30">
+        <div
+          className="
+            pointer-events-none
+
+            absolute
+            inset-0
+
+            flex
+            justify-between
+
+            px-2
+
+            opacity-30
+          "
+        >
           {Array.from({ length: 9 }).map((_, index) => (
-            <div key={index} className="h-full w-px bg-white/30" />
+            <div
+              key={index}
+              className="
+                h-full
+                w-px
+
+                bg-white/40
+                dark:bg-white/20
+              "
+            />
           ))}
         </div>
 
         {/* Gradient Fill */}
 
         <div
-          className={cn(
-            "relative h-full overflow-hidden rounded-full",
+          className="
+            relative
 
-            "bg-gradient-to-r",
+            h-full
 
-            "from-violet-600",
-            "via-fuchsia-500",
-            "to-cyan-400",
+            overflow-hidden
 
-            "transition-all duration-1000 ease-out",
-          )}
+            rounded-full
+
+            bg-linear-to-r
+            from-violet-600
+            via-fuchsia-500
+            to-cyan-400
+
+            transition-all
+            duration-1000
+            ease-out
+          "
           style={{
             width: `${progress}%`,
           }}
@@ -100,37 +178,80 @@ const SkillProgress = ({ value, className }: SkillProgressProps) => {
           {/* Shine */}
 
           <div
-            className={cn(
-              "absolute inset-0",
+            className="
+              absolute
+              inset-0
 
-              "translate-x-[-120%]",
+              -translate-x-full
 
-              "bg-gradient-to-r",
+              bg-linear-to-r
+              from-transparent
+              via-white/50
+              to-transparent
 
-              "from-transparent",
-              "via-white/50",
-              "to-transparent",
+              transition-transform
+              duration-1800
 
-              "transition-transform duration-[1800ms]",
+              group-hover:translate-x-full
 
-              "group-hover:translate-x-[120%]",
-            )}
+              dark:via-white/20
+            "
+          />
+
+          {/* Highlight */}
+
+          <div
+            className="
+              absolute
+              inset-x-0
+              top-0
+
+              h-1/2
+
+              bg-white/20
+            "
           />
         </div>
 
-        {/* Glow */}
+        {/* Ambient Glow */}
 
         <div
-          className="absolute inset-y-0 rounded-full bg-violet-400/30 blur-md"
+          className="
+            pointer-events-none
+
+            absolute
+            inset-y-0
+
+            rounded-full
+
+            bg-violet-500/30
+
+            blur-md
+          "
           style={{
             width: `${progress}%`,
           }}
         />
       </div>
 
+      {/* ========================================================= */}
       {/* Scale */}
+      {/* ========================================================= */}
 
-      <div className="flex justify-between text-[10px] font-medium uppercase tracking-widest text-slate-600 dark:text-slate-400 dark:text-slate-500">
+      <div
+        className="
+          flex
+          justify-between
+
+          text-[10px]
+          font-semibold
+          uppercase
+          tracking-[0.18em]
+
+          text-zinc-500
+          dark:text-zinc-400
+        "
+      >
         <span>0</span>
         <span>25</span>
         <span>50</span>

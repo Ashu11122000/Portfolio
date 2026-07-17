@@ -2,39 +2,62 @@ import * as React from "react";
 import { type VariantProps } from "class-variance-authority";
 
 import { buttonVariants } from "./buttonVariants";
-
 import { cn } from "../../utils/cn";
 
 /**
  * ==========================================================
- * Button Component
+ * Ultra Premium Button Component
  * ==========================================================
  *
- * A reusable button component used across the portfolio.
- *
  * Features
- * ----------
+ * ----------------------------------------------------------
  * ✓ Multiple Variants
  * ✓ Multiple Sizes
  * ✓ Loading State
  * ✓ Left & Right Icons
- * ✓ Full Width Option
- * ✓ Disabled State
- * ✓ Accessible
- * ✓ Tailwind + TypeScript
- *
+ * ✓ Full Width Support
+ * ✓ Keyboard Accessible
+ * ✓ Theme Aware
+ * ✓ Smooth Animations
+ * ✓ Production Ready
  * ==========================================================
  */
 
 export interface ButtonProps
-  extends
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   loading?: boolean;
 
   leftIcon?: React.ReactNode;
 
   rightIcon?: React.ReactNode;
+}
+
+function LoadingSpinner() {
+  return (
+    <svg
+      className="h-4 w-4 shrink-0 animate-spin"
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <circle
+        cx="12"
+        cy="12"
+        r="9"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        opacity="0.25"
+      />
+
+      <path
+        d="M21 12a9 9 0 0 0-9-9"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
 }
 
 function Button({
@@ -44,53 +67,64 @@ function Button({
   size,
   fullWidth,
   loading = false,
-  disabled,
+  disabled = false,
   leftIcon,
   rightIcon,
+  type = "button",
   ...props
 }: ButtonProps) {
+  const isDisabled = disabled || loading;
+
   return (
     <button
-      className={cn(buttonVariants({ variant, size, fullWidth }), className)}
-      disabled={disabled || loading}
+      type={type}
+      disabled={isDisabled}
+      aria-disabled={isDisabled}
+      aria-busy={loading}
+      className={cn(
+        buttonVariants({
+          variant,
+          size,
+          fullWidth,
+        }),
+
+        // Better rendering
+        "transform-gpu",
+
+        // Smooth icon animation
+        "[&>span]:transition-all",
+        "[&>span]:duration-300",
+
+        className
+      )}
       {...props}
     >
+      {/* Left Side */}
       {loading ? (
-        <svg
-          className="h-4 w-4 animate-spin shrink-0"
-          viewBox="0 0 24 24"
-          fill="none"
+        <LoadingSpinner />
+      ) : leftIcon ? (
+        <span
           aria-hidden="true"
+          className="flex shrink-0 items-center justify-center"
         >
-          <circle
-            cx="12"
-            cy="12"
-            r="10"
-            stroke="currentColor"
-            strokeWidth="4"
-            opacity="0.2"
-          />
+          {leftIcon}
+        </span>
+      ) : null}
 
-          <path
-            fill="currentColor"
-            d="M22 12a10 10 0 0 1-10 10V18a6 6 0 0 0 6-6h4Z"
-          />
-        </svg>
-      ) : (
-        leftIcon && (
-          <span className="flex items-center justify-center shrink-0">
-            {leftIcon}
-          </span>
-        )
-      )}
+      {/* Label */}
+      <span className="inline-flex items-center justify-center whitespace-nowrap">
+        {children}
+      </span>
 
-      <span className="flex items-center justify-center">{children}</span>
-
-      {!loading && rightIcon && (
-        <span className="flex items-center justify-center shrink-0">
+      {/* Right Side */}
+      {!loading && rightIcon ? (
+        <span
+          aria-hidden="true"
+          className="flex shrink-0 items-center justify-center"
+        >
           {rightIcon}
         </span>
-      )}
+      ) : null}
     </button>
   );
 }

@@ -7,22 +7,14 @@
  *
  * Features
  * ----------
- * ✓ Glassmorphism
- * ✓ Light & Dark Theme
- * ✓ Premium Hover Glow
- * ✓ Gradient Border
- * ✓ Animated Icon
- * ✓ Better Typography
- * ✓ Responsive
+ * ✓ Premium Glassmorphism
+ * ✓ Better Light/Dark Mode
+ * ✓ Animated Gradient Glow
+ * ✓ Premium Icon
+ * ✓ Floating Hover Animation
+ * ✓ Shine Effect
  * ✓ Accessible
  * ✓ Tailwind CSS v4
- *
- * Used By
- * ----------
- * - ProjectCard.tsx
- * - ProjectModal.tsx
- * - FeaturedProjects.tsx
- *
  * ==========================================================
  */
 
@@ -46,103 +38,113 @@ const TechBadge: FC<TechBadgeProps> = ({
   return (
     <span
       className={cn(
-        "group relative inline-flex items-center gap-2.5 overflow-hidden",
+        `
+        group
+        relative
+        inline-flex
+        items-center
+        gap-2.5
 
-        "rounded-full",
+        overflow-hidden
 
-        "border border-slate-200/80",
+        rounded-full
 
-        "bg-gradient-to-r",
+        border
+        border-zinc-200/80
+        dark:border-white/10
 
-        "from-cyan-50",
-        "via-violet-50",
-        "to-fuchsia-50",
+        bg-white/80
+        dark:bg-white/5
 
-        "px-4 py-2.5",
+        px-4
+        py-2.5
 
-        "backdrop-blur-xl",
+        backdrop-blur-xl
 
-        "shadow-sm",
+        shadow-sm
+        shadow-zinc-900/5
+        dark:shadow-black/20
 
-        "transition-all duration-300",
+        transition-all
+        duration-300
 
-        "hover:-translate-y-1",
-        "hover:scale-[1.03]",
+        hover:-translate-y-1
+        hover:scale-[1.04]
 
-        "hover:border-cyan-400/40",
+        hover:border-cyan-400/40
 
-        "hover:shadow-xl",
-        "hover:shadow-cyan-500/10",
-
-        "dark:border-white/10",
-
-        "dark:from-cyan-500/10",
-        "dark:via-violet-500/10",
-        "dark:to-fuchsia-500/10",
-
-        "dark:hover:border-cyan-400/30",
-        "dark:hover:shadow-cyan-500/15",
-
+        hover:shadow-xl
+        hover:shadow-cyan-500/15
+        `,
         className
       )}
     >
-      {/* Hover Glow */}
+      {/* ======================================================
+          Gradient Hover Background
+      ======================================================= */}
 
       <span
         className="
           pointer-events-none
           absolute
           inset-0
+
           opacity-0
+
           transition-opacity
           duration-300
+
           group-hover:opacity-100
 
-          bg-gradient-to-r
-          from-cyan-400/10
-          via-violet-400/10
-          to-fuchsia-400/10
+          bg-[linear-gradient(90deg,rgba(34,211,238,0.08),transparent,rgba(139,92,246,0.08))]
         "
       />
 
-      {/* Icon */}
+      {/* ======================================================
+          Icon
+      ======================================================= */}
 
-      <div
+      <span
         className="
           relative
           z-10
 
           flex
-          h-7
-          w-7
+          h-8
+          w-8
+
           items-center
           justify-center
 
           rounded-full
 
-          bg-cyan-500/10
+          bg-linear-to-br
+          from-cyan-500/15
+          to-violet-500/15
+
+          ring-1
+          ring-cyan-500/15
 
           transition-all
           duration-300
 
-          group-hover:bg-cyan-500/20
           group-hover:rotate-12
           group-hover:scale-110
-
-          dark:bg-cyan-500/15
         "
       >
         <Code2
-          size={14}
-          strokeWidth={2.4}
+          size={15}
+          strokeWidth={2.3}
           className="
             text-cyan-600
             dark:text-cyan-300
           "
         />
-      </div>
+      </span>
 
-      {/* Technology Name */}
+      {/* ======================================================
+          Label
+      ======================================================= */}
 
       <span
         className="
@@ -155,33 +157,36 @@ const TechBadge: FC<TechBadgeProps> = ({
           font-semibold
           tracking-wide
 
-          text-slate-800
+          text-zinc-800
+          dark:text-zinc-200
 
           transition-colors
           duration-300
 
           group-hover:text-cyan-700
-
-          dark:text-slate-200
           dark:group-hover:text-cyan-300
         "
       >
         {technology.name}
       </span>
 
-      {/* Shine */}
+      {/* ======================================================
+          Shine Animation
+      ======================================================= */}
 
       <span
         className="
           pointer-events-none
+
           absolute
           inset-0
 
           -translate-x-full
 
-          bg-gradient-to-r
+          bg-linear-to-r
           from-transparent
           via-white/40
+          dark:via-white/20
           to-transparent
 
           transition-transform

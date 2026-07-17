@@ -4,30 +4,17 @@ import { cn } from "../../utils/cn";
 
 /**
  * ==========================================================
- * Divider Component
+ * Ultra Premium Divider Component
  * ==========================================================
  *
- * A reusable divider for separating sections and content.
- *
  * Features
- * ----------
- * ✓ Horizontal Divider
- * ✓ Vertical Divider
- * ✓ Gradient Variants
- * ✓ Configurable Spacing
- * ✓ Dark / Light Theme
+ * ----------------------------------------------------------
+ * ✓ Horizontal & Vertical
+ * ✓ Premium Gradient Glow
+ * ✓ Better Light/Dark Visibility
  * ✓ Responsive
- * ✓ TypeScript
- * ✓ Reusable
- *
- * Used In
- * ----------
- * Experience
- * Projects
- * Resume
- * Contact
- * About
- * Services
+ * ✓ Accessible
+ * ✓ Production Ready
  * ==========================================================
  */
 
@@ -41,13 +28,10 @@ export interface DividerProps extends HTMLAttributes<HTMLDivElement> {
 
 const spacingClasses = {
   none: "",
-
   sm: "my-3",
-
   md: "my-6",
-
   lg: "my-10",
-};
+} as const;
 
 function Divider({
   className,
@@ -60,53 +44,78 @@ function Divider({
 
   return (
     <div
+      aria-hidden="true"
       className={cn(
+        // Layout
         "relative shrink-0 overflow-hidden",
+
+        // Better rendering
+        "transform-gpu",
 
         spacingClasses[spacing],
 
-        isHorizontal ? "h-px w-full" : "h-full w-px",
+        isHorizontal
+          ? "h-px w-full"
+          : "h-full w-px",
 
+        // Variants
         variant === "default" && [
-          "bg-slate-200 dark:bg-slate-700",
+          "bg-slate-300/80",
+          "dark:bg-slate-700/80",
         ],
 
         variant === "subtle" && [
-          "bg-slate-200/50 dark:bg-slate-700/40",
+          "bg-slate-200/50",
+          "dark:bg-slate-700/40",
         ],
 
         variant === "gradient" &&
           (isHorizontal
             ? [
-                "bg-gradient-to-r",
+                "bg-linear-to-r",
                 "from-transparent",
-                "via-violet-500/40",
+                "via-violet-500/50",
                 "to-transparent",
-                "shadow-[0_0_18px_rgba(139,92,246,0.18)]",
+
+                "shadow-[0_0_24px_rgba(139,92,246,0.18)]",
               ]
             : [
-                "bg-gradient-to-b",
+                "bg-linear-to-b",
                 "from-transparent",
-                "via-violet-500/40",
+                "via-violet-500/50",
                 "to-transparent",
-                "shadow-[0_0_18px_rgba(139,92,246,0.18)]",
+
+                "shadow-[0_0_24px_rgba(139,92,246,0.18)]",
               ]),
 
         className
       )}
-      aria-hidden="true"
       {...props}
     >
       {variant === "gradient" && (
-        <div
-          className={cn(
-            "absolute inset-0 opacity-70",
+        <>
+          {/* Premium Inner Highlight */}
+          <div
+            className={cn(
+              "absolute inset-0",
 
-            isHorizontal
-              ? "bg-gradient-to-r from-transparent via-white/25 to-transparent dark:via-white/10"
-              : "bg-gradient-to-b from-transparent via-white/25 to-transparent dark:via-white/10"
-          )}
-        />
+              isHorizontal
+                ? "bg-linear-to-r from-transparent via-white/35 to-transparent dark:via-white/15"
+                : "bg-linear-to-b from-transparent via-white/35 to-transparent dark:via-white/15"
+            )}
+          />
+
+          {/* Soft Ambient Glow */}
+          <div
+            className={cn(
+              "absolute inset-0 opacity-60 blur-sm",
+
+              isHorizontal
+                ? "bg-linear-to-r from-transparent via-violet-400/25 to-transparent"
+                : "bg-linear-to-b from-transparent via-violet-400/25 to-transparent"
+            )}
+          />
+        </>
       )}
     </div>
   );

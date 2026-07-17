@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Award } from "lucide-react";
 
 import CertificationCard from "./CertificationCard";
 import CertificationModal from "./CertificationModal";
@@ -9,51 +10,56 @@ import type {
 } from "../../types/certification";
 
 /**
- * ==========================================================
+ * =============================================================================
  * Certification Grid
- * ==========================================================
+ * =============================================================================
  *
- * Displays certifications in an ultra premium
- * responsive masonry-style grid.
+ * Ultra Premium Responsive Certification Grid
  *
  * Features
- * ----------
- * ✓ Responsive Layout
+ * -----------------------------------------------------------------------------
+ * ✓ Responsive CSS Grid
  * ✓ Premium Empty State
+ * ✓ Glassmorphism
+ * ✓ Theme Aware
+ * ✓ Smooth Animations
+ * ✓ Beautiful Background Glow
  * ✓ Modal Integration
- * ✓ Smooth Layout
- * ✓ Glassmorphism Ready
- * ✓ Home Page Ready
- * ✓ Certifications Page Ready
  * ✓ Production Ready
- *
- * ==========================================================
+ * =============================================================================
  */
 
-function CertificationGrid({ certifications }: CertificationGridProps) {
+function CertificationGrid({
+  certifications,
+}: CertificationGridProps) {
   const [selectedCertification, setSelectedCertification] =
     useState<Certification | null>(null);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   /**
-   * ----------------------------------------------------------
+   * --------------------------------------------------------------------------
    * Sort Certifications
-   * ----------------------------------------------------------
+   * --------------------------------------------------------------------------
    */
 
   const sortedCertifications = useMemo(
-    () => [...certifications].sort((a, b) => a.order - b.order),
+    () =>
+      [...certifications].sort(
+        (a, b) => a.order - b.order,
+      ),
     [certifications],
   );
 
   /**
-   * ----------------------------------------------------------
+   * --------------------------------------------------------------------------
    * Modal Handlers
-   * ----------------------------------------------------------
+   * --------------------------------------------------------------------------
    */
 
-  const handleOpenModal = (certification: Certification) => {
+  const handleOpenModal = (
+    certification: Certification,
+  ) => {
     setSelectedCertification(certification);
     setIsModalOpen(true);
   };
@@ -62,113 +68,187 @@ function CertificationGrid({ certifications }: CertificationGridProps) {
     setIsModalOpen(false);
 
     /**
-     * Wait for modal animation
+     * Wait for closing animation
      */
 
     setTimeout(() => {
       setSelectedCertification(null);
-    }, 150);
+    }, 180);
   };
 
   /**
-   * ----------------------------------------------------------
+   * --------------------------------------------------------------------------
    * Empty State
-   * ----------------------------------------------------------
+   * --------------------------------------------------------------------------
    */
 
   if (!sortedCertifications.length) {
     return (
       <div
         className="
+          group
           relative
           overflow-hidden
-          rounded-[32px]
+
+          rounded-[36px]
+
           border
-          border-white/10
-          bg-white/[0.4]
-          px-10
-          py-24
-          text-center
-          backdrop-blur-2xl
+          border-zinc-200/70
+          dark:border-white/10
+
+          bg-white/80
+          dark:bg-white/5
+
+          backdrop-blur-3xl
+
+          px-8
+          py-20
+
+          md:px-14
+          md:py-28
+
+          shadow-xl
+          shadow-black/5
+          dark:shadow-black/30
         "
       >
-        {/* Decorative Glow */}
+        {/* Top Border Glow */}
 
         <div
           className="
             absolute
-            left-1/2
+            inset-x-0
             top-0
-            h-64
-            w-64
+            h-px
+
+            bg-linear-to-r
+            from-transparent
+            via-violet-500/70
+            to-transparent
+          "
+        />
+
+        {/* Main Glow */}
+
+        <div
+          className="
+            absolute
+            -top-24
+            left-1/2
+
+            h-80
+            w-80
+
             -translate-x-1/2
+
             rounded-full
-            bg-violet-500/10
+
+            bg-linear-to-br
+            from-violet-500/20
+            via-fuchsia-500/15
+            to-cyan-400/20
+
             blur-3xl
+          "
+        />
+
+        {/* Bottom Glow */}
+
+        <div
+          className="
+            absolute
+            -bottom-24
+            -right-24
+
+            h-80
+            w-80
+
+            rounded-full
+
+            bg-cyan-400/15
+
+            blur-3xl
+          "
+        />
+
+        {/* Glass Overlay */}
+
+        <div
+          className="
+            absolute
+            inset-0
+
+            rounded-[36px]
+
+            bg-linear-to-br
+            from-white/40
+            via-transparent
+            to-transparent
+
+            dark:from-white/5
+
+            pointer-events-none
           "
         />
 
         <div
           className="
-            absolute
-            -bottom-20
-            -right-20
-            h-72
-            w-72
-            rounded-full
-            bg-cyan-500/10
-            blur-3xl
-          "
-        />
+            relative
+            z-10
 
-        <div className="relative z-10">
+            flex
+            flex-col
+            items-center
+            text-center
+          "
+        >
           {/* Icon */}
 
           <div
             className="
-              mx-auto
               mb-8
+
               flex
-              h-20
-              w-20
+              h-24
+              w-24
               items-center
               justify-center
-              rounded-3xl
-              bg-gradient-to-br
+
+              rounded-[28px]
+
+              border
+              border-white/30
+              dark:border-white/10
+
+              bg-linear-to-br
               from-violet-500
               via-fuchsia-500
-              to-cyan-500
-              shadow-xl
-              shadow-violet-500/30
+              to-cyan-400
+
+              text-white
+
+              shadow-[0_20px_60px_rgba(124,58,237,.35)]
+
+              transition-all
+              duration-700
+
+              group-hover:scale-110
+              group-hover:rotate-6
             "
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.8}
-              stroke="currentColor"
-              className="h-10 w-10 text-slate-900 dark:text-slate-900 dark:text-white"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M9 12.75L11.25 15 15 9.75M21
-                12a9 9 0 11-18
-                0 9 9 0 0118 0z"
-              />
-            </svg>
+            <Award size={42} strokeWidth={2.2} />
           </div>
 
-          {/* Title */}
+          {/* Heading */}
 
           <h3
             className="
               text-3xl
               font-bold
               tracking-tight
-              text-slate-900
-              text-slate-900 dark:text-slate-900 dark:text-white
+
+              text-zinc-900
+              dark:text-white
             "
           >
             No Certifications Found
@@ -179,16 +259,19 @@ function CertificationGrid({ certifications }: CertificationGridProps) {
           <p
             className="
               mx-auto
-              mt-5
-              max-w-xl
+              mt-6
+              max-w-2xl
+
               text-[15px]
               leading-8
-              text-slate-800
-              dark:text-slate-800
+
+              text-zinc-600
+              dark:text-zinc-400
             "
           >
             Your certifications will automatically appear here once they are
-            added to the centralized data source.
+            added to the centralized data source. Continue learning and showcase
+            your achievements with beautifully presented certificates.
           </p>
         </div>
       </div>
@@ -196,67 +279,146 @@ function CertificationGrid({ certifications }: CertificationGridProps) {
   }
 
   /**
-   * ----------------------------------------------------------
+   * --------------------------------------------------------------------------
    * Grid Layout
-   * ----------------------------------------------------------
+   * --------------------------------------------------------------------------
    */
 
   return (
     <div className="relative">
-      {/* Background Glow */}
+            {/* ==========================================================================
+          Premium Background Effects
+      ========================================================================== */}
+
+      {/* Top Right Glow */}
+
       <div
         className="
           pointer-events-none
           absolute
-          -top-24
+          -top-28
           right-0
-          h-72
-          w-72
+
+          h-80
+          w-80
+
           rounded-full
-          bg-violet-500/10
-          blur-3xl
+
+          bg-linear-to-br
+          from-violet-500/20
+          via-fuchsia-500/10
+          to-transparent
+
+          blur-[110px]
+
+          animate-pulse
         "
       />
+
+      {/* Bottom Left Glow */}
 
       <div
         className="
           pointer-events-none
           absolute
-          -bottom-24
+          -bottom-32
           left-0
-          h-72
-          w-72
+
+          h-96
+          w-96
+
           rounded-full
-          bg-cyan-500/10
-          blur-3xl
+
+          bg-linear-to-br
+          from-cyan-500/15
+          via-sky-500/10
+          to-transparent
+
+          blur-[120px]
+
+          animate-pulse
+          [animation-delay:2s]
         "
       />
 
-      {/* Certification Grid */}
+      {/* Center Ambient Glow */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          left-1/2
+          top-1/2
+
+          h-105
+          w-105
+
+          -translate-x-1/2
+          -translate-y-1/2
+
+          rounded-full
+
+          bg-linear-to-br
+          from-violet-500/5
+          via-fuchsia-500/5
+          to-cyan-500/5
+
+          blur-[140px]
+        "
+      />
+
+      {/* ==========================================================================
+          Certification Grid
+      ========================================================================== */}
 
       <div
         className="
           relative
           z-10
+
           grid
-          items-stretch
+          grid-cols-1
+
           gap-7
-          sm:grid-cols-1
+
+          sm:gap-8
           md:grid-cols-2
+          lg:gap-8
           xl:grid-cols-3
-          2xl:gap-8
+          2xl:gap-10
+
+          items-stretch
+          auto-rows-fr
         "
       >
         {sortedCertifications.map((certification) => (
-          <CertificationCard
+          <div
             key={certification.id}
-            certification={certification}
-            onView={handleOpenModal}
-          />
+            className="
+              h-full
+
+              transition-all
+              duration-700
+              ease-out
+
+              hover:z-20
+            "
+          >
+            <CertificationCard
+              certification={certification}
+              onView={handleOpenModal}
+            />
+          </div>
         ))}
       </div>
 
-      {/* Details Modal */}
+      {/* ==========================================================================
+          Details Modal
+      ========================================================================== */}
+
+            {/* ==========================================================================
+          Details Modal
+      ========================================================================== */}
 
       <CertificationModal
         certification={selectedCertification}
